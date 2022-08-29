@@ -24,6 +24,8 @@ necessary across calls.
 Instruction encoding
 ====================
 
+An eBPF program is a sequence of 64-bit instructions.
+
 eBPF has two instruction encodings:
 
  * the basic instruction encoding, which uses 64 bits to encode an instruction
@@ -54,7 +56,7 @@ opcode
   operation to perform
 
 Note that most instructions do not use all of the fields.
-Unused fields MUST be set to zero.
+Unused fields should be set to zero.
 
 The wide instruction encoding is as follows:
 
@@ -118,8 +120,8 @@ instruction class
 Arithmetic instructions
 -----------------------
 
-Instruction class ``BPF_ALU`` uses 32-bit wide operands while ``BPF_ALU64`` uses 64-bit wide operands for
-otherwise identical operations.
+Instruction class ``BPF_ALU`` uses 32-bit wide operands (zeroing the upper 32 bits of the destination
+register) while ``BPF_ALU64`` uses 64-bit wide operands for otherwise identical operations.
 The 4-bit 'code' field encodes the operation as follows:
 
   ========  =====  =================================================
@@ -141,9 +143,11 @@ The 4-bit 'code' field encodes the operation as follows:
   BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
   ========  =====  =================================================
 
+**TODO**: Add sentence defining 'dst' and 'src'.
+
 Examples:
 
-``BPF_ADD | BPF_X | BPF_ALU`` means::
+``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
 
   dst_reg = (uint32_t) dst_reg + (uint32_t) src_reg;
 
@@ -151,15 +155,15 @@ where '(uint32_t)' (or '(u32)' in the Linux kernel) indicates truncation to 32-b
 
 **TODO**: Add phrase about dst_reg meaning the value of the register, rather than the number of the register.
 
-``BPF_ADD | BPF_X | BPF_ALU64`` means::
+``BPF_ADD | BPF_X | BPF_ALU64`` (0x0f) means::
 
   dst_reg = dst_reg + src_reg
 
-``BPF_XOR | BPF_K | BPF_ALU`` means::
+``BPF_XOR | BPF_K | BPF_ALU`` (0xa4) means::
 
   src_reg = (uint32_t) src_reg ^ (uint32_t) imm
 
-``BPF_XOR | BPF_K | BPF_ALU64`` means::
+``BPF_XOR | BPF_K | BPF_ALU64`` (0xa7) means::
 
   src_reg = src_reg ^ imm
 
@@ -184,29 +188,29 @@ used to select what byte order the operation converts from or to:
   BPF_TO_BE  0x08   convert between host byte order and big endian
   =========  =====  =================================================
 
-The 'imm' field encodes the width of the swap operations.  The following widths
-are supported: 16, 32 and 64.
-
-Examples:
-
-``BPF_ALU | BPF_TO_LE | BPF_END`` with 'imm' = 16 means::
-
-  dst_reg = htole16(dst_reg)
-
-where 'htole16()' converts a 16-bit value of the specified register
-from host byte order to little-endian byte order.
-
-``BPF_ALU | BPF_TO_BE | BPF_END`` with 'imm' = 64 means::
-
-  dst_reg = htobe64(dst_reg)
-
-where 'htobe64()' converts a 64-bit value of the specified register
-from host byte order to big-endian byte order.
-
 *Linux implementation note*:
 ``BPF_FROM_LE`` and ``BPF_FROM_BE`` exist as aliases for ``BPF_TO_LE`` and
 ``BPF_TO_BE`` respectively.
 
+The 'imm' field encodes the width of the swap operations.  The following widths
+are supported: 16, 32 and 64. The following table summarizes the resulting
+possibilities:
+
+  =============================  =========  ===  ========  =================
+  opcode construction            opcode     imm  mnemonic  pseudocode
+  =============================  =========  ===  ========  =================
+  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       16   le16 dst  dst = htole16(dst)
+  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       32   le32 dst  dst = htole32(dst)
+  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       64   le64 dst  dst = htole64(dst)
+  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       16   be16 dst  dst = htobe16(dst)
+  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       32   be32 dst  dst = htobe32(dst)
+  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       64   be64 dst  dst = htobe64(dst)
+  =============================  =========  ===  ========  =================
+
+where
+  * mnenomic indicates a short form that might be displayed by some tools such as disassemblers
+  * 'htoleNN()' indicates converting a NN-bit value from host byte order to little-endian byte order
+  * 'htobeNN()' indicates converting a NN-bit value from host byte order to big-endian byte order
 
 Jump instructions
 -----------------
