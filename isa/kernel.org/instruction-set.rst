@@ -38,17 +38,20 @@ The basic instruction encoding is as follows:
  immediate      offset   src_reg          dst_reg               opcode
  =============  =======  ===============  ====================  ============
 
-.. glossary::
-     immediate
-        integer immediate value
-     offset
-        integer offset
+immediate
+  integer immediate value
 
-**src_reg**: source register number
+offset
+  integer offset
 
-**dst_reg**: destination register number
+src_reg
+  source register number
 
-**opcode**: operation to perform
+dst_reg
+  destination register number
+
+opcode
+  operation to perform
 
 Note that most instructions do not use all of the fields.
 Unused fields MUST be set to zero.
@@ -61,8 +64,8 @@ The wide instruction encoding is as follows:
  basic instruction  imm64
  =================  =============
 
-A wide instruction is indicated by a basic instruction whose encoding denotes
-that a 64-bit immediate value follows, as covered in sections below.
+A wide instruction is indicated by a basic instruction whose encoding denotes that
+a 64-bit immediate value follows, as covered `64-bit immediate instructions`_ below.
 
 Instruction classes
 -------------------
@@ -96,9 +99,11 @@ For arithmetic and jump instructions (``BPF_ALU``, ``BPF_ALU64``, ``BPF_JMP`` an
   code            source  instruction class
   ==============  ======  =================
 
-**code**: the operation code
+code
+  the operation code, whose meaning varies by instruction class (see below)
 
-**source**: the source operand, as follows:
+source
+  the source operand, as follows:
 
   ======  =====  ========================================
   source  value  description
@@ -107,7 +112,8 @@ For arithmetic and jump instructions (``BPF_ALU``, ``BPF_ALU64``, ``BPF_JMP`` an
   BPF_X   0x08   use 'src_reg' register value as source operand
   ======  =====  ========================================
 
-**instruction class**: see sections below
+instruction class
+  the instruction class (see `Instruction classes`_)
 
 Arithmetic instructions
 -----------------------
@@ -132,7 +138,7 @@ The 4-bit 'code' field encodes the operation as follows:
   BPF_XOR   0xa0   dst ^= src
   BPF_MOV   0xb0   dst = src
   BPF_ARSH  0xc0   sign extending shift right
-  BPF_END   0xd0   byte swap operations (see separate section below)
+  BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
   ========  =====  =================================================
 
 Examples:
@@ -225,7 +231,7 @@ BPF_EXIT.
 Load and store instructions
 ===========================
 
-For load and store instructions (BPF_LD, BPF_LDX, BPF_ST and BPF_STX), the
+For load and store instructions (``BPF_LD``, ``BPF_LDX``, ``BPF_ST``, and ``BPF_STX``), the
 8-bit `opcode` field is divided as:
 
   ============  ======  =================
@@ -234,18 +240,8 @@ For load and store instructions (BPF_LD, BPF_LDX, BPF_ST and BPF_STX), the
   mode          size    instruction class
   ============  ======  =================
 
-The size modifier is one of:
-
-  =============  =====  =====================
-  size modifier  value  description
-  =============  =====  =====================
-  BPF_W          0x00   word        (4 bytes)
-  BPF_H          0x08   half word   (2 bytes)
-  BPF_B          0x10   byte
-  BPF_DW         0x18   double word (8 bytes)
-  =============  =====  =====================
-
-The mode modifier is one of:
+mode
+  one of:
 
   =============  =====  ====================================
   mode modifier  value  description
@@ -257,6 +253,20 @@ The mode modifier is one of:
   BPF_ATOMIC     0xc0   atomic operations
   =============  =====  ====================================
 
+size
+  one of:
+
+  =============  =====  =====================
+  size modifier  value  description
+  =============  =====  =====================
+  BPF_W          0x00   word        (4 bytes)
+  BPF_H          0x08   half word   (2 bytes)
+  BPF_B          0x10   byte
+  BPF_DW         0x18   double word (8 bytes)
+  =============  =====  =====================
+
+instruction class
+  the instruction class (see `Instruction classes`_)
 
 Regular load and store operations
 ---------------------------------
