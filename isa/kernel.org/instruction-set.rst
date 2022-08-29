@@ -1,3 +1,5 @@
+.. contents::
+.. sectnum::
 
 ====================
 eBPF Instruction Set
@@ -28,7 +30,7 @@ eBPF has two instruction encodings:
  * the wide instruction encoding, which appends a second 64-bit immediate value
    (imm64) after the basic instruction for a total of 128 bits.
 
-The basic instruction encoding looks as follows:
+The basic instruction encoding is as follows:
 
  =============  =======  ===============  ====================  ============
  32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
@@ -36,12 +38,22 @@ The basic instruction encoding looks as follows:
  immediate      offset   src_reg          dst_reg               opcode
  =============  =======  ===============  ====================  ============
 
-where 'src_reg' and 'dst_reg' are source and destination registers, respectively.
+.. glossary::
+     immediate
+        integer immediate value
+     offset
+        integer offset
+
+**src_reg**: source register number
+
+**dst_reg**: destination register number
+
+**opcode**: operation to perform
 
 Note that most instructions do not use all of the fields.
 Unused fields MUST be set to zero.
 
-The wide instruction encoding looks as follows:
+The wide instruction encoding is as follows:
 
  =================  =============
  64 bits (MSB)      64 bits (LSB)
@@ -84,7 +96,9 @@ For arithmetic and jump instructions (``BPF_ALU``, ``BPF_ALU64``, ``BPF_JMP`` an
   code            source  instruction class
   ==============  ======  =================
 
-The 4th least significant bit encodes the source operand:
+**code**: the operation code
+
+**source**: the source operand, as follows:
 
   ======  =====  ========================================
   source  value  description
@@ -93,8 +107,7 @@ The 4th least significant bit encodes the source operand:
   BPF_X   0x08   use 'src_reg' register value as source operand
   ======  =====  ========================================
 
-The four most significant bits (MSB) store the operation code.
-
+**instruction class**: see sections below
 
 Arithmetic instructions
 -----------------------
