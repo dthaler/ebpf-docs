@@ -149,6 +149,8 @@ Examples:
 
 where '(uint32_t)' (or '(u32)' in the Linux kernel) indicates truncation to 32-bits.
 
+**TODO**: Add phrase about dst_reg meaning the value of the register, rather than the number of the register.
+
 ``BPF_ADD | BPF_X | BPF_ALU64`` means::
 
   dst_reg = dst_reg + src_reg
@@ -232,6 +234,8 @@ The 4-bit 'code' field encodes the operation as below:
   BPF_JSLE  0xd0   PC += offset if dst <= src    signed
   ========  =====  ============================  ============
 
+**TODO**: Add sentence defining 'dst' and 'src'.
+
 The eBPF verifier is responsible for verifying that the
 eBPF program stores the return value into register R0 before doing a
 ``BPF_EXIT``.
@@ -311,6 +315,8 @@ that use the ``BPF_ATOMIC`` mode modifier as follows:
   * ``BPF_ATOMIC | BPF_DW | BPF_STX`` for 64-bit operations
   * 8-bit (``BPF_B``) and 16-bit (``BPF_H``) wide atomic operations are not supported.
 
+**TODO**: Confirm that ``BPF_ATOMIC | <size> | BPF_ST`` is not permitted.
+
 The 'imm' field is used to encode the actual atomic operation.
 Simple atomic operation use a subset of the values defined to encode
 arithmetic operations in the 'imm' field to encode the atomic operation:
@@ -324,6 +330,7 @@ arithmetic operations in the 'imm' field to encode the atomic operation:
   BPF_XOR   0xa0   atomic xor   v3
   ========  =====  ===========  =======
 
+**TODO**: Confirm the versions above. And add a section introducing the version concept.
 
 ``BPF_ATOMIC | BPF_W  | BPF_STX`` with 'imm' = BPF_ADD means::
 
@@ -391,7 +398,7 @@ The instructions come in two forms: ``BPF_ABS | <size> | BPF_LD`` and
 ``BPF_IND | <size> | BPF_LD``.
 
 These instructions are used to access packet data and can only be used when
-the program context is a pointer to a networking packet.  ``BPF_ABS``
+the program context contains a pointer to a networking packet.  ``BPF_ABS``
 accesses packet data at an absolute offset specified by the immediate data
 and ``BPF_IND`` access packet data at an offset that includes the value of
 a register in addition to the immediate data.
@@ -405,9 +412,13 @@ These instructions have seven implicit operands:
  * Registers R1-R5 are scratch registers that are clobbered after the
    instruction.
 
+**TODO**: Word more generically than specifically depending on struct sk_buff.
+
 These instructions have an implicit program exit condition as well. When an
 eBPF program is trying to access the data beyond the packet boundary, the
 program execution will be aborted.
+
+**TODO**: Whose responsibility is the implicit condition?  The verifier's or the VM's?
 
 ``BPF_ABS | BPF_W | BPF_LD`` means::
 
