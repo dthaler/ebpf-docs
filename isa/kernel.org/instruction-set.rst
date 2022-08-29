@@ -16,7 +16,7 @@ The eBPF calling convention is defined as:
  * R6 - R9: callee saved registers that function calls will preserve
  * R10: read-only frame pointer to access stack
 
-R0 - R5 are scratch registers and eBPF programs needs to spill/fill them if
+R0 - R5 are scratch registers and eBPF programs need to spill/fill them if
 necessary across calls.
 
 Instruction encoding
@@ -33,16 +33,31 @@ The basic instruction encoding looks as follows:
  =============  =======  ===============  ====================  ============
  32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
  =============  =======  ===============  ====================  ============
- immediate      offset   source register  destination register  opcode
+ immediate      offset   src_reg          dst_reg               opcode
  =============  =======  ===============  ====================  ============
 
+where 'src_reg' and 'dst_reg' are source and destination registers, respectively.
+
 Note that most instructions do not use all of the fields.
-Unused fields shall be cleared to zero.
+Unused fields MUST be set to zero.
+
+The wide instruction encoding looks as follows:
+
+ =================  =============
+ 64 bits (MSB)      64 bits (LSB)
+ =================  =============
+ basic instruction  imm64
+ =================  =============
+
+A wide instruction is indicated by a basic instruction whose encoding denotes
+that a 64-bit immediate value follows, as covered in sections below.
 
 Instruction classes
 -------------------
 
-The three LSB bits of the 'opcode' field store the instruction class:
+The encoding of the 'opcode' field varies and can be determined from
+the three least significant bits (LSB) of the 'opcode' field which holds
+the "instruction class", as follows:
 
   =========  =====  ===============================
   class      value  description
@@ -60,33 +75,33 @@ The three LSB bits of the 'opcode' field store the instruction class:
 Arithmetic and jump instructions
 ================================
 
-For arithmetic and jump instructions (BPF_ALU, BPF_ALU64, BPF_JMP and
-BPF_JMP32), the 8-bit 'opcode' field is divided into three parts:
+For arithmetic and jump instructions (``BPF_ALU``, ``BPF_ALU64``, ``BPF_JMP`` and
+``BPF_JMP32``), the 8-bit 'opcode' field is divided into three parts:
 
   ==============  ======  =================
   4 bits (MSB)    1 bit   3 bits (LSB)
   ==============  ======  =================
-  operation code  source  instruction class
+  code            source  instruction class
   ==============  ======  =================
 
-The 4th bit encodes the source operand:
+The 4th least significant bit encodes the source operand:
 
   ======  =====  ========================================
   source  value  description
   ======  =====  ========================================
-  BPF_K   0x00   use 32-bit immediate as source operand
-  BPF_X   0x08   use 'src_reg' register as source operand
+  BPF_K   0x00   use 32-bit 'immediate' value as source operand
+  BPF_X   0x08   use 'src_reg' register value as source operand
   ======  =====  ========================================
 
-The four MSB bits store the operation code.
+The four most significant bits (MSB) store the operation code.
 
 
 Arithmetic instructions
 -----------------------
 
-BPF_ALU uses 32-bit wide operands while BPF_ALU64 uses 64-bit wide operands for
+Instruction class ``BPF_ALU`` uses 32-bit wide operands while ``BPF_ALU64`` uses 64-bit wide operands for
 otherwise identical operations.
-The code field encodes the operation as below:
+The 4-bit 'code' field encodes the operation as follows:
 
   ========  =====  =================================================
   code      value  description
@@ -107,19 +122,23 @@ The code field encodes the operation as below:
   BPF_END   0xd0   byte swap operations (see separate section below)
   ========  =====  =================================================
 
-BPF_ADD | BPF_X | BPF_ALU means::
+Examples:
 
-  dst_reg = (u32) dst_reg + (u32) src_reg;
+``BPF_ADD | BPF_X | BPF_ALU`` means::
 
-BPF_ADD | BPF_X | BPF_ALU64 means::
+  dst_reg = (uint32_t) dst_reg + (uint32_t) src_reg;
+
+where '(uint32_t)' (or '(u32)' in the Linux kernel) indicates truncation to 32-bits.
+
+``BPF_ADD | BPF_X | BPF_ALU64`` means::
 
   dst_reg = dst_reg + src_reg
 
-BPF_XOR | BPF_K | BPF_ALU means::
+``BPF_XOR | BPF_K | BPF_ALU`` means::
 
-  src_reg = (u32) src_reg ^ (u32) imm32
+  src_reg = (uint32_t) src_reg ^ (uint32_t) imm32
 
-BPF_XOR | BPF_K | BPF_ALU64 means::
+``BPF_XOR | BPF_K | BPF_ALU64`` means::
 
   src_reg = src_reg ^ imm32
 
@@ -128,13 +147,13 @@ Byte swap instructions
 ----------------------
 
 The byte swap instructions use an instruction class of ``BPF_ALU`` and a 4-bit
-code field of ``BPF_END``.
+'code' field of ``BPF_END``.
 
 The byte swap instructions operate on the destination register
 only and do not use a separate source register or immediate value.
 
-The 1-bit source operand field in the opcode is used to to select what byte
-order the operation convert from or to:
+The 1-bit 'source' field in the 'opcode' field is used to select what byte
+order the operation converts from or to:
 
   =========  =====  =================================================
   source     value  description
@@ -194,7 +213,7 @@ Load and store instructions
 ===========================
 
 For load and store instructions (BPF_LD, BPF_LDX, BPF_ST and BPF_STX), the
-8-bit 'opcode' field is divided as:
+8-bit `opcode` field is divided as:
 
   ============  ======  =================
   3 bits (MSB)  2 bits  3 bits (LSB)
@@ -276,11 +295,11 @@ arithmetic operations in the imm field to encode the atomic operation:
 
 ``BPF_ATOMIC | BPF_W  | BPF_STX`` with imm = BPF_ADD means::
 
-  *(u32 *)(dst_reg + off16) += src_reg
+  *(uint32_t *)(dst_reg + off16) += src_reg
 
 ``BPF_ATOMIC | BPF_DW | BPF_STX`` with imm = BPF ADD means::
 
-  *(u64 *)(dst_reg + off16) += src_reg
+  *(uint64_t *)(dst_reg + off16) += src_reg
 
 ``BPF_XADD`` is a deprecated name for ``BPF_ATOMIC | BPF_ADD``.
 
@@ -359,8 +378,8 @@ program execution will be aborted.
 
 ``BPF_ABS | BPF_W | BPF_LD`` means::
 
-  R0 = ntohl(*(u32 *) (((struct sk_buff *) R6)->data + imm32))
+  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + imm32))
 
 ``BPF_IND | BPF_W | BPF_LD`` means::
 
-  R0 = ntohl(*(u32 *) (((struct sk_buff *) R6)->data + src_reg + imm32))
+  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + src_reg + imm32))
