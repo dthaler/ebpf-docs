@@ -313,9 +313,9 @@ that use the ``BPF_ATOMIC`` mode modifier as follows:
 
   * ``BPF_ATOMIC | BPF_W | BPF_STX`` for 32-bit operations
   * ``BPF_ATOMIC | BPF_DW | BPF_STX`` for 64-bit operations
-  * 8-bit (``BPF_B``) and 16-bit (``BPF_H``) wide atomic operations are not supported.
 
-**TODO**: Confirm that ``BPF_ATOMIC | <size> | BPF_ST`` is not permitted.
+Note that 8-bit (``BPF_B``) and 16-bit (``BPF_H``) wide atomic operations are not supported,
+nor is ``BPF_ATOMIC | <size> | BPF_ST``.
 
 The 'imm' field is used to encode the actual atomic operation.
 Simple atomic operation use a subset of the values defined to encode
@@ -409,7 +409,7 @@ These instructions have seven implicit operands:
    struct sk_buff.
  * Register R0 is an implicit output which contains the data fetched from
    the packet.
- * Registers R1-R5 are scratch registers that are clobbered after the
+ * Registers R1-R5 are scratch registers that are clobbered by the
    instruction.
 
 **TODO**: Word more generically than specifically depending on struct sk_buff.
@@ -419,6 +419,8 @@ eBPF program is trying to access the data beyond the packet boundary, the
 program execution will be aborted.
 
 **TODO**: Whose responsibility is the implicit condition?  The verifier's or the VM's?
+The filter.txt file implies it is the responsibility of the interpreter or JIT compiler,
+not the verifier.
 
 ``BPF_ABS | BPF_W | BPF_LD`` means::
 
