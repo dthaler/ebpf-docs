@@ -37,7 +37,7 @@ The basic instruction encoding is as follows:
  =============  =======  ===============  ====================  ============
  32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
  =============  =======  ===============  ====================  ============
- imm            offset   src_reg          dst_reg               opcode
+ imm            offset   src              dst                   opcode
  =============  =======  ===============  ====================  ============
 
 imm         
@@ -46,10 +46,10 @@ imm
 offset
   integer offset
 
-src_reg
+src
   source register number
 
-dst_reg
+dst
   destination register number
 
 opcode
@@ -111,7 +111,7 @@ source
   source  value  description
   ======  =====  ========================================
   BPF_K   0x00   use 32-bit 'immediate' value as source operand
-  BPF_X   0x08   use 'src_reg' register value as source operand
+  BPF_X   0x08   use 'src' register value as source operand
   ======  =====  ========================================
 
 instruction class
@@ -149,23 +149,23 @@ Examples:
 
 ``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
 
-  dst_reg = (uint32_t) dst_reg + (uint32_t) src_reg;
+  dst = (uint32_t) dst + (uint32_t) src;
 
 where '(uint32_t)' (or '(u32)' in the Linux kernel) indicates truncation to 32-bits.
 
-**TODO**: Add phrase about dst_reg meaning the value of the register, rather than the number of the register.
+**TODO**: Add phrase about dst meaning the value of the register, rather than the number of the register.
 
 ``BPF_ADD | BPF_X | BPF_ALU64`` (0x0f) means::
 
-  dst_reg = dst_reg + src_reg
+  dst = dst + src
 
 ``BPF_XOR | BPF_K | BPF_ALU`` (0xa4) means::
 
-  src_reg = (uint32_t) src_reg ^ (uint32_t) imm
+  src = (uint32_t) src ^ (uint32_t) imm
 
 ``BPF_XOR | BPF_K | BPF_ALU64`` (0xa7) means::
 
-  src_reg = src_reg ^ imm
+  src = src ^ imm
 
 
 Byte swap instructions
@@ -293,15 +293,15 @@ instructions that transfer data between a register and memory.
 
 ``BPF_MEM | <size> | BPF_STX`` means::
 
-  *(size *) (dst_reg + offset) = src_reg
+  *(size *) (dst + offset) = src
 
 ``BPF_MEM | <size> | BPF_ST`` means::
 
-  *(size *) (dst_reg + offset) = imm
+  *(size *) (dst + offset) = imm
 
 ``BPF_MEM | <size> | BPF_LDX`` means::
 
-  dst_reg = *(size *) (src_reg + offset)
+  dst = *(size *) (src + offset)
 
 Where size is one of: ``BPF_B``, ``BPF_H``, ``BPF_W``, or ``BPF_DW``.
 
@@ -338,11 +338,11 @@ arithmetic operations in the 'imm' field to encode the atomic operation:
 
 ``BPF_ATOMIC | BPF_W  | BPF_STX`` with 'imm' = BPF_ADD means::
 
-  *(uint32_t *)(dst_reg + offset) += src_reg
+  *(uint32_t *)(dst + offset) += src
 
 ``BPF_ATOMIC | BPF_DW | BPF_STX`` with 'imm' = BPF ADD means::
 
-  *(uint64_t *)(dst_reg + offset) += src_reg
+  *(uint64_t *)(dst + offset) += src
 
 *Linux implementation note*: ``BPF_XADD`` is a deprecated name for ``BPF_ATOMIC | BPF_ADD``.
 
@@ -359,16 +359,16 @@ two complex atomic operations:
 
 The ``BPF_FETCH`` modifier is optional for simple atomic operations, and
 always set for the complex atomic operations.  If the ``BPF_FETCH`` flag
-is set, then the operation also overwrites ``src_reg`` with the value that
+is set, then the operation also overwrites ``src`` with the value that
 was in memory before it was modified.
 
-The ``BPF_XCHG`` operation atomically exchanges ``src_reg`` with the value
-addressed by ``dst_reg + offset``.
+The ``BPF_XCHG`` operation atomically exchanges ``src`` with the value
+addressed by ``dst + offset``.
 
 The ``BPF_CMPXCHG`` operation atomically compares the value addressed by
-``dst_reg + offset`` with ``R0``. If they match, the value addressed by
-``dst_reg + offset`` is replaced with ``src_reg``. In either case, the
-value that was at ``dst_reg + offset`` before the operation is zero-extended
+``dst + offset`` with ``R0``. If they match, the value addressed by
+``dst + offset`` is replaced with ``src``. In either case, the
+value that was at ``dst + offset`` before the operation is zero-extended
 and loaded back to ``R0``.
 
 *Clang implementation note*:
@@ -388,7 +388,7 @@ There is currently only one such instruction.
 
 ``BPF_LD | BPF_DW | BPF_IMM`` means::
 
-  dst_reg = imm64
+  dst = imm64
 
 
 Legacy BPF Packet access instructions
@@ -434,4 +434,112 @@ where `ntohl()` converts a 32-bit value from network byte order to host byte ord
 
 ``BPF_IND | BPF_W | BPF_LD`` means::
 
-  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + src_reg + imm))
+  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + src + imm))
+
+Appendix
+========
+
+For reference, the following table lists opcodes in order by value.
+
+======  =================================================  =============
+opcode  description                                        reference 
+======  =================================================  =============
+0x04    dst = (uint32_t)(dst + imm)                        `Arithmetic instructions`_
+0x05    goto +offset                                       `Jump instructions`_
+0x07    dst += imm                                         `Arithmetic instructions`_
+0x0c    dst = (uint32_t)(dst + src)                        `Arithmetic instructions`_
+0x0f    dst += src                                         `Arithmetic instructions`_
+0x14    dst = (uint32_t)(dst - imm)                        `Arithmetic instructions`_
+0x15    if dst == imm goto +offset                         `Jump instructions`_
+0x17    dst -= imm                                         `Arithmetic instructions`_
+0x18    dst = imm                                          `Load and store instructions`_
+0x1c    dst = (uint32_t)(dst - src)                        `Arithmetic instructions`_
+0x1d    if dst == src goto +offset                         `Jump instructions`_
+0x1f    dst -= src                                         `Arithmetic instructions`_
+0x20    dst = ntohl(*(uint32_t *)(R6->data + imm))         `Load and store instructions`_
+0x24    dst = (uint32_t)(dst * imm)                        `Arithmetic instructions`_
+0x25    if dst > imm goto +offset                          `Jump instructions`_
+0x27    dst *= imm                                         `Arithmetic instructions`_
+0x28    dst = ntohs(*(uint16_t *)(R6->data + imm))         `Load and store instructions`_
+0x2c    dst = (uint32_t)(dst * src)                        `Arithmetic instructions`_
+0x2d    if dst > src goto +offset                          `Jump instructions`_
+0x2f    dst *= src                                         `Arithmetic instructions`_
+0x30    dst = (*(uint8_t *)(R6->data + imm))               `Load and store instructions`_
+0x34    dst = (uint32_t)(dst / imm)                        `Arithmetic instructions`_
+0x35    if dst >= imm goto +offset                         `Jump instructions`_
+0x37    dst /= imm                                         `Arithmetic instructions`_
+0x38    dst = ntohll(*(uint64_t *)(R6->data + imm))        `Load and store instructions`_
+0x3c    dst = (uint32_t)(dst / src)                        `Arithmetic instructions`_
+0x3d    if dst >= src goto +offset                         `Jump instructions`_
+0x3f    dst /= src                                         `Arithmetic instructions`_
+0x40    dst = ntohl(*(uint32_t *)(R6->data + src + imm))   `Load and store instructions`_
+0x44    dst = (uint32_t)(dst \| imm)                       `Arithmetic instructions`_
+0x45    if dst & imm goto +offset                          `Jump instructions`_
+0x47    dst |= imm                                         `Arithmetic instructions`_
+0x48    dst = ntohs(*(uint16_t *)(R6->data + src + imm))   `Load and store instructions`_
+0x4c    dst = (uint32_t)(dst \| src)                       `Arithmetic instructions`_
+0x4d    if dst & src goto +offset                          `Jump instructions`_
+0x4f    dst |= src                                         `Arithmetic instructions`_
+0x50    dst = *(uint8_t *)(R6->data + src + imm))          `Load and store instructions`_
+0x54    dst = (uint32_t)(dst & imm)                        `Arithmetic instructions`_
+0x55    if dst != imm goto +offset                         `Jump instructions`_
+0x57    dst &= imm                                         `Arithmetic instructions`_
+0x58    dst = ntohll(*(uint64_t *)(R6->data + src + imm))  `Load and store instructions`_
+0x5c    dst = (uint32_t)(dst & src)                        `Arithmetic instructions`_
+0x5d    if dst != src goto +offset                         `Jump instructions`_
+0x5f    dst &= src                                         `Arithmetic instructions`_
+0x61    dst = *(uint32_t *)(src + offset)                  `Load and store instructions`_
+0x62    *(uint32_t *)(dst + offset) = imm                  `Load and store instructions`_
+0x63    *(uint32_t *)(dst + offset) = src                  `Load and store instructions`_
+0x64    dst = (uint32_t)(dst << imm)                       `Arithmetic instructions`_
+0x65    if dst s> imm goto +offset                         `Jump instructions`_
+0x67    dst <<= imm                                        `Arithmetic instructions`_
+0x69    dst = *(uint16_t *)(src + offset)                  `Load and store instructions`_
+0x6a    *(uint16_t *)(dst + offset) = imm                  `Load and store instructions`_
+0x6b    *(uint16_t *)(dst + offset) = src                  `Load and store instructions`_
+0x6c    dst = (uint32_t)(dst << src)                       `Arithmetic instructions`_
+0x6d    if dst s> src goto +offset                         `Jump instructions`_
+0x6f    dst <<= src                                        `Arithmetic instructions`_
+0x71    dst = *(uint8_t *)(src + offset)                   `Load and store instructions`_
+0x72    *(uint8_t *)(dst + offset) = imm                   `Load and store instructions`_
+0x73    *(uint8_t *)(dst + offset) = src                   `Load and store instructions`_
+0x74    dst = (uint32_t)(dst >> imm)                       `Arithmetic instructions`_
+0x75    if dst s>= imm goto +offset                        `Jump instructions`_
+0x77    dst >>= imm                                        `Arithmetic instructions`_
+0x79    dst = *(uint64_t *)(src + offset)                  `Load and store instructions`_
+0x7a    *(uint64_t *)(dst + offset) = imm                  `Load and store instructions`_
+0x7b    *(uint64_t *)(dst + offset) = src                  `Load and store instructions`_
+0x7c    dst = (uint32_t)(dst >> src)                       `Arithmetic instructions`_
+0x7d    if dst s>= src goto +offset                        `Jump instructions`_
+0x7f    dst >>= src                                        `Arithmetic instructions`_
+0x84    dst = (uint32_t)-dst                               `Arithmetic instructions`_
+0x85    call imm                                           `Jump instructions`_
+0x87    dst = -dst                                         `Arithmetic instructions`_
+0x94    dst = (uint32_t)(dst % imm)                        `Arithmetic instructions`_
+0x95    exit                                               `Jump instructions`_
+0x97    dst %= imm                                         `Arithmetic instructions`_
+0x9c    dst = (uint32_t)(dst % src)                        `Arithmetic instructions`_
+0x9f    dst %= src                                         `Arithmetic instructions`_
+0xa4    dst = (uint32_t)(dst ^ imm)                        `Arithmetic instructions`_
+0xa5    if dst < imm goto +offset                          `Jump instructions`_
+0xa7    dst ^= imm                                         `Arithmetic instructions`_
+0xac    dst = (uint32_t)(dst ^ src)                        `Arithmetic instructions`_
+0xad    if dst < src goto +offset                          `Jump instructions`_
+0xaf    dst ^= src                                         `Arithmetic instructions`_
+0xb4    dst = (uint32_t) imm                               `Arithmetic instructions`_
+0xb5    if dst <= imm goto +offset                         `Jump instructions`_
+0xb7    dst = imm                                          `Arithmetic instructions`_
+0xbc    dst = (uint32_t) src                               `Arithmetic instructions`_
+0xbd    if dst <= src goto +offset                         `Jump instructions`_
+0xbf    dst = src                                          `Arithmetic instructions`_
+0xc4    dst = (uint32_t)(dst s>> imm)                      `Arithmetic instructions`_
+0xc5    if dst s< imm goto +offset                         `Jump instructions`_
+0xc7    dst s>>= imm                                       `Arithmetic instructions`_
+0xcc    dst = (uint32_t)(dst s>> src)                      `Arithmetic instructions`_
+0xcd    if dst s< src goto +offset                         `Jump instructions`_
+0xcf    dst s>>= src                                       `Arithmetic instructions`_
+0xd4    dst = htole.imm(dst)                               `Byte swap instructions`_
+0xd5    if dst s<= imm goto +offset                        `Jump instructions`_
+0xdc    dst = htobe.imm(dst)                               `Byte swap instructions`_
+0xdd    if dst s<= src goto +offset                        `Jump instructions`_
+======  =================================================  =============
