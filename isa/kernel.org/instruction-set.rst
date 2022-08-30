@@ -69,6 +69,9 @@ The wide instruction encoding is as follows:
 A wide instruction is indicated by a basic instruction whose encoding denotes that
 a 64-bit immediate value follows, as covered `64-bit immediate instructions`_ below.
 
+In the remainder of this document 'src' and 'dst' refer to the values of the source
+and destination registers, rather than the register number.
+
 Instruction classes
 -------------------
 
@@ -143,17 +146,17 @@ The 4-bit 'code' field encodes the operation as follows:
   BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
   ========  =====  =================================================
 
-**TODO**: Add sentence defining 'dst' and 'src'.
-
 Examples:
 
 ``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
 
   dst = (uint32_t) dst + (uint32_t) src;
 
-where '(uint32_t)' (or '(u32)' in the Linux kernel) indicates truncation to 32-bits.
+where '(uint32_t)' indicates truncation to 32-bits.
 
-**TODO**: Add phrase about dst meaning the value of the register, rather than the number of the register.
+*Linux implementation note*: In the Linux kernel, uint32_t is expressed as u32,
+uint64_t is expressed as u64, etc.  This document uses the standard C terminology
+as the cross-platform specification.
 
 ``BPF_ADD | BPF_X | BPF_ALU64`` (0x0f) means::
 
@@ -237,8 +240,6 @@ The 4-bit 'code' field encodes the operation as below:
   BPF_JSLT  0xc0   PC += offset if dst < src     signed
   BPF_JSLE  0xd0   PC += offset if dst <= src    signed
   ========  =====  ============================  ============
-
-**TODO**: Add sentence defining 'dst' and 'src'.
 
 The eBPF verifier is responsible for verifying that the
 eBPF program stores the return value into register R0 before doing a
@@ -410,31 +411,30 @@ a register in addition to the immediate data.
 These instructions have seven implicit operands:
 
  * Register R6 is an implicit input that must contain a pointer to a
-   struct sk_buff.
+   context structure with a packet data pointer.
  * Register R0 is an implicit output which contains the data fetched from
    the packet.
  * Registers R1-R5 are scratch registers that are clobbered by the
    instruction.
 
-**TODO**: Word more generically than specifically depending on struct sk_buff.
+*Linux implementation note*: In Linux, R6 references a struct sk_buff.
 
-These instructions have an implicit program exit condition as well. When an
-eBPF program is trying to access the data beyond the packet boundary, the
-program execution will be aborted.
+These instructions have an implicit program exit condition as well. If an
+eBPF program attempts access data beyond the packet boundary, the
+program execution must be gracefully aborted.
 
-**TODO**: Whose responsibility is the implicit condition?  The verifier's or the VM's?
-The filter.txt file implies it is the responsibility of the interpreter or JIT compiler,
-not the verifier.
+**TODO**: Is the verifier required to allow such programs, or is it free to
+reject them?
 
 ``BPF_ABS | BPF_W | BPF_LD`` means::
 
-  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + imm))
+  R0 = ntohl(*(uint32_t *) (R6->data + imm))
 
 where `ntohl()` converts a 32-bit value from network byte order to host byte order.
 
 ``BPF_IND | BPF_W | BPF_LD`` means::
 
-  R0 = ntohl(*(uint32_t *) (((struct sk_buff *) R6)->data + src + imm))
+  R0 = ntohl(*(uint32_t *) (R6->data + src + imm))
 
 Appendix
 ========
