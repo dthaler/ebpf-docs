@@ -56,9 +56,11 @@ opcode
   operation to perform
 
 Note that most instructions do not use all of the fields.
-Unused fields should be set to zero.
+Unused fields must be set to zero.
 
-The wide instruction encoding is as follows:
+As discussed below in `64-bit immediate instructions`_, some basic
+instructions denote that a 64-bit immediate value follows.  Thus
+the wide instruction encoding is as follows:
 
  =================  =============
  64 bits (MSB)      64 bits (LSB)
@@ -66,11 +68,10 @@ The wide instruction encoding is as follows:
  basic instruction  imm64
  =================  =============
 
-A wide instruction is indicated by a basic instruction whose encoding denotes that
-a 64-bit immediate value follows, as covered `64-bit immediate instructions`_ below.
+where MSB and LSB mean the most significant bits and least significant bits, respectively.
 
 In the remainder of this document 'src' and 'dst' refer to the values of the source
-and destination registers, rather than the register number.
+and destination registers, respectively, rather than the register number.
 
 Instruction classes
 -------------------
@@ -113,7 +114,7 @@ source
   ======  =====  ========================================
   source  value  description
   ======  =====  ========================================
-  BPF_K   0x00   use 32-bit 'immediate' value as source operand
+  BPF_K   0x00   use 32-bit 'imm' value as source operand
   BPF_X   0x08   use 'src' register value as source operand
   ======  =====  ========================================
 
@@ -123,8 +124,9 @@ instruction class
 Arithmetic instructions
 -----------------------
 
-Instruction class ``BPF_ALU`` uses 32-bit wide operands (zeroing the upper 32 bits of the destination
-register) while ``BPF_ALU64`` uses 64-bit wide operands for otherwise identical operations.
+Instruction class ``BPF_ALU`` uses 32-bit wide operands (zeroing the upper 32 bits
+of the destination register) while ``BPF_ALU64`` uses 64-bit wide operands for
+otherwise identical operations.
 The 4-bit 'code' field encodes the operation as follows:
 
   ========  =====  =================================================
@@ -150,9 +152,9 @@ Examples:
 
 ``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
 
-  dst = (uint32_t) dst + (uint32_t) src;
+  dst = (uint32_t) (dst + src);
 
-where '(uint32_t)' indicates truncation to 32-bits.
+where '(uint32_t)' indicates truncation to 32 bits.
 
 *Linux implementation note*: In the Linux kernel, uint32_t is expressed as u32,
 uint64_t is expressed as u64, etc.  This document uses the standard C terminology
@@ -250,7 +252,7 @@ Load and store instructions
 ===========================
 
 For load and store instructions (``BPF_LD``, ``BPF_LDX``, ``BPF_ST``, and ``BPF_STX``), the
-8-bit `opcode` field is divided as:
+8-bit 'opcode' field is divided as:
 
   ============  ======  =================
   3 bits (MSB)  2 bits  3 bits (LSB)
