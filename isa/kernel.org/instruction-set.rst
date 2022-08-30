@@ -174,7 +174,7 @@ as the cross-platform specification.
 
 
 Byte swap instructions
-----------------------
+~~~~~~~~~~~~~~~~~~~~~~
 
 The byte swap instructions use an instruction class of ``BPF_ALU`` and a 4-bit
 'code' field of ``BPF_END``.
