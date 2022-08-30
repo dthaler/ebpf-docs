@@ -331,7 +331,7 @@ mode
   BPF_ABS        0x20   legacy BPF packet access (absolute)   `Legacy BPF Packet access instructions`_
   BPF_IND        0x40   legacy BPF packet access (indirect)   `Legacy BPF Packet access instructions`_
   BPF_MEM        0x60   regular load and store operations     `Regular load and store operations`_
-  BPF_ATOMIC     0xc0   atomic operations                     `Atomic operations`
+  BPF_ATOMIC     0xc0   atomic operations                     `Atomic operations`_
   =============  =====  ====================================  =============
 
 size
@@ -392,10 +392,10 @@ arithmetic operations in the 'imm' field to encode the atomic operation:
   ========  =====  ===========  =======
   imm       value  description  version
   ========  =====  ===========  =======
-  BPF_ADD   0x00   atomic add   v1
-  BPF_OR    0x40   atomic or    v3
-  BPF_AND   0x50   atomic and   v3
-  BPF_XOR   0xa0   atomic xor   v3
+  BPF_ADD   0x00   atomic add   1
+  BPF_OR    0x40   atomic or    3
+  BPF_AND   0x50   atomic and   3
+  BPF_XOR   0xa0   atomic xor   3
   ========  =====  ===========  =======
 
 where 'version' indicates the first ISA version in which the value was supported.
@@ -408,7 +408,8 @@ where 'version' indicates the first ISA version in which the value was supported
 
   *(uint64_t *)(dst + offset) += src
 
-*Linux implementation note*: ``BPF_XADD`` is a deprecated name for ``BPF_ATOMIC | BPF_ADD``.
+``BPF_XADD`` appeared in version 1, but is now considered to be a deprecated alias
+for ``BPF_ATOMIC | BPF_ADD``.
 
 In addition to the simple atomic operations above, there also is a modifier and
 two complex atomic operations:
@@ -416,9 +417,9 @@ two complex atomic operations:
   ===========  ================  ===========================  =======
   imm          value             description                  version
   ===========  ================  ===========================  =======
-  BPF_FETCH    0x01              modifier: return old value   v3
-  BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange              v3
-  BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange  v3
+  BPF_FETCH    0x01              modifier: return old value   3
+  BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange              3
+  BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange  3
   ===========  ================  ===========================  =======
 
 The ``BPF_FETCH`` modifier is optional for simple atomic operations, and
