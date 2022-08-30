@@ -512,95 +512,119 @@ opcode  description                                        reference
 0x0f    dst += src                                         `Arithmetic instructions`_
 0x14    dst = (uint32_t)(dst - imm)                        `Arithmetic instructions`_
 0x15    if dst == imm goto +offset                         `Jump instructions`_
+0x16    if (uint32_t)dst == imm goto +offset               `Jump instructions`_
 0x17    dst -= imm                                         `Arithmetic instructions`_
 0x18    dst = imm                                          `Load and store instructions`_
 0x1c    dst = (uint32_t)(dst - src)                        `Arithmetic instructions`_
 0x1d    if dst == src goto +offset                         `Jump instructions`_
+0x1e    if (uint32_t)dst == (uint32_t)src goto +offset     `Jump instructions`_
 0x1f    dst -= src                                         `Arithmetic instructions`_
 0x20    dst = ntohl(*(uint32_t *)(R6->data + imm))         `Load and store instructions`_
 0x24    dst = (uint32_t)(dst * imm)                        `Arithmetic instructions`_
 0x25    if dst > imm goto +offset                          `Jump instructions`_
+0x26    if (uint32_t)dst > imm goto +offset                `Jump instructions`_
 0x27    dst *= imm                                         `Arithmetic instructions`_
 0x28    dst = ntohs(*(uint16_t *)(R6->data + imm))         `Load and store instructions`_
 0x2c    dst = (uint32_t)(dst * src)                        `Arithmetic instructions`_
 0x2d    if dst > src goto +offset                          `Jump instructions`_
+0x2e    if (uint32_t)dst > (uint32_t)src goto +offset      `Jump instructions`_
 0x2f    dst *= src                                         `Arithmetic instructions`_
 0x30    dst = (*(uint8_t *)(R6->data + imm))               `Load and store instructions`_
 0x34    dst = (uint32_t)(dst / imm)                        `Arithmetic instructions`_
 0x35    if dst >= imm goto +offset                         `Jump instructions`_
+0x36    if (uint32_t)dst >= imm goto +offset               `Jump instructions`_
 0x37    dst /= imm                                         `Arithmetic instructions`_
 0x38    dst = ntohll(*(uint64_t *)(R6->data + imm))        `Load and store instructions`_
 0x3c    dst = (uint32_t)(dst / src)                        `Arithmetic instructions`_
 0x3d    if dst >= src goto +offset                         `Jump instructions`_
+0x3e    if (uint32_t)dst >= (uint32_t)src goto +offset     `Jump instructions`_
 0x3f    dst /= src                                         `Arithmetic instructions`_
 0x40    dst = ntohl(*(uint32_t *)(R6->data + src + imm))   `Load and store instructions`_
 0x44    dst = (uint32_t)(dst \| imm)                       `Arithmetic instructions`_
 0x45    if dst & imm goto +offset                          `Jump instructions`_
+0x46    if (uint32_t)dst & imm goto +offset                `Jump instructions`_
 0x47    dst |= imm                                         `Arithmetic instructions`_
 0x48    dst = ntohs(*(uint16_t *)(R6->data + src + imm))   `Load and store instructions`_
 0x4c    dst = (uint32_t)(dst \| src)                       `Arithmetic instructions`_
 0x4d    if dst & src goto +offset                          `Jump instructions`_
+0x4e    if (uint32_t)dst & (uint32_t)src goto +offset      `Jump instructions`_
 0x4f    dst |= src                                         `Arithmetic instructions`_
 0x50    dst = *(uint8_t *)(R6->data + src + imm))          `Load and store instructions`_
 0x54    dst = (uint32_t)(dst & imm)                        `Arithmetic instructions`_
 0x55    if dst != imm goto +offset                         `Jump instructions`_
+0x56    if (uint32_t)dst != imm goto +offset               `Jump instructions`_
 0x57    dst &= imm                                         `Arithmetic instructions`_
 0x58    dst = ntohll(*(uint64_t *)(R6->data + src + imm))  `Load and store instructions`_
 0x5c    dst = (uint32_t)(dst & src)                        `Arithmetic instructions`_
 0x5d    if dst != src goto +offset                         `Jump instructions`_
+0x5e    if (uint32_t)dst != (uint32_t)src goto +offset     `Jump instructions`_
 0x5f    dst &= src                                         `Arithmetic instructions`_
 0x61    dst = *(uint32_t *)(src + offset)                  `Load and store instructions`_
 0x62    *(uint32_t *)(dst + offset) = imm                  `Load and store instructions`_
 0x63    *(uint32_t *)(dst + offset) = src                  `Load and store instructions`_
 0x64    dst = (uint32_t)(dst << imm)                       `Arithmetic instructions`_
 0x65    if dst s> imm goto +offset                         `Jump instructions`_
+0x66    if (int32_t)dst s> (int32_t)imm goto +offset       `Jump instructions`_
 0x67    dst <<= imm                                        `Arithmetic instructions`_
 0x69    dst = *(uint16_t *)(src + offset)                  `Load and store instructions`_
 0x6a    *(uint16_t *)(dst + offset) = imm                  `Load and store instructions`_
 0x6b    *(uint16_t *)(dst + offset) = src                  `Load and store instructions`_
 0x6c    dst = (uint32_t)(dst << src)                       `Arithmetic instructions`_
 0x6d    if dst s> src goto +offset                         `Jump instructions`_
+0x6e    if (int32_t)dst s> (int32_t)src goto +offset       `Jump instructions`_
 0x6f    dst <<= src                                        `Arithmetic instructions`_
 0x71    dst = *(uint8_t *)(src + offset)                   `Load and store instructions`_
 0x72    *(uint8_t *)(dst + offset) = imm                   `Load and store instructions`_
 0x73    *(uint8_t *)(dst + offset) = src                   `Load and store instructions`_
 0x74    dst = (uint32_t)(dst >> imm)                       `Arithmetic instructions`_
 0x75    if dst s>= imm goto +offset                        `Jump instructions`_
+0x76    if (int32_t)dst s>= (int32_t)imm goto +offset      `Jump instructions`_
 0x77    dst >>= imm                                        `Arithmetic instructions`_
 0x79    dst = *(uint64_t *)(src + offset)                  `Load and store instructions`_
 0x7a    *(uint64_t *)(dst + offset) = imm                  `Load and store instructions`_
 0x7b    *(uint64_t *)(dst + offset) = src                  `Load and store instructions`_
 0x7c    dst = (uint32_t)(dst >> src)                       `Arithmetic instructions`_
 0x7d    if dst s>= src goto +offset                        `Jump instructions`_
+0x7e    if (int32_t)dst s>= (int32_t)src goto +offset      `Jump instructions`_
 0x7f    dst >>= src                                        `Arithmetic instructions`_
 0x84    dst = (uint32_t)-dst                               `Arithmetic instructions`_
 0x85    call imm                                           `Jump instructions`_
 0x87    dst = -dst                                         `Arithmetic instructions`_
 0x94    dst = (uint32_t)(dst % imm)                        `Arithmetic instructions`_
-0x95    exit                                               `Jump instructions`_
+0x95    return                                             `Jump instructions`_
 0x97    dst %= imm                                         `Arithmetic instructions`_
 0x9c    dst = (uint32_t)(dst % src)                        `Arithmetic instructions`_
 0x9f    dst %= src                                         `Arithmetic instructions`_
 0xa4    dst = (uint32_t)(dst ^ imm)                        `Arithmetic instructions`_
 0xa5    if dst < imm goto +offset                          `Jump instructions`_
+0xa6    if (uint32_t)dst < imm goto +offset                `Jump instructions`_
 0xa7    dst ^= imm                                         `Arithmetic instructions`_
 0xac    dst = (uint32_t)(dst ^ src)                        `Arithmetic instructions`_
 0xad    if dst < src goto +offset                          `Jump instructions`_
+0xae    if (uint32_t)dst < (uint32_t)src goto +offset      `Jump instructions`_
 0xaf    dst ^= src                                         `Arithmetic instructions`_
 0xb4    dst = (uint32_t) imm                               `Arithmetic instructions`_
 0xb5    if dst <= imm goto +offset                         `Jump instructions`_
+0xa6    if (uint32_t)dst <= imm goto +offset               `Jump instructions`_
 0xb7    dst = imm                                          `Arithmetic instructions`_
 0xbc    dst = (uint32_t) src                               `Arithmetic instructions`_
 0xbd    if dst <= src goto +offset                         `Jump instructions`_
+0xbe    if (uint32_t)dst <= (uint32_t)src goto +offset     `Jump instructions`_
 0xbf    dst = src                                          `Arithmetic instructions`_
+0xc3    (see reference)                                    `Atomic operations`_
 0xc4    dst = (uint32_t)(dst s>> imm)                      `Arithmetic instructions`_
 0xc5    if dst s< imm goto +offset                         `Jump instructions`_
+0xc6    if (int32_t)dst s< (int32_t)imm goto +offset       `Jump instructions`_
 0xc7    dst s>>= imm                                       `Arithmetic instructions`_
 0xcc    dst = (uint32_t)(dst s>> src)                      `Arithmetic instructions`_
 0xcd    if dst s< src goto +offset                         `Jump instructions`_
+0xce    if (int32_t)dst s< (int32_t)src goto +offset       `Jump instructions`_
 0xcf    dst s>>= src                                       `Arithmetic instructions`_
 0xd4    dst = htole.imm(dst)                               `Byte swap instructions`_
 0xd5    if dst s<= imm goto +offset                        `Jump instructions`_
+0xd6    if (int32_t)dst s<= (int32_t)imm goto +offset      `Jump instructions`_
+0xdb    (see reference)                                    `Atomic operations`_
 0xdc    dst = htobe.imm(dst)                               `Byte swap instructions`_
 0xdd    if dst s<= src goto +offset                        `Jump instructions`_
+0xde    if (int32_t)dst s<= (int32_t)src goto +offset      `Jump instructions`_
 ======  =================================================  =============
