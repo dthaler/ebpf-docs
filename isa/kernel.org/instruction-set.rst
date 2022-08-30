@@ -5,6 +5,9 @@
 eBPF Instruction Set
 ====================
 
+The eBPF instruction set consists of eleven 64 bit registers, a program counter,
+and 512 bytes of stack space.
+
 Registers and calling convention
 ================================
 
@@ -18,8 +21,23 @@ The eBPF calling convention is defined as:
  * R6 - R9: callee saved registers that function calls will preserve
  * R10: read-only frame pointer to access stack
 
-R0 - R5 are scratch registers and eBPF programs need to spill/fill them if
-necessary across calls.
+Registers R0 - R5 are scratch registers, meaning the BPF program needs to either
+spill them to the BPF stack or move them to callee saved registers if these
+arguments are to be reused across multiple function calls. Spilling means
+that the value in the register is moved to the BPF stack. The reverse operation
+of moving the variable from the BPF stack to the register is called filling.
+The reason for spilling/filling is due to the limited number of registers.
+
+*Linux implementation note*: In the Linux kernel, the exit value for eBPF
+programs is passed as a 32 bit value.
+
+Upon entering execution of an eBPF program, register R1 initially contains
+the context for the program.  The context is the input argument for the program
+(similar to argc/argv pair for a typical C program).  Since only one register
+is used for the context, the context is typically a structure containing all
+the inputs needed.  The context is defined by the program type; for example,
+a networking program might have a context that includes network packet data
+and/or metadata.
 
 Instruction encoding
 ====================
@@ -29,8 +47,8 @@ An eBPF program is a sequence of 64-bit instructions.
 eBPF has two instruction encodings:
 
  * the basic instruction encoding, which uses 64 bits to encode an instruction
- * the wide instruction encoding, which appends a second 64-bit immediate value
-   (imm64) after the basic instruction for a total of 128 bits.
+ * the wide instruction encoding, which appends a second 64-bit immediate (i.e.,
+   constant) value after the basic instruction for a total of 128 bits.
 
 The basic instruction encoding is as follows:
 
@@ -44,13 +62,13 @@ imm
   integer immediate value
 
 offset
-  integer offset
+  signed integer offset used with pointer arithmetic
 
 src
-  source register number
+  source register number (0-10)
 
 dst
-  destination register number
+  destination register number (0-10)
 
 opcode
   operation to perform
@@ -222,7 +240,7 @@ Jump instructions
 
 Instruction class ``BPF_JMP32`` uses 32-bit wide operands while ``BPF_JMP`` uses 64-bit wide operands for
 otherwise identical operations.
-The 4-bit 'code' field encodes the operation as below:
+The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
   ========  =====  ============================  ============
   code      value  description                   notes
@@ -235,7 +253,7 @@ The 4-bit 'code' field encodes the operation as below:
   BPF_JNE   0x50   PC += offset if dst != src
   BPF_JSGT  0x60   PC += offset if dst > src     signed
   BPF_JSGE  0x70   PC += offset if dst >= src    signed
-  BPF_CALL  0x80   function call
+  BPF_CALL  0x80   call function imm             see `Helper functions`_
   BPF_EXIT  0x90   function / program return     BPF_JMP only
   BPF_JLT   0xa0   PC += offset if dst < src     unsigned
   BPF_JLE   0xb0   PC += offset if dst <= src    unsigned
@@ -247,6 +265,17 @@ The eBPF verifier is responsible for verifying that the
 eBPF program stores the return value into register R0 before doing a
 ``BPF_EXIT``.
 
+Helper functions
+~~~~~~~~~~~~~~~~
+Helper functions are a concept whereby BPF programs can call into
+set of function calls exposed by the eBPF runtime.  Each helper
+function is identified by an integer used in a ``BPF_CALL`` instruction.
+The available helper functions may differ for each eBPF program type.
+
+Each helper function is implemented with a commonly shared function
+signature defined as:
+
+  uint64_t function(uint64_t r1, uint64_t r2, uint64_t r3, uint64_t r4, uint64_t r5)
 
 Load and store instructions
 ===========================
