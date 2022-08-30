@@ -8,6 +8,15 @@ eBPF Instruction Set
 The eBPF instruction set consists of eleven 64 bit registers, a program counter,
 and 512 bytes of stack space.
 
+Versions
+========
+
+The current Instruction Set Architecture (ISA) version, sometimes referred to in other documents
+as a "CPU" version, is 3.  This document also covers older versions of the ISA.
+
+*Clang implementation note*: Clang can select the eBPF ISA version using
+`-mcpu=v2` for example to select version 2.
+
 Registers and calling convention
 ================================
 
@@ -98,18 +107,20 @@ The encoding of the 'opcode' field varies and can be determined from
 the three least significant bits (LSB) of the 'opcode' field which holds
 the "instruction class", as follows:
 
-  =========  =====  ===============================  =================
-  class      value  description                      reference
-  =========  =====  ===============================  =================
-  BPF_LD     0x00   non-standard load operations     `Load and store instructions`_
-  BPF_LDX    0x01   load into register operations    `Load and store instructions`_
-  BPF_ST     0x02   store from immediate operations  `Load and store instructions`_
-  BPF_STX    0x03   store from register operations   `Load and store instructions`_
-  BPF_ALU    0x04   32-bit arithmetic operations     `Arithmetic and jump instructions`_
-  BPF_JMP    0x05   64-bit jump operations           `Arithmetic and jump instructions`_
-  BPF_JMP32  0x06   32-bit jump operations           `Arithmetic and jump instructions`_
-  BPF_ALU64  0x07   64-bit arithmetic operations     `Arithmetic and jump instructions`_
-  =========  =====  ===============================  =================
+  =========  =====  ===============================  =======  =================
+  class      value  description                      version  reference
+  =========  =====  ===============================  =======  =================
+  BPF_LD     0x00   non-standard load operations     1        `Load and store instructions`_
+  BPF_LDX    0x01   load into register operations    1        `Load and store instructions`_
+  BPF_ST     0x02   store from immediate operations  1        `Load and store instructions`_
+  BPF_STX    0x03   store from register operations   1        `Load and store instructions`_
+  BPF_ALU    0x04   32-bit arithmetic operations     3        `Arithmetic and jump instructions`_
+  BPF_JMP    0x05   64-bit jump operations           1        `Arithmetic and jump instructions`_
+  BPF_JMP32  0x06   32-bit jump operations           3        `Arithmetic and jump instructions`_
+  BPF_ALU64  0x07   64-bit arithmetic operations     1        `Arithmetic and jump instructions`_
+  =========  =====  ===============================  =======  =================
+
+where 'version' indicates the first ISA version in which support for the value was mandatory.
 
 Arithmetic and jump instructions
 ================================
@@ -145,6 +156,14 @@ Arithmetic instructions
 Instruction class ``BPF_ALU`` uses 32-bit wide operands (zeroing the upper 32 bits
 of the destination register) while ``BPF_ALU64`` uses 64-bit wide operands for
 otherwise identical operations.
+
+Support for ``BPF_ALU`` is required in ISA version 3, and optional in earlier
+versions.
+
+*Clang implementation note*:
+For ISA versions prior to 3, Clang v7.0 and later can enable ``BPF_ALU`` support with
+``-Xclang -target-feature -Xclang +alu32``.
+
 The 4-bit 'code' field encodes the operation as follows:
 
   ========  =====  =================================================
@@ -240,26 +259,32 @@ Jump instructions
 
 Instruction class ``BPF_JMP32`` uses 32-bit wide operands while ``BPF_JMP`` uses 64-bit wide operands for
 otherwise identical operations.
+
+Support for ``BPF_JMP32`` is required in ISA version 3, and optional in earlier
+versions.
+
 The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
-  ========  =====  ============================  ============
-  code      value  description                   notes
-  ========  =====  ============================  ============
-  BPF_JA    0x00   PC += offset                  BPF_JMP only
-  BPF_JEQ   0x10   PC += offset if dst == src
-  BPF_JGT   0x20   PC += offset if dst > src     unsigned
-  BPF_JGE   0x30   PC += offset if dst >= src    unsigned
-  BPF_JSET  0x40   PC += offset if dst & src
-  BPF_JNE   0x50   PC += offset if dst != src
-  BPF_JSGT  0x60   PC += offset if dst > src     signed
-  BPF_JSGE  0x70   PC += offset if dst >= src    signed
-  BPF_CALL  0x80   call function imm             see `Helper functions`_
-  BPF_EXIT  0x90   function / program return     BPF_JMP only
-  BPF_JLT   0xa0   PC += offset if dst < src     unsigned
-  BPF_JLE   0xb0   PC += offset if dst <= src    unsigned
-  BPF_JSLT  0xc0   PC += offset if dst < src     signed
-  BPF_JSLE  0xd0   PC += offset if dst <= src    signed
-  ========  =====  ============================  ============
+  ========  =====  ============================  =======  ============
+  code      value  description                   version  notes
+  ========  =====  ============================  =======  ============
+  BPF_JA    0x00   PC += offset                  1        BPF_JMP only
+  BPF_JEQ   0x10   PC += offset if dst == src    1
+  BPF_JGT   0x20   PC += offset if dst > src     1        unsigned
+  BPF_JGE   0x30   PC += offset if dst >= src    1        unsigned
+  BPF_JSET  0x40   PC += offset if dst & src     1
+  BPF_JNE   0x50   PC += offset if dst != src    1
+  BPF_JSGT  0x60   PC += offset if dst > src     1        signed
+  BPF_JSGE  0x70   PC += offset if dst >= src    1        signed
+  BPF_CALL  0x80   call function imm             1        see `Helper functions`_
+  BPF_EXIT  0x90   function / program return     1        BPF_JMP only
+  BPF_JLT   0xa0   PC += offset if dst < src     2        unsigned
+  BPF_JLE   0xb0   PC += offset if dst <= src    2        unsigned
+  BPF_JSLT  0xc0   PC += offset if dst < src     2        signed
+  BPF_JSLE  0xd0   PC += offset if dst <= src    2        signed
+  ========  =====  ============================  =======  ============
+
+where 'version' indicates the first ISA version in which the value was supported.
 
 The eBPF verifier is responsible for verifying that the
 eBPF program stores the return value into register R0 before doing a
@@ -366,7 +391,7 @@ arithmetic operations in the 'imm' field to encode the atomic operation:
   BPF_XOR   0xa0   atomic xor   v3
   ========  =====  ===========  =======
 
-**TODO**: Confirm the versions above. And add a section introducing the version concept.
+where 'version' indicates the first ISA version in which the value was supported.
 
 ``BPF_ATOMIC | BPF_W  | BPF_STX`` with 'imm' = BPF_ADD means::
 
@@ -453,9 +478,6 @@ These instructions have seven implicit operands:
 These instructions have an implicit program exit condition as well. If an
 eBPF program attempts access data beyond the packet boundary, the
 program execution must be gracefully aborted.
-
-**TODO**: Is the verifier required to allow such programs, or is it free to
-reject them?
 
 ``BPF_ABS | BPF_W | BPF_LD`` means::
 
