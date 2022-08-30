@@ -185,6 +185,13 @@ The 4-bit 'code' field encodes the operation as follows:
   BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
   ========  =====  =================================================
 
+Underflow and overflow are allowed during arithmetic operations,
+meaning the 64-bit or 32-bit value will wrap.
+
+``BPF_DIV`` has an implicit program exit condition as well. If
+eBPF program execution would result in division by zero,
+program execution must be gracefully aborted.
+
 Examples:
 
 ``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
