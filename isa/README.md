@@ -7,6 +7,7 @@ Some documentation links include:
 * https://docs.cilium.io/en/stable/bpf/
 * https://www.kernel.org/doc/Documentation/networking/filter.txt
 * https://pchaigno.github.io/bpf/2021/10/20/ebpf-instruction-sets.html
+* https://www.kernel.org/doc/html/latest/bpf/bpf_design_QA.html#instruction-level-questions
 
 Some implementation links include:
 
