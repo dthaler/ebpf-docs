@@ -155,6 +155,16 @@ Here's a simple table:
   3            Value 3           Note 3
   ===========  ================  ===========================
 
+Here's a simple table with literal escapes:
+
+  ===========  ================  ===========================
+  Row          Value             Notes       
+  ===========  ================  ===========================
+  1            Bar \|            Note 1
+  2            \*asterisks\*     Note 2
+  3            Value 3           Note 3
+  ===========  ================  ===========================
+
 Here's a simple table with multiple source lines in the same cell:
 
   ===========  ==================  ===========================
