@@ -40,13 +40,15 @@ The reason for spilling/filling is due to the limited number of registers.
 *Linux implementation note*: In the Linux kernel, the exit value for eBPF
 programs is passed as a 32 bit value.
 
-Upon entering execution of an eBPF program, register R1 initially contains
-the context for the program.  The context is the input argument for the program
-(similar to argc/argv pair for a typical C program).  Since only one register
-is used for the context, the context is typically a structure containing all
-the inputs needed.  The context is defined by the program type; for example,
-a networking program might have a context that includes network packet data
+Upon entering execution of an eBPF program, registers R1 - R5 initially can contain
+the input arguments for the program (similar to the argc/argv pair for a typical C program).
+The actual number of registers used, and their meaning, is defined by the program type;
+for example, a networking program might have an argument that includes network packet data
 and/or metadata.
+
+*Linux implementation note*: In the Linux kernel, all program types only use
+R1 which contains the "context", which is typically a structure containing all
+the inputs needed.  
 
 Instruction encoding
 ====================
