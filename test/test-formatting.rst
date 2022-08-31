@@ -118,6 +118,55 @@ Another indented code block follows. ::
 Notes
 ==============
 
+Working mechanisms
+==================
+
+   **Note**
+
+   This is a note and is displayed with the note icon.
+
+   **Warning**
+
+   This is a warning and is displayed with the warning icon.
+
+   **Linux implementation note**
+
+   This is a Linux implementation note but has no icon.
+
+   **Note**
+
+   *Linux implementation:* This is a Linux implementation note.
+
+.. code:: bash
+
+   Here is some code
+   Here is some more code
+
+.. pull-quote::
+   **Warning**
+
+   **NB:** Something to be aware of
+
+.. pull-quote::
+   **Note**
+
+   This is a note.
+
+.. pull-quote::
+   **Warning**
+
+   This is a warning.
+
+.. pull-quote::
+   **Linux implementation note**
+
+   This is a Linux implementation note.
+
+*Clang implementation note*: This is a Clang implementation note.
+
+Non-working mechanisms
+======================
+
 Notes and warnings do NOT render as such in github at all, as seen below:
 
 .. note::
@@ -137,6 +186,15 @@ Notes and warnings do NOT render as such in github at all, as seen below:
 
     Warnings are formatted in the same way as notes. In the same way,
     lines must be broken and indented under the warning tag.
+
+Trying other formats:
+
+> **Note**
+> This is a note but gets displayed all on the same line with the greater than signs.
+
+.. note::
+
+    *Linux implementation*: This is a Linux implementation note.
 
 ==============
 Tables
