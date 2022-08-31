@@ -31,7 +31,7 @@ Here's a table with multiple lines in the same cell.
   ===========  ================  ===========================
   1            Value 1           Note 1
   2            Here's a row      Note 2
-               with multiple
+               with multiple :raw-html:`<br />`
                lines in the
                source
   3            Value 3           Note 3
