@@ -146,7 +146,7 @@ code
   the operation code, whose meaning varies by instruction class
 
 source
-  the source operand, which unless otherwise specified is one of:
+  the source operand location, which unless otherwise specified is one of:
 
   ======  =====  ========================================
   source  value  description
