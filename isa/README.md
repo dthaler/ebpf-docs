@@ -9,6 +9,7 @@ Some documentation links include:
 * https://pchaigno.github.io/bpf/2021/10/20/ebpf-instruction-sets.html
 * https://www.kernel.org/doc/html/latest/bpf/bpf_design_QA.html#instruction-level-questions
 * https://lore.kernel.org/bpf/8DA9E260-AE56-4B21-90BF-CF0049CFD04D@intel.com/
+* https://github.com/iovisor/bpf-docs/pull/26/files
 
 Some implementation links include:
 
