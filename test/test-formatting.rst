@@ -109,6 +109,25 @@ Here's a table that tries to render multiple lines in the same cell:
   3            Value 3             Note 3
   ===========  ==================  ===========================
 
+Here's a table that tries to render multiple lines of code in the same cell:
+
+  ===========  ==================  ===========================
+  Row          Value               Notes       
+  ===========  ==================  ===========================
+  1            Value 1             Note 1
+  2            ``if foo``          Note 2
+               :raw-html:`<br />`
+               |``indent``
+               :raw-html:`<br />`
+               ``done``
+  3            Here's a row with   Note 3
+               :raw-html:`<br />`
+               |indented
+               :raw-html:`<br />`
+               text.
+  ===========  ==================  ===========================
+
+
 Second Syntax
 ==============
 
