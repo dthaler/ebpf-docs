@@ -239,6 +239,11 @@ Here's a simple table that tries to render multiple lines of code in the same ce
                    if foo
                        indented
                    done               
+  8            lock::              Note 8
+
+                   if foo
+                       indented
+                   done               
   ===========  ==================  ===========================
 
 Grid tables
