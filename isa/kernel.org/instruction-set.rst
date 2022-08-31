@@ -14,8 +14,10 @@ Versions
 The current Instruction Set Architecture (ISA) version, sometimes referred to in other documents
 as a "CPU" version, is 3.  This document also covers older versions of the ISA.
 
-*Clang implementation note*: Clang can select the eBPF ISA version using
-``-mcpu=v2`` for example to select version 2.
+   **Note**
+
+   *Clang implementation*: Clang can select the eBPF ISA version using
+   ``-mcpu=v2`` for example to select version 2.
 
 Registers and calling convention
 ================================
@@ -37,8 +39,10 @@ that the value in the register is moved to the BPF stack. The reverse operation
 of moving the variable from the BPF stack to the register is called filling.
 The reason for spilling/filling is due to the limited number of registers.
 
-*Linux implementation note*: In the Linux kernel, the exit value for eBPF
-programs is passed as a 32 bit value.
+   **Note**
+
+   *Linux implementation*: In the Linux kernel, the exit value for eBPF
+   programs is passed as a 32 bit value.
 
 Upon entering execution of an eBPF program, registers R1 - R5 initially can contain
 the input arguments for the program (similar to the argc/argv pair for a typical C program).
@@ -46,9 +50,11 @@ The actual number of registers used, and their meaning, is defined by the progra
 for example, a networking program might have an argument that includes network packet data
 and/or metadata.
 
-*Linux implementation note*: In the Linux kernel, all program types only use
-R1 which contains the "context", which is typically a structure containing all
-the inputs needed.  
+   **Note**
+
+   *Linux implementation*: In the Linux kernel, all program types only use
+   R1 which contains the "context", which is typically a structure containing all
+   the inputs needed.  
 
 Instruction encoding
 ====================
@@ -162,9 +168,11 @@ otherwise identical operations.
 Support for ``BPF_ALU`` is required in ISA version 3, and optional in earlier
 versions.
 
-*Clang implementation note*:
-For ISA versions prior to 3, Clang v7.0 and later can enable ``BPF_ALU`` support with
-``-Xclang -target-feature -Xclang +alu32``.
+   **Note**
+
+   *Clang implementation*:
+   For ISA versions prior to 3, Clang v7.0 and later can enable ``BPF_ALU`` support with
+   ``-Xclang -target-feature -Xclang +alu32``.
 
 The 4-bit 'code' field encodes the operation as follows:
 
@@ -202,9 +210,11 @@ Examples:
 
 where '(uint32_t)' indicates truncation to 32 bits.
 
-*Linux implementation note*: In the Linux kernel, uint32_t is expressed as u32,
-uint64_t is expressed as u64, etc.  This document uses the standard C terminology
-as the cross-platform specification.
+   **Note**
+
+   *Linux implementation*: In the Linux kernel, uint32_t is expressed as u32,
+   uint64_t is expressed as u64, etc.  This document uses the standard C terminology
+   as the cross-platform specification.
 
 ``BPF_ADD | BPF_X | BPF_ALU64`` (0x0f) means::
 
@@ -239,9 +249,11 @@ used to select what byte order the operation converts from or to:
   BPF_TO_BE  0x08   convert between host byte order and big endian
   =========  =====  =================================================
 
-*Linux implementation note*:
-``BPF_FROM_LE`` and ``BPF_FROM_BE`` exist as aliases for ``BPF_TO_LE`` and
-``BPF_TO_BE`` respectively.
+   **Note**
+
+   *Linux implementation*:
+   ``BPF_FROM_LE`` and ``BPF_FROM_BE`` exist as aliases for ``BPF_TO_LE`` and
+   ``BPF_TO_BE`` respectively.
 
 The 'imm' field encodes the width of the swap operations.  The following widths
 are supported: 16, 32 and 64. The following table summarizes the resulting
@@ -443,12 +455,14 @@ The ``BPF_CMPXCHG`` operation atomically compares the value addressed by
 value that was at ``dst + offset`` before the operation is zero-extended
 and loaded back to ``R0``.
 
-*Clang implementation note*:
-Clang can generate atomic instructions by default when ``-mcpu=v3`` is
-enabled. If a lower version for ``-mcpu`` is set, the only atomic instruction
-Clang can generate is ``BPF_ADD`` *without* ``BPF_FETCH``. If you need to enable
-the atomics features, while keeping a lower ``-mcpu`` version, you can use
-``-Xclang -target-feature -Xclang +alu32``.
+   **Note**
+
+   *Clang implementation*:
+   Clang can generate atomic instructions by default when ``-mcpu=v3`` is
+   enabled. If a lower version for ``-mcpu`` is set, the only atomic instruction
+   Clang can generate is ``BPF_ADD`` *without* ``BPF_FETCH``. If you need to enable
+   the atomics features, while keeping a lower ``-mcpu`` version, you can use
+   ``-Xclang -target-feature -Xclang +alu32``.
 
 64-bit immediate instructions
 -----------------------------
@@ -488,7 +502,9 @@ These instructions have seven implicit operands:
  * Registers R1-R5 are scratch registers that are clobbered by the
    instruction.
 
-*Linux implementation note*: In Linux, R6 references a struct sk_buff.
+   **Note**
+
+   *Linux implementation*: In Linux, R6 references a struct sk_buff.
 
 These instructions have an implicit program exit condition as well. If an
 eBPF program attempts access data beyond the packet boundary, the
