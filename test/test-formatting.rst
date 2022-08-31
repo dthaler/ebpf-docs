@@ -74,6 +74,20 @@ how
 Indentation
 ==============
 
+Paragraph:
+
+::
+
+    Literal block
+
+Paragraph: ::
+
+    Literal block
+
+Paragraph::
+
+    Literal block
+
 This is a top-level paragraph.
 
     This paragraph belongs to a first-level block quote.
@@ -99,20 +113,6 @@ Another indented code block follows. ::
         print a
     print "it's..."
     # a literal block continues until the indentation ends
-
-Paragraph:
-
-::
-
-    Literal block
-
-Paragraph: ::
-
-    Literal block
-
-Paragraph::
-
-    Literal block
 
 ==============
 Notes
@@ -182,7 +182,7 @@ Here's a simple table that tries to render multiple lines in the same cell:
   3            Value 3             Note 3
   ===========  ==================  ===========================
 
-Here's a simple table that tries to render multiple lines of code in the same cell:
+Here's a simple table that tries to render multiple lines of pseudocode in the same cell:
 
   ===========  ==================  ===========================
   Row          Value               Notes       
@@ -200,6 +200,25 @@ Here's a simple table that tries to render multiple lines of code in the same ce
                text.
   ===========  ==================  ===========================
 
+Here's a simple table that tries to render multiple lines of code in the same cell:
+
+  ===========  ==================  ===========================
+  Row          Value               Notes       
+  ===========  ==================  ===========================
+  1            Value 1             Note 1
+  2            ``if foo``          Note 2
+               ::
+
+                   ``indented``
+
+               :raw-html:`<br />`
+               ``done``
+  3            Here's a row with   Note 3
+               :raw-html:`<br />`
+               | indented
+               :raw-html:`<br />`
+               text.
+  ===========  ==================  ===========================
 
 Grid tables
 ==============
