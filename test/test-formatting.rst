@@ -1,11 +1,23 @@
 .. contents::
 .. sectnum::
+.. role:: raw-html(raw)
+    :format: html
 
 ==============
 Test Heading 1
 ==============
 
-Paragraph.
+Forcing a line break in text can work as follows:
+
+First line. :raw-html:`<br />`
+Second line. :raw-html:`<br />`
+Third line.
+
+But line block syntax does not seem to work:
+
+| First line.
+| Second line.
+| Third line.
 
 .. note::
 
@@ -31,7 +43,7 @@ Here's a table with multiple lines in the same cell.
   ===========  ================  ===========================
   1            Value 1           Note 1
   2            Here's a row      Note 2
-               with multiple :raw-html:`<br />`
+               with multiple
                lines in the
                source
   3            Value 3           Note 3
