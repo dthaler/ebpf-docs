@@ -7,6 +7,27 @@
 Test Heading 1
 ==============
 
+Paragraph.
+
+Test Heading 2
+==============
+
+Paragraph.
+
+Test Heading 3
+--------------
+
+Paragraph.
+
+Test Heading 4
+--------------
+
+Paragraph.
+
+==============
+Line breaks
+==============
+
 Forcing a line break in text can work as follows:
 
 First line. :raw-html:`<br />`
@@ -23,7 +44,11 @@ But line block syntax does not seem to work:
 
        This is a note.
 
-Test Heading 2
+==============
+Tables
+==============
+
+First syntax
 ==============
 
 Here's a plain table in one syntax:
@@ -63,8 +88,8 @@ Here's a table that tries to render multiple lines in the same cell:
   3            Value 3             Note 3
   ===========  ==================  ===========================
 
-Test Heading 3
---------------
+Second Syntax
+==============
 
 Here's a plain table in a second syntax:
 
@@ -106,10 +131,3 @@ Here's a table that tries to render multiple lines in the same cell:
 +------------+--------------------+---------------------------+
 | 3          | Value 3            | Note 3                    |
 +------------+--------------------+---------------------------+
-
-
-Test Heading 4.
-~~~~~~~~~~~~~~~
-
-Paragraph.
-
