@@ -211,11 +211,24 @@ Here's a simple table that tries to render multiple lines of code in the same ce
                    if foo
                        indented
                    done               
-  3            Here's a row with   Note 3
+  3            if foo              Note 3
                :raw-html:`<br />`
                | indented
                :raw-html:`<br />`
-               text.
+               done
+  4            if foo              Note 4
+                  indented
+               done
+  5            ``if foo``          Note 5
+                  ``indented``
+               ``done``
+  6            ``if foo``          Note 6
+               ``   indented``
+               ``done``
+  7            ::                  Note 7
+                   if foo
+                       indented
+                   done               
   ===========  ==================  ===========================
 
 Grid tables
