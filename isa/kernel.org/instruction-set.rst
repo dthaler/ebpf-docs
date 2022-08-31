@@ -629,10 +629,12 @@ opcode  imm   description                                         reference
 0xc3    0xa1  *(uint32_t *)(dst + offset) ^= src                  `Atomic operations`_
               lock src = *(uint32_t *)(dst + offset)
 0xc3    0xe1  swap(src, *(uint32_t *)(dst + offset))              `Atomic operations`_
-0xc3    0xf1  lock temp = *(uint32_t *)(dst + offset)             `Atomic operations`_
-              if *(uint32_t)(dst + offset) == R0
-                 *(uint32_t)(dst + offset) = src
-              R0 = temp
+0xc3    0xf1  ::                                                  `Atomic operations`_
+
+                  lock temp = *(uint32_t *)(dst + offset)
+                  if *(uint32_t)(dst + offset) == R0
+                     *(uint32_t)(dst + offset) = src
+                  R0 = temp
 0xc4    any   dst = (uint32_t)(dst s>> imm)                       `Arithmetic instructions`_
 0xc5    any   if dst s< imm goto +offset                          `Jump instructions`_
 0xc6    any   if (int32_t)dst s< (int32_t)imm goto +offset        `Jump instructions`_
@@ -659,10 +661,12 @@ opcode  imm   description                                         reference
 0xdb    0xa1  *(uint64_t *)(dst + offset) ^= src                  `Atomic operations`_
               lock src = *(uint64_t *)(dst + offset)
 0xdb    0xe1  swap(src, *(uint64_t *)(dst + offset))              `Atomic operations`_
-0xdb    0xf1  lock temp = *(uint64_t *)(dst + offset)             `Atomic operations`_
-              if *(uint64_t)(dst + offset) == R0
-                 *(uint64_t)(dst + offset) = src
-              R0 = temp
+0xdb    0xf1  ::                                                  `Atomic operations`_
+
+                  lock temp = *(uint64_t *)(dst + offset)
+                  if *(uint64_t)(dst + offset) == R0
+                     *(uint64_t)(dst + offset) = src
+                  R0 = temp
 0xdc    0x10  dst = htobe16(dst)                                  `Byte swap instructions`_
 0xdc    0x20  dst = htobe32(dst)                                  `Byte swap instructions`_
 0xdc    0x40  dst = htobe64(dst)                                  `Byte swap instructions`_
