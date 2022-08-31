@@ -34,15 +34,36 @@ First line. :raw-html:`<br />`
 Second line. :raw-html:`<br />`
 Third line.
 
-But line block syntax does not seem to work:
+The line block syntax only partly works, in that it renders correctly when viewing the actual
+file but renders incorrectly in diffs:
 
 | First line.
 | Second line.
 | Third line.
 
-.. note::
+==============
+Notes
+==============
 
-       This is a note.
+Notes and warnings do not render as such in github at all, as seen below:
+
+.. note::
+   This is note text. Use a note for information you want the user to
+   pay particular attention to.
+
+   If note text runs over a line, make sure the lines wrap and are indented to
+   the same level as the note tag. If formatting is incorrect, part of the note
+   might not render in the HTML output.
+
+   Notes can have more than one paragraph. Successive paragraphs must
+   indent to the same level as the rest of the note.
+
+.. warning::
+    This is warning text. Use a warning for information the user must
+    understand to avoid negative consequences.
+
+    Warnings are formatted in the same way as notes. In the same way,
+    lines must be broken and indented under the warning tag.
 
 ==============
 Tables
