@@ -1,7 +1,14 @@
+=====================
+Verifier expectations
+=====================
 
-=============
-eBPF verifier
-=============
+The eBPF verifier is responsible for verifying that the
+eBPF program stores the return value into register R0 before doing a
+``BPF_EXIT``.
+
+===================
+Linux eBPF verifier
+===================
 
 The safety of the eBPF program is determined in two steps.
 
