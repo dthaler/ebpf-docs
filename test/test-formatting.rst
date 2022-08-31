@@ -42,6 +42,34 @@ file but renders incorrectly in diffs:
 | Third line.
 
 ==============
+Glossary
+==============
+
+Field list
+==============
+
+:what: Field lists map field names to field bodies, like
+       database records.  They are often part of an extension
+       syntax.
+
+:how: The field marker is a colon, the field name, and a
+      colon.
+
+      The field body may contain one or more body elements,
+      indented relative to the field marker.
+
+Definition list
+===============
+
+what
+    Definition lists associate a term with a definition.
+
+how
+    The term is a one-line phrase, and the definition is one
+    or more paragraphs or body elements, indented relative to
+    the term.
+
+==============
 Notes
 ==============
 
@@ -69,10 +97,10 @@ Notes and warnings do not render as such in github at all, as seen below:
 Tables
 ==============
 
-First syntax
+Simple tables
 ==============
 
-Here's a plain table in one syntax:
+Here's a simple table:
 
   ===========  ================  ===========================
   Row          Value             Notes       
@@ -82,7 +110,7 @@ Here's a plain table in one syntax:
   3            Value 3           Note 3
   ===========  ================  ===========================
 
-Here's a table with multiple source lines in the same cell:
+Here's a simple table with multiple source lines in the same cell:
 
   ===========  ==================  ===========================
   Row          Value               Notes       
@@ -95,7 +123,7 @@ Here's a table with multiple source lines in the same cell:
   3            Value 3             Note 3
   ===========  ==================  ===========================
 
-Here's a table that tries to render multiple lines in the same cell:
+Here's a simple table that tries to render multiple lines in the same cell:
 
   ===========  ==================  ===========================
   Row          Value               Notes       
@@ -109,7 +137,7 @@ Here's a table that tries to render multiple lines in the same cell:
   3            Value 3             Note 3
   ===========  ==================  ===========================
 
-Here's a table that tries to render multiple lines of code in the same cell:
+Here's a simple table that tries to render multiple lines of code in the same cell:
 
   ===========  ==================  ===========================
   Row          Value               Notes       
@@ -122,16 +150,16 @@ Here's a table that tries to render multiple lines of code in the same cell:
                ``done``
   3            Here's a row with   Note 3
                :raw-html:`<br />`
-               |indented
+               | indented
                :raw-html:`<br />`
                text.
   ===========  ==================  ===========================
 
 
-Second Syntax
+Grid tables
 ==============
 
-Here's a plain table in a second syntax:
+Here's a grid table:
 
 +------------+-----------------+---------------------------+
 | Row        | Value           | Notes                     |
@@ -143,7 +171,7 @@ Here's a plain table in a second syntax:
 | 3          | Value 3         | Note 3                    |
 +------------+-----------------+---------------------------+
 
-Here's a table with multiple source lines in the same cell:
+Here's a grid table with multiple source lines in the same cell:
 
 +------------+-----------------+---------------------------+
 | Row        | Value           | Notes                     |
@@ -157,7 +185,7 @@ Here's a table with multiple source lines in the same cell:
 | 3          | Value 3         | Note 3                    |
 +------------+-----------------+---------------------------+
 
-Here's a table that tries to render multiple lines in the same cell:
+Here's a grid table that tries to render multiple lines in the same cell:
 
 +------------+--------------------+---------------------------+
 | Row        | Value              | Notes                     |
