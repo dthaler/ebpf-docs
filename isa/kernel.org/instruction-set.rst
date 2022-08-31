@@ -262,12 +262,12 @@ possibilities:
   =============================  =========  ===  ========  ==================
   opcode construction            opcode     imm  mnemonic  pseudocode
   =============================  =========  ===  ========  ==================
-  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       16   le16 dst  dst = htole16(dst)
-  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       32   le32 dst  dst = htole32(dst)
-  BPF_ALU | BPF_TO_LE | BPF_END  0xd4       64   le64 dst  dst = htole64(dst)
-  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       16   be16 dst  dst = htobe16(dst)
-  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       32   be32 dst  dst = htobe32(dst)
-  BPF_ALU | BPF_TO_BE | BPF_END  0xdc       64   be64 dst  dst = htobe64(dst)
+  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       16   le16 dst  dst = htole16(dst)
+  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       32   le32 dst  dst = htole32(dst)
+  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       64   le64 dst  dst = htole64(dst)
+  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       16   be16 dst  dst = htobe16(dst)
+  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       32   be32 dst  dst = htobe32(dst)
+  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       64   be64 dst  dst = htobe64(dst)
   =============================  =========  ===  ========  ==================
 
 where
@@ -370,19 +370,22 @@ Regular load and store operations
 The ``BPF_MEM`` mode modifier is used to encode regular load and store
 instructions that transfer data between a register and memory.
 
-``BPF_MEM | <size> | BPF_STX`` means::
-
-  *(size *) (dst + offset) = src
-
-``BPF_MEM | <size> | BPF_ST`` means::
-
-  *(size *) (dst + offset) = imm
-
-``BPF_MEM | <size> | BPF_LDX`` means::
-
-  dst = *(size *) (src + offset)
-
-Where size is one of: ``BPF_B``, ``BPF_H``, ``BPF_W``, or ``BPF_DW``.
+  =============================  =========  ==================================
+  opcode construction            opcode     pseudocode
+  =============================  =========  ==================================
+  BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)  
+  BPF_MEM | BPF_H | BPF_LDX      0x69       dst = *(uint16_t *) (src + offset)
+  BPF_MEM | BPF_W | BPF_LDX      0x61       dst = *(uint32_t *) (src + offset)
+  BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = *(uint64_t *) (src + offset)
+  BPF_MEM | BPF_B | BPF_ST       0x72       *(uint8_t *) (dst + offset) = imm
+  BPF_MEM | BPF_H | BPF_ST       0x6a       *(uint16_t *) (dst + offset) = imm
+  BPF_MEM | BPF_W | BPF_ST       0x62       *(uint32_t *) (dst + offset) = imm
+  BPF_MEM | BPF_DW | BPF_ST      0x7a       *(uint64_t *) (dst + offset) = imm
+  BPF_MEM | BPF_B | BPF_STX      0x73       *(uint8_t *) (dst + offset) = src
+  BPF_MEM | BPF_H | BPF_STX      0x6b       *(uint16_t *) (dst + offset) = src
+  BPF_MEM | BPF_W | BPF_STX      0x63       *(uint32_t *) (dst + offset) = src
+  BPF_MEM | BPF_DW | BPF_STX     0x7b       *(uint64_t *) (dst + offset) = src
+  =============================  =========  ==================================
 
 Atomic operations
 -----------------
@@ -415,11 +418,11 @@ arithmetic operations in the 'imm' field to encode the atomic operation:
 
 where 'version' indicates the first ISA version in which the value was supported.
 
-``BPF_ATOMIC | BPF_W  | BPF_STX`` with 'imm' = BPF_ADD means::
+``BPF_ATOMIC | BPF_W  | BPF_STX`` (0xc3) with 'imm' = BPF_ADD means::
 
   *(uint32_t *)(dst + offset) += src
 
-``BPF_ATOMIC | BPF_DW | BPF_STX`` with 'imm' = BPF ADD means::
+``BPF_ATOMIC | BPF_DW | BPF_STX`` (0xdb) with 'imm' = BPF ADD means::
 
   *(uint64_t *)(dst + offset) += src
 
@@ -468,7 +471,7 @@ encoding for an extra imm64 value.
 
 There is currently only one such instruction.
 
-``BPF_LD | BPF_DW | BPF_IMM`` means::
+``BPF_IMM | BPF_DW | BPF_LD`` (0x18) means::
 
   dst = imm64
 
@@ -506,13 +509,13 @@ These instructions have an implicit program exit condition as well. If an
 eBPF program attempts access data beyond the packet boundary, the
 program execution must be gracefully aborted.
 
-``BPF_ABS | BPF_W | BPF_LD`` means::
+``BPF_ABS | BPF_W | BPF_LD`` (0x20) means::
 
   R0 = ntohl(*(uint32_t *) (R6->data + imm))
 
 where ``ntohl()`` converts a 32-bit value from network byte order to host byte order.
 
-``BPF_IND | BPF_W | BPF_LD`` means::
+``BPF_IND | BPF_W | BPF_LD`` (0x40) means::
 
   R0 = ntohl(*(uint32_t *) (R6->data + src + imm))
 
