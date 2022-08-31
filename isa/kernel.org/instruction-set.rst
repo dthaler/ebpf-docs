@@ -491,7 +491,7 @@ program execution must be gracefully aborted.
 
   R0 = ntohl(*(uint32_t *) (R6->data + imm))
 
-where `ntohl()` converts a 32-bit value from network byte order to host byte order.
+where ``ntohl()`` converts a 32-bit value from network byte order to host byte order.
 
 ``BPF_IND | BPF_W | BPF_LD`` means::
 
