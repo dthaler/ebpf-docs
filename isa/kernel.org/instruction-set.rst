@@ -245,16 +245,16 @@ The 'imm' field encodes the width of the swap operations.  The following widths
 are supported: 16, 32 and 64. The following table summarizes the resulting
 possibilities:
 
-  =============================  =========  ===  ========  =================
+  =============================  =========  ===  ========  ==================
   opcode construction            opcode     imm  mnemonic  pseudocode
-  =============================  =========  ===  ========  =================
+  =============================  =========  ===  ========  ==================
   BPF_ALU | BPF_TO_LE | BPF_END  0xd4       16   le16 dst  dst = htole16(dst)
   BPF_ALU | BPF_TO_LE | BPF_END  0xd4       32   le32 dst  dst = htole32(dst)
   BPF_ALU | BPF_TO_LE | BPF_END  0xd4       64   le64 dst  dst = htole64(dst)
   BPF_ALU | BPF_TO_BE | BPF_END  0xdc       16   be16 dst  dst = htobe16(dst)
   BPF_ALU | BPF_TO_BE | BPF_END  0xdc       32   be32 dst  dst = htobe32(dst)
   BPF_ALU | BPF_TO_BE | BPF_END  0xdc       64   be64 dst  dst = htobe64(dst)
-  =============================  =========  ===  ========  =================
+  =============================  =========  ===  ========  ==================
 
 where
   * mnenomic indicates a short form that might be displayed by some tools such as disassemblers
