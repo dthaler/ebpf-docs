@@ -304,10 +304,15 @@ set of function calls exposed by the eBPF runtime.  Each helper
 function is identified by an integer used in a ``BPF_CALL`` instruction.
 The available helper functions may differ for each eBPF program type.
 
-Each helper function is implemented with a commonly shared function
+Conceptually, each helper function is implemented with a commonly shared function
 signature defined as:
 
   uint64_t function(uint64_t r1, uint64_t r2, uint64_t r3, uint64_t r4, uint64_t r5)
+
+In actuality, each helper function is defined as taking between 0 and 5 arguments,
+with the remaining registers being ignored.  The definition of a helper function
+is responsible for specifying the type (e.g., integer, pointer, etc.) of the value returned,
+the number of arguments, and the type of each argument.
 
 Load and store instructions
 ===========================
@@ -523,7 +528,7 @@ opcode  imm   description                                         reference
 0x24    any   dst = (uint32_t)(dst * imm)                         `Arithmetic instructions`_
 0x25    any   if dst > imm goto +offset                           `Jump instructions`_
 0x26    any   if (uint32_t)dst > imm goto +offset                 `Jump instructions`_
-0x27    any   dst *= imm                                          `Arithmetic instructions`_
+0x27    any   dst \*= imm                                         `Arithmetic instructions`_
 0x28    any   dst = ntohs(*(uint16_t *)(R6->data + imm))          `Load and store instructions`_
 0x2c    0x00  dst = (uint32_t)(dst * src)                         `Arithmetic instructions`_
 0x2d    0x00  if dst > src goto +offset                           `Jump instructions`_
