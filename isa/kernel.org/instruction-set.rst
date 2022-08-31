@@ -51,7 +51,7 @@ and/or metadata.
 Instruction encoding
 ====================
 
-An eBPF program is a sequence of 64-bit instructions.
+An eBPF program is a sequence of instructions.
 
 eBPF has two instruction encodings:
 
