@@ -15,7 +15,7 @@ The current Instruction Set Architecture (ISA) version, sometimes referred to in
 as a "CPU" version, is 3.  This document also covers older versions of the ISA.
 
 *Clang implementation note*: Clang can select the eBPF ISA version using
-`-mcpu=v2` for example to select version 2.
+``-mcpu=v2`` for example to select version 2.
 
 Registers and calling convention
 ================================
