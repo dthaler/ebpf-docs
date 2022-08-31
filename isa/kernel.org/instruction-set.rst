@@ -617,26 +617,31 @@ opcode  imm   description                                         reference
 0xbe    0x00  if (uint32_t)dst <= (uint32_t)src goto +offset      `Jump instructions`_
 0xbf    0x00  dst = src                                           `Arithmetic instructions`_
 0xc3    0x00  lock *(uint32_t *)(dst + offset) += src             `Atomic operations`_
-0xc3    0x01  ::                                                  `Atomic operations`_
+0xc3    0x01  lock::                                              `Atomic operations`_
 
                   *(uint32_t *)(dst + offset) += src
                   src = *(uint32_t *)(dst + offset)
-
 0xc3    0x40  *(uint32_t *)(dst + offset) \|= src                 `Atomic operations`_
-0xc3    0x41  *(uint32_t *)(dst + offset) \|= src                 `Atomic operations`_
-              lock src = *(uint32_t *)(dst + offset)
+0xc3    0x41  lock::                                              `Atomic operations`_
+
+                  *(uint32_t *)(dst + offset) \|= src
+                  src = *(uint32_t *)(dst + offset)
 0xc3    0x50  *(uint32_t *)(dst + offset) &= src                  `Atomic operations`_
-0xc3    0x51  *(uint32_t *)(dst + offset) &= src                  `Atomic operations`_
-              lock src = *(uint32_t *)(dst + offset)
+0xc3    0x51  lock::                                              `Atomic operations`_
+
+                  *(uint32_t *)(dst + offset) &= src
+                  src = *(uint32_t *)(dst + offset)
 0xc3    0xa0  *(uint32_t *)(dst + offset) ^= src                  `Atomic operations`_
-0xc3    0xa1  *(uint32_t *)(dst + offset) ^= src                  `Atomic operations`_
-              lock src = *(uint32_t *)(dst + offset)
-0xc3    0xe1  ::                                                  `Atomic operations`_
+0xc3    0xa1  lock::                                              `Atomic operations`_
+
+                  *(uint32_t *)(dst + offset) ^= src
+                  src = *(uint32_t *)(dst + offset)
+0xc3    0xe1  lock::                                              `Atomic operations`_
 
                   temp = *(uint32_t *)(dst + offset)
                   *(uint32_t *)(dst + offset) = src
                   src = temp
-0xc3    0xf1  ::                                                  `Atomic operations`_
+0xc3    0xf1  lock::                                              `Atomic operations`_
 
                   temp = *(uint32_t *)(dst + offset)
                   if *(uint32_t)(dst + offset) == R0
@@ -656,23 +661,31 @@ opcode  imm   description                                         reference
 0xd5    any   if dst s<= imm goto +offset                         `Jump instructions`_
 0xd6    any   if (int32_t)dst s<= (int32_t)imm goto +offset       `Jump instructions`_
 0xc3    0x00  lock *(uint64_t *)(dst + offset) += src             `Atomic operations`_
-0xdb    0x01  lock *(uint64_t *)(dst + offset) += src             `Atomic operations`_
-              lock src = *(uint64_t *)(dst + offset)
+0xdb    0x01  lock::                                              `Atomic operations`_
+
+                  *(uint64_t *)(dst + offset) += src
+                  src = *(uint64_t *)(dst + offset)
 0xdb    0x40  *(uint64_t *)(dst + offset) \|= src                 `Atomic operations`_
-0xdb    0x41  *(uint64_t *)(dst + offset) \|= src                 `Atomic operations`_
-              lock src = *(uint64_t *)(dst + offset)
+0xdb    0x41  lock::                                              `Atomic operations`_
+
+                  *(uint64_t *)(dst + offset) \|= src
+                  lock src = *(uint64_t *)(dst + offset)
 0xdb    0x50  *(uint64_t *)(dst + offset) &= src                  `Atomic operations`_
-0xdb    0x51  *(uint64_t *)(dst + offset) &= src                  `Atomic operations`_
-              lock src = *(uint64_t *)(dst + offset)
+0xdb    0x51  lock::                                              `Atomic operations`_
+
+                  *(uint64_t *)(dst + offset) &= src
+                  src = *(uint64_t *)(dst + offset)
 0xdb    0xa0  *(uint64_t *)(dst + offset) ^= src                  `Atomic operations`_
-0xdb    0xa1  *(uint64_t *)(dst + offset) ^= src                  `Atomic operations`_
-              lock src = *(uint64_t *)(dst + offset)
-0xdb    0xe1  ::                                                  `Atomic operations`_
+0xdb    0xa1  lock::                                              `Atomic operations`_
+
+                  *(uint64_t *)(dst + offset) ^= src
+                  src = *(uint64_t *)(dst + offset)
+0xdb    0xe1  lock::                                              `Atomic operations`_
 
                   temp = *(uint64_t *)(dst + offset)
                   *(uint64_t *)(dst + offset) = src
                   src = temp
-0xdb    0xf1  ::                                                  `Atomic operations`_
+0xdb    0xf1  lock::                                              `Atomic operations`_
 
                   temp = *(uint64_t *)(dst + offset)
                   if *(uint64_t)(dst + offset) == R0
