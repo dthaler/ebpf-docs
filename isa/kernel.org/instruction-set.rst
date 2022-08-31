@@ -307,10 +307,6 @@ The 4-bit 'code' field encodes the operation as below, where PC is the program c
 
 where 'version' indicates the first ISA version in which the value was supported.
 
-The eBPF verifier is responsible for verifying that the
-eBPF program stores the return value into register R0 before doing a
-``BPF_EXIT``.
-
 Helper functions
 ~~~~~~~~~~~~~~~~
 Helper functions are a concept whereby BPF programs can call into
