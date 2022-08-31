@@ -26,7 +26,7 @@ But line block syntax does not seem to work:
 Test Heading 2
 ==============
 
-Paragraph.
+Here's a plain table in one syntax:
 
   ===========  ================  ===========================
   Row          Value             Notes       
@@ -36,23 +36,37 @@ Paragraph.
   3            Value 3           Note 3
   ===========  ================  ===========================
 
-Here's a table with multiple lines in the same cell.
+Here's a table with multiple source lines in the same cell:
 
-  ===========  ================  ===========================
-  Row          Value             Notes       
-  ===========  ================  ===========================
-  1            Value 1           Note 1
-  2            Here's a row      Note 2
+  ===========  ==================  ===========================
+  Row          Value               Notes       
+  ===========  ==================  ===========================
+  1            Value 1             Note 1
+  2            Here's a row        Note 2
                with multiple
                lines in the
-               source
-  3            Value 3           Note 3
-  ===========  ================  ===========================
+               source.
+  3            Value 3             Note 3
+  ===========  ==================  ===========================
+
+Here's a table that tries to render multiple lines in the same cell:
+
+  ===========  ==================  ===========================
+  Row          Value               Notes       
+  ===========  ==================  ===========================
+  1            Value 1             Note 1
+  2            Here's a row        Note 2
+               with multiple
+               :raw-html:`<br />`
+               lines in the
+               output.
+  3            Value 3             Note 3
+  ===========  ==================  ===========================
 
 Test Heading 3
 --------------
 
-Paragraph.
+Here's a plain table in a second syntax:
 
 +------------+-----------------+---------------------------+
 | Row        | Value           | Notes                     |
@@ -64,7 +78,7 @@ Paragraph.
 | 3          | Value 3         | Note 3                    |
 +------------+-----------------+---------------------------+
 
-Here's a table with multiple lines in the same cell.
+Here's a table with multiple source lines in the same cell:
 
 +------------+-----------------+---------------------------+
 | Row        | Value           | Notes                     |
@@ -77,6 +91,21 @@ Here's a table with multiple lines in the same cell.
 +------------+-----------------+---------------------------+
 | 3          | Value 3         | Note 3                    |
 +------------+-----------------+---------------------------+
+
+Here's a table that tries to render multiple lines in the same cell:
+
++------------+--------------------+---------------------------+
+| Row        | Value              | Notes                     |
++============+====================+===========================+
+| 1          | Value 1            | Note 1                    |
++------------+--------------------+---------------------------+
+| 2          | This text spans    | Note 2                    |
+|            | multiple lines     |                           |
+|            | :raw-html:`<br />` |                           |
+|            | in the output.     |                           |
++------------+--------------------+---------------------------+
+| 3          | Value 3            | Note 3                    |
++------------+--------------------+---------------------------+
 
 
 Test Heading 4.
