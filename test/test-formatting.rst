@@ -28,13 +28,14 @@ Paragraph.
 Line breaks
 ==============
 
-Forcing a line break in text can work as follows:
+Forcing a line break in text works as follows:
 
 First line. :raw-html:`<br />`
 Second line. :raw-html:`<br />`
 Third line.
 
-The line block syntax only partly works, in that it renders correctly when viewing the actual
+The line block syntax should NOT be used since it only partly works,
+in that it renders correctly when viewing the actual
 file but renders incorrectly in diffs:
 
 | First line.
@@ -70,10 +71,47 @@ how
     the term.
 
 ==============
+Indentation
+==============
+
+This is a top-level paragraph.
+
+    This paragraph belongs to a first-level block quote.
+
+    Paragraph 2 of the first-level block quote.
+
+This is a typical paragraph.  An indented literal block follows.
+
+::
+
+    for a in [5,4,3,2,1]:   # this is program code, shown as-is
+        print a
+    print "it's..."
+    # a literal block continues until the indentation ends
+
+This text has returned to the indentation of the first paragraph,
+is outside of the literal block, and is therefore treated as an
+ordinary paragraph.
+
+Paragraph:
+
+::
+
+    Literal block
+
+Paragraph: ::
+
+    Literal block
+
+Paragraph::
+
+    Literal block
+
+==============
 Notes
 ==============
 
-Notes and warnings do not render as such in github at all, as seen below:
+Notes and warnings do NOT render as such in github at all, as seen below:
 
 .. note::
    This is note text. Use a note for information you want the user to
