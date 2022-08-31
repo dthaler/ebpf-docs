@@ -206,13 +206,9 @@ Here's a simple table that tries to render multiple lines of code in the same ce
   Row          Value               Notes       
   ===========  ==================  ===========================
   1            Value 1             Note 1
-  2            ``if foo``          Note 2
-               ::
-
-                   ``indented``
-
-               :raw-html:`<br />`
-               ``done``
+  2            if foo ::           Note 2
+                   indented
+               done
   3            Here's a row with   Note 3
                :raw-html:`<br />`
                | indented
