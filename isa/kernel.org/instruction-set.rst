@@ -370,22 +370,22 @@ Regular load and store operations
 The ``BPF_MEM`` mode modifier is used to encode regular load and store
 instructions that transfer data between a register and memory.
 
-  =============================  =========  ==================================
-  opcode construction            opcode     pseudocode
-  =============================  =========  ==================================
-  BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)  
-  BPF_MEM | BPF_H | BPF_LDX      0x69       dst = *(uint16_t *) (src + offset)
-  BPF_MEM | BPF_W | BPF_LDX      0x61       dst = *(uint32_t *) (src + offset)
-  BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = *(uint64_t *) (src + offset)
-  BPF_MEM | BPF_B | BPF_ST       0x72       *(uint8_t *) (dst + offset) = imm
-  BPF_MEM | BPF_H | BPF_ST       0x6a       *(uint16_t *) (dst + offset) = imm
-  BPF_MEM | BPF_W | BPF_ST       0x62       *(uint32_t *) (dst + offset) = imm
-  BPF_MEM | BPF_DW | BPF_ST      0x7a       *(uint64_t *) (dst + offset) = imm
-  BPF_MEM | BPF_B | BPF_STX      0x73       *(uint8_t *) (dst + offset) = src
-  BPF_MEM | BPF_H | BPF_STX      0x6b       *(uint16_t *) (dst + offset) = src
-  BPF_MEM | BPF_W | BPF_STX      0x63       *(uint32_t *) (dst + offset) = src
-  BPF_MEM | BPF_DW | BPF_STX     0x7b       *(uint64_t *) (dst + offset) = src
-  =============================  =========  ==================================
+=============================  =========  ==================================
+opcode construction            opcode     pseudocode
+=============================  =========  ==================================
+BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)  
+BPF_MEM | BPF_H | BPF_LDX      0x69       dst = *(uint16_t *) (src + offset)
+BPF_MEM | BPF_W | BPF_LDX      0x61       dst = *(uint32_t *) (src + offset)
+BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = *(uint64_t *) (src + offset)
+BPF_MEM | BPF_B | BPF_ST       0x72       *(uint8_t *) (dst + offset) = imm
+BPF_MEM | BPF_H | BPF_ST       0x6a       *(uint16_t *) (dst + offset) = imm
+BPF_MEM | BPF_W | BPF_ST       0x62       *(uint32_t *) (dst + offset) = imm
+BPF_MEM | BPF_DW | BPF_ST      0x7a       *(uint64_t *) (dst + offset) = imm
+BPF_MEM | BPF_B | BPF_STX      0x73       *(uint8_t *) (dst + offset) = src
+BPF_MEM | BPF_H | BPF_STX      0x6b       *(uint16_t *) (dst + offset) = src
+BPF_MEM | BPF_W | BPF_STX      0x63       *(uint32_t *) (dst + offset) = src
+BPF_MEM | BPF_DW | BPF_STX     0x7b       *(uint64_t *) (dst + offset) = src
+=============================  =========  ==================================
 
 Atomic operations
 -----------------
@@ -407,14 +407,14 @@ The 'imm' field is used to encode the actual atomic operation.
 Simple atomic operation use a subset of the values defined to encode
 arithmetic operations in the 'imm' field to encode the atomic operation:
 
-  ========  =====  ===========  =======
-  imm       value  description  version
-  ========  =====  ===========  =======
-  BPF_ADD   0x00   atomic add   1
-  BPF_OR    0x40   atomic or    3
-  BPF_AND   0x50   atomic and   3
-  BPF_XOR   0xa0   atomic xor   3
-  ========  =====  ===========  =======
+========  =====  ===========  =======
+imm       value  description  version
+========  =====  ===========  =======
+BPF_ADD   0x00   atomic add   1
+BPF_OR    0x40   atomic or    3
+BPF_AND   0x50   atomic and   3
+BPF_XOR   0xa0   atomic xor   3
+========  =====  ===========  =======
 
 where 'version' indicates the first ISA version in which the value was supported.
 
@@ -432,13 +432,13 @@ for ``BPF_ATOMIC | BPF_ADD``.
 In addition to the simple atomic operations above, there also is a modifier and
 two complex atomic operations:
 
-  ===========  ================  ===========================  =======
-  imm          value             description                  version
-  ===========  ================  ===========================  =======
-  BPF_FETCH    0x01              modifier: return old value   3
-  BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange              3
-  BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange  3
-  ===========  ================  ===========================  =======
+===========  ================  ===========================  =======
+imm          value             description                  version
+===========  ================  ===========================  =======
+BPF_FETCH    0x01              modifier: return old value   3
+BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange              3
+BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange  3
+===========  ================  ===========================  =======
 
 The ``BPF_FETCH`` modifier is optional for simple atomic operations, and
 always set for the complex atomic operations.  If the ``BPF_FETCH`` flag
