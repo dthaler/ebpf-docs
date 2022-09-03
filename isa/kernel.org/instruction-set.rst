@@ -27,10 +27,10 @@ all of which are 64-bits wide.
 
 The eBPF calling convention is defined as:
 
- * R0: return value from function calls, and exit value for eBPF programs
- * R1 - R5: arguments for function calls
- * R6 - R9: callee saved registers that function calls will preserve
- * R10: read-only frame pointer to access stack
+* R0: return value from function calls, and exit value for eBPF programs
+* R1 - R5: arguments for function calls
+* R6 - R9: callee saved registers that function calls will preserve
+* R10: read-only frame pointer to access stack
 
 Registers R0 - R5 are scratch registers, meaning the BPF program needs to either
 spill them to the BPF stack or move them to callee saved registers if these
