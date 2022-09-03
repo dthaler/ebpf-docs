@@ -63,9 +63,9 @@ An eBPF program is a sequence of instructions.
 
 eBPF has two instruction encodings:
 
- * the basic instruction encoding, which uses 64 bits to encode an instruction
- * the wide instruction encoding, which appends a second 64-bit immediate (i.e.,
-   constant) value after the basic instruction for a total of 128 bits.
+* the basic instruction encoding, which uses 64 bits to encode an instruction
+* the wide instruction encoding, which appends a second 64-bit immediate (i.e.,
+  constant) value after the basic instruction for a total of 128 bits.
 
 The basic instruction encoding is as follows:
 
@@ -271,9 +271,9 @@ possibilities:
   =============================  =========  ===  ========  ==================
 
 where
-  * mnenomic indicates a short form that might be displayed by some tools such as disassemblers
-  * 'htoleNN()' indicates converting a NN-bit value from host byte order to little-endian byte order
-  * 'htobeNN()' indicates converting a NN-bit value from host byte order to big-endian byte order
+* mnenomic indicates a short form that might be displayed by some tools such as disassemblers
+* 'htoleNN()' indicates converting a NN-bit value from host byte order to little-endian byte order
+* 'htobeNN()' indicates converting a NN-bit value from host byte order to big-endian byte order
 
 Jump instructions
 -----------------
@@ -397,8 +397,8 @@ by other eBPF programs or means outside of this specification.
 All atomic operations supported by eBPF are encoded as store operations
 that use the ``BPF_ATOMIC`` mode modifier as follows:
 
-  * ``BPF_ATOMIC | BPF_W | BPF_STX`` (0xc3) for 32-bit operations
-  * ``BPF_ATOMIC | BPF_DW | BPF_STX`` (0xdb) for 64-bit operations
+* ``BPF_ATOMIC | BPF_W | BPF_STX`` (0xc3) for 32-bit operations
+* ``BPF_ATOMIC | BPF_DW | BPF_STX`` (0xdb) for 64-bit operations
 
 Note that 8-bit (``BPF_B``) and 16-bit (``BPF_H``) wide atomic operations are not supported,
 nor is ``BPF_ATOMIC | <size> | BPF_ST``.
@@ -494,12 +494,12 @@ a register in addition to the immediate data.
 
 These instructions have seven implicit operands:
 
- * Register R6 is an implicit input that must contain a pointer to a
-   context structure with a packet data pointer.
- * Register R0 is an implicit output which contains the data fetched from
-   the packet.
- * Registers R1-R5 are scratch registers that are clobbered by the
-   instruction.
+* Register R6 is an implicit input that must contain a pointer to a
+  context structure with a packet data pointer.
+* Register R0 is an implicit output which contains the data fetched from
+  the packet.
+* Registers R1-R5 are scratch registers that are clobbered by the
+  instruction.
 
    **Note**
 
