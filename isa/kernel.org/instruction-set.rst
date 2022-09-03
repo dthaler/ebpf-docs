@@ -115,18 +115,18 @@ The encoding of the 'opcode' field varies and can be determined from
 the three least significant bits (LSB) of the 'opcode' field which holds
 the "instruction class", as follows:
 
-  =========  =====  ===============================  =======  =================
-  class      value  description                      version  reference
-  =========  =====  ===============================  =======  =================
-  BPF_LD     0x00   non-standard load operations     1        `Load and store instructions`_
-  BPF_LDX    0x01   load into register operations    1        `Load and store instructions`_
-  BPF_ST     0x02   store from immediate operations  1        `Load and store instructions`_
-  BPF_STX    0x03   store from register operations   1        `Load and store instructions`_
-  BPF_ALU    0x04   32-bit arithmetic operations     3        `Arithmetic and jump instructions`_
-  BPF_JMP    0x05   64-bit jump operations           1        `Arithmetic and jump instructions`_
-  BPF_JMP32  0x06   32-bit jump operations           3        `Arithmetic and jump instructions`_
-  BPF_ALU64  0x07   64-bit arithmetic operations     1        `Arithmetic and jump instructions`_
-  =========  =====  ===============================  =======  =================
+=========  =====  ===============================  =======  =================
+class      value  description                      version  reference
+=========  =====  ===============================  =======  =================
+BPF_LD     0x00   non-standard load operations     1        `Load and store instructions`_
+BPF_LDX    0x01   load into register operations    1        `Load and store instructions`_
+BPF_ST     0x02   store from immediate operations  1        `Load and store instructions`_
+BPF_STX    0x03   store from register operations   1        `Load and store instructions`_
+BPF_ALU    0x04   32-bit arithmetic operations     3        `Arithmetic and jump instructions`_
+BPF_JMP    0x05   64-bit jump operations           1        `Arithmetic and jump instructions`_
+BPF_JMP32  0x06   32-bit jump operations           3        `Arithmetic and jump instructions`_
+BPF_ALU64  0x07   64-bit arithmetic operations     1        `Arithmetic and jump instructions`_
+=========  =====  ===============================  =======  =================
 
 where 'version' indicates the first ISA version in which support for the value was mandatory.
 
@@ -136,11 +136,11 @@ Arithmetic and jump instructions
 For arithmetic and jump instructions (``BPF_ALU``, ``BPF_ALU64``, ``BPF_JMP`` and
 ``BPF_JMP32``), the 8-bit 'opcode' field is divided into three parts:
 
-  ==============  ======  =================
-  4 bits (MSB)    1 bit   3 bits (LSB)
-  ==============  ======  =================
-  code            source  instruction class
-  ==============  ======  =================
+==============  ======  =================
+4 bits (MSB)    1 bit   3 bits (LSB)
+==============  ======  =================
+code            source  instruction class
+==============  ======  =================
 
 code
   the operation code, whose meaning varies by instruction class
@@ -176,24 +176,24 @@ versions.
 
 The 4-bit 'code' field encodes the operation as follows:
 
-  ========  =====  =================================================
-  code      value  description
-  ========  =====  =================================================
-  BPF_ADD   0x00   dst += src
-  BPF_SUB   0x10   dst -= src
-  BPF_MUL   0x20   dst \*= src
-  BPF_DIV   0x30   dst /= src
-  BPF_OR    0x40   dst \|= src
-  BPF_AND   0x50   dst &= src
-  BPF_LSH   0x60   dst <<= src
-  BPF_RSH   0x70   dst >>= src
-  BPF_NEG   0x80   dst = ~src
-  BPF_MOD   0x90   dst %= src
-  BPF_XOR   0xa0   dst ^= src
-  BPF_MOV   0xb0   dst = src
-  BPF_ARSH  0xc0   sign extending shift right
-  BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
-  ========  =====  =================================================
+========  =====  =================================================
+code      value  description
+========  =====  =================================================
+BPF_ADD   0x00   dst += src
+BPF_SUB   0x10   dst -= src
+BPF_MUL   0x20   dst \*= src
+BPF_DIV   0x30   dst /= src
+BPF_OR    0x40   dst \|= src
+BPF_AND   0x50   dst &= src
+BPF_LSH   0x60   dst <<= src
+BPF_RSH   0x70   dst >>= src
+BPF_NEG   0x80   dst = ~src
+BPF_MOD   0x90   dst %= src
+BPF_XOR   0xa0   dst ^= src
+BPF_MOV   0xb0   dst = src
+BPF_ARSH  0xc0   sign extending shift right
+BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
+========  =====  =================================================
 
 Underflow and overflow are allowed during arithmetic operations,
 meaning the 64-bit or 32-bit value will wrap.
@@ -242,12 +242,12 @@ Byte swap instructions use non-default semantics of the 1-bit 'source' field in
 the 'opcode' field.  Instead of indicating the source operator, it is instead
 used to select what byte order the operation converts from or to:
 
-  =========  =====  =================================================
-  source     value  description
-  =========  =====  =================================================
-  BPF_TO_LE  0x00   convert between host byte order and little endian
-  BPF_TO_BE  0x08   convert between host byte order and big endian
-  =========  =====  =================================================
+=========  =====  =================================================
+source     value  description
+=========  =====  =================================================
+BPF_TO_LE  0x00   convert between host byte order and little endian
+BPF_TO_BE  0x08   convert between host byte order and big endian
+=========  =====  =================================================
 
    **Note**
 
@@ -259,16 +259,16 @@ The 'imm' field encodes the width of the swap operations.  The following widths
 are supported: 16, 32 and 64. The following table summarizes the resulting
 possibilities:
 
-  =============================  =========  ===  ========  ==================
-  opcode construction            opcode     imm  mnemonic  pseudocode
-  =============================  =========  ===  ========  ==================
-  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       16   le16 dst  dst = htole16(dst)
-  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       32   le32 dst  dst = htole32(dst)
-  BPF_END | BPF_TO_LE | BPF_ALU  0xd4       64   le64 dst  dst = htole64(dst)
-  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       16   be16 dst  dst = htobe16(dst)
-  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       32   be32 dst  dst = htobe32(dst)
-  BPF_END | BPF_TO_BE | BPF_ALU  0xdc       64   be64 dst  dst = htobe64(dst)
-  =============================  =========  ===  ========  ==================
+=============================  =========  ===  ========  ==================
+opcode construction            opcode     imm  mnemonic  pseudocode
+=============================  =========  ===  ========  ==================
+BPF_END | BPF_TO_LE | BPF_ALU  0xd4       16   le16 dst  dst = htole16(dst)
+BPF_END | BPF_TO_LE | BPF_ALU  0xd4       32   le32 dst  dst = htole32(dst)
+BPF_END | BPF_TO_LE | BPF_ALU  0xd4       64   le64 dst  dst = htole64(dst)
+BPF_END | BPF_TO_BE | BPF_ALU  0xdc       16   be16 dst  dst = htobe16(dst)
+BPF_END | BPF_TO_BE | BPF_ALU  0xdc       32   be32 dst  dst = htobe32(dst)
+BPF_END | BPF_TO_BE | BPF_ALU  0xdc       64   be64 dst  dst = htobe64(dst)
+=============================  =========  ===  ========  ==================
 
 where
 * mnenomic indicates a short form that might be displayed by some tools such as disassemblers
@@ -286,24 +286,24 @@ versions.
 
 The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
-  ========  =====  ============================  =======  ============
-  code      value  description                   version  notes
-  ========  =====  ============================  =======  ============
-  BPF_JA    0x00   PC += offset                  1        BPF_JMP only
-  BPF_JEQ   0x10   PC += offset if dst == src    1
-  BPF_JGT   0x20   PC += offset if dst > src     1        unsigned
-  BPF_JGE   0x30   PC += offset if dst >= src    1        unsigned
-  BPF_JSET  0x40   PC += offset if dst & src     1
-  BPF_JNE   0x50   PC += offset if dst != src    1
-  BPF_JSGT  0x60   PC += offset if dst > src     1        signed
-  BPF_JSGE  0x70   PC += offset if dst >= src    1        signed
-  BPF_CALL  0x80   call function imm             1        see `Helper functions`_
-  BPF_EXIT  0x90   function / program return     1        BPF_JMP only
-  BPF_JLT   0xa0   PC += offset if dst < src     2        unsigned
-  BPF_JLE   0xb0   PC += offset if dst <= src    2        unsigned
-  BPF_JSLT  0xc0   PC += offset if dst < src     2        signed
-  BPF_JSLE  0xd0   PC += offset if dst <= src    2        signed
-  ========  =====  ============================  =======  ============
+========  =====  ============================  =======  ============
+code      value  description                   version  notes
+========  =====  ============================  =======  ============
+BPF_JA    0x00   PC += offset                  1        BPF_JMP only
+BPF_JEQ   0x10   PC += offset if dst == src    1
+BPF_JGT   0x20   PC += offset if dst > src     1        unsigned
+BPF_JGE   0x30   PC += offset if dst >= src    1        unsigned
+BPF_JSET  0x40   PC += offset if dst & src     1
+BPF_JNE   0x50   PC += offset if dst != src    1
+BPF_JSGT  0x60   PC += offset if dst > src     1        signed
+BPF_JSGE  0x70   PC += offset if dst >= src    1        signed
+BPF_CALL  0x80   call function imm             1        see `Helper functions`_
+BPF_EXIT  0x90   function / program return     1        BPF_JMP only
+BPF_JLT   0xa0   PC += offset if dst < src     2        unsigned
+BPF_JLE   0xb0   PC += offset if dst <= src    2        unsigned
+BPF_JSLT  0xc0   PC += offset if dst < src     2        signed
+BPF_JSLE  0xd0   PC += offset if dst <= src    2        signed
+========  =====  ============================  =======  ============
 
 where 'version' indicates the first ISA version in which the value was supported.
 
@@ -330,11 +330,11 @@ Load and store instructions
 For load and store instructions (``BPF_LD``, ``BPF_LDX``, ``BPF_ST``, and ``BPF_STX``), the
 8-bit 'opcode' field is divided as:
 
-  ============  ======  =================
-  3 bits (MSB)  2 bits  3 bits (LSB)
-  ============  ======  =================
-  mode          size    instruction class
-  ============  ======  =================
+============  ======  =================
+3 bits (MSB)  2 bits  3 bits (LSB)
+============  ======  =================
+mode          size    instruction class
+============  ======  =================
 
 mode
   one of:
