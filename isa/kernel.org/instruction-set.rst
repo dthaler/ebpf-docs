@@ -69,11 +69,11 @@ eBPF has two instruction encodings:
 
 The basic instruction encoding is as follows:
 
- =============  =======  ===============  ====================  ============
- 32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
- =============  =======  ===============  ====================  ============
- imm            offset   src              dst                   opcode
- =============  =======  ===============  ====================  ============
+=============  =======  ===============  ====================  ============
+32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
+=============  =======  ===============  ====================  ============
+imm            offset   src              dst                   opcode
+=============  =======  ===============  ====================  ============
 
 imm         
   integer immediate value
@@ -97,11 +97,11 @@ As discussed below in `64-bit immediate instructions`_, some basic
 instructions denote that a 64-bit immediate value follows.  Thus
 the wide instruction encoding is as follows:
 
- =================  =============
- 64 bits (MSB)      64 bits (LSB)
- =================  =============
- basic instruction  imm64
- =================  =============
+=================  =============
+64 bits (MSB)      64 bits (LSB)
+=================  =============
+basic instruction  imm64
+=================  =============
 
 where MSB and LSB mean the most significant bits and least significant bits, respectively.
 
