@@ -182,25 +182,27 @@ code      value  description
 BPF_ADD   0x00   dst += src
 BPF_SUB   0x10   dst -= src
 BPF_MUL   0x20   dst \*= src
-BPF_DIV   0x30   dst /= src
+BPF_DIV   0x30   dst = (src != 0) ? (dst / src) : 0
 BPF_OR    0x40   dst \|= src
 BPF_AND   0x50   dst &= src
 BPF_LSH   0x60   dst <<= src
 BPF_RSH   0x70   dst >>= src
 BPF_NEG   0x80   dst = ~src
-BPF_MOD   0x90   dst %= src
+BPF_MOD   0x90   dst = (src != 0) ? (dst % src) : src
 BPF_XOR   0xa0   dst ^= src
 BPF_MOV   0xb0   dst = src
 BPF_ARSH  0xc0   sign extending shift right
 BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
 ========  =====  =================================================
 
-Underflow and overflow are allowed during arithmetic operations,
-meaning the 64-bit or 32-bit value will wrap.
+where 'src' is the source operand value.
 
-``BPF_DIV`` has an implicit program exit condition as well. If
+Underflow and overflow are allowed during arithmetic operations,
+meaning the 64-bit or 32-bit value will wrap.  If
 eBPF program execution would result in division by zero,
-program execution must be gracefully aborted.
+the destination register is instead set to zero.
+If execution would result in module by zero,
+the destination register is instead set to the source value.
 
 Examples:
 
@@ -480,45 +482,13 @@ There is currently only one such instruction.
 Legacy BPF Packet access instructions
 -------------------------------------
 
-eBPF has special instructions for access to packet data that have been
-carried over from classic BPF to retain the performance of legacy socket
-filters running in an eBPF interpreter.
-
-The instructions come in two forms: ``BPF_ABS | <size> | BPF_LD`` and
-``BPF_IND | <size> | BPF_LD``.
-
-These instructions are used to access packet data and can only be used when
-the program context contains a pointer to a networking packet.  ``BPF_ABS``
-accesses packet data at an absolute offset specified by the immediate data
-and ``BPF_IND`` access packet data at an offset that includes the value of
-a register in addition to the immediate data.
-
-These instructions have seven implicit operands:
-
-* Register R6 is an implicit input that must contain a pointer to a
-  context structure with a packet data pointer.
-* Register R0 is an implicit output which contains the data fetched from
-  the packet.
-* Registers R1-R5 are scratch registers that are clobbered by the
-  instruction.
+Linux introduced special instructions for access to packet data that were
+carried over from classic BPF. However, these instructions are
+deprecated and should no longer be used in any version of the ISA.
 
    **Note**
 
-   *Linux implementation*: In Linux, R6 references a struct sk_buff.
-
-These instructions have an implicit program exit condition as well. If an
-eBPF program attempts access data beyond the packet boundary, the
-program execution must be gracefully aborted.
-
-``BPF_ABS | BPF_W | BPF_LD`` (0x20) means::
-
-  R0 = ntohl(*(uint32_t *) (R6->data + imm))
-
-where ``ntohl()`` converts a 32-bit value from network byte order to host byte order.
-
-``BPF_IND | BPF_W | BPF_LD`` (0x40) means::
-
-  R0 = ntohl(*(uint32_t *) (R6->data + src + imm))
+   *Linux implementation*: Details can be found in the `Linux historical notes <https://github.com/dthaler/ebpf-docs/blob/update/isa/kernel.org/linux-historical-notes.rst#legacy-bpf-packet-access-instructions>`_.
 
 Appendix
 ========
@@ -542,42 +512,42 @@ opcode  imm   description                                          reference
 0x1d    0x00  if dst == src goto +offset                           `Jump instructions`_
 0x1e    0x00  if (uint32_t)dst == (uint32_t)src goto +offset       `Jump instructions`_
 0x1f    0x00  dst -= src                                           `Arithmetic instructions`_
-0x20    any   dst = ntohl(\*(uint32_t \*)(R6->data + imm))         `Load and store instructions`_
+0x20    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x24    any   dst = (uint32_t)(dst \* imm)                         `Arithmetic instructions`_
 0x25    any   if dst > imm goto +offset                            `Jump instructions`_
 0x26    any   if (uint32_t)dst > imm goto +offset                  `Jump instructions`_
 0x27    any   dst \*= imm                                          `Arithmetic instructions`_
-0x28    any   dst = ntohs(\*(uint16_t \*)(R6->data + imm))         `Load and store instructions`_
+0x28    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x2c    0x00  dst = (uint32_t)(dst \* src)                         `Arithmetic instructions`_
 0x2d    0x00  if dst > src goto +offset                            `Jump instructions`_
 0x2e    0x00  if (uint32_t)dst > (uint32_t)src goto +offset        `Jump instructions`_
 0x2f    0x00  dst \*= src                                          `Arithmetic instructions`_
-0x30    any   dst = (\*(uint8_t \*)(R6->data + imm))               `Load and store instructions`_
-0x34    any   dst = (uint32_t)(dst / imm)                          `Arithmetic instructions`_
+0x30    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x34    any   dst = (uint32_t)((imm != 0) ? (dst / imm) : 0)       `Arithmetic instructions`_
 0x35    any   if dst >= imm goto +offset                           `Jump instructions`_
 0x36    any   if (uint32_t)dst >= imm goto +offset                 `Jump instructions`_
-0x37    any   dst /= imm                                           `Arithmetic instructions`_
-0x38    any   dst = ntohll(\*(uint64_t \*)(R6->data + imm))        `Load and store instructions`_
-0x3c    0x00  dst = (uint32_t)(dst / src)                          `Arithmetic instructions`_
+0x37    any   dst = (imm != 0) ? (dst / imm) : 0                   `Arithmetic instructions`_
+0x38    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x3c    0x00  dst = (uint32_t)((imm != 0) ? (dst / src) : 0)       `Arithmetic instructions`_
 0x3d    0x00  if dst >= src goto +offset                           `Jump instructions`_
 0x3e    0x00  if (uint32_t)dst >= (uint32_t)src goto +offset       `Jump instructions`_
-0x3f    0x00  dst /= src                                           `Arithmetic instructions`_
-0x40    any   dst = ntohl(\*(uint32_t \*)(R6->data + src + imm))   `Load and store instructions`_
+0x3f    0x00  dst = (src !+ 0) ? (dst / src) : 0                   `Arithmetic instructions`_
+0x40    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x44    any   dst = (uint32_t)(dst \| imm)                         `Arithmetic instructions`_
 0x45    any   if dst & imm goto +offset                            `Jump instructions`_
 0x46    any   if (uint32_t)dst & imm goto +offset                  `Jump instructions`_
 0x47    any   dst \|= imm                                          `Arithmetic instructions`_
-0x48    any   dst = ntohs(\*(uint16_t \*)(R6->data + src + imm))   `Load and store instructions`_
+0x48    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x4c    0x00  dst = (uint32_t)(dst \| src)                         `Arithmetic instructions`_
 0x4d    0x00  if dst & src goto +offset                            `Jump instructions`_
 0x4e    0x00  if (uint32_t)dst & (uint32_t)src goto +offset        `Jump instructions`_
 0x4f    0x00  dst \|= src                                          `Arithmetic instructions`_
-0x50    any   dst = \*(uint8_t \*)(R6->data + src + imm))          `Load and store instructions`_
+0x50    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x54    any   dst = (uint32_t)(dst & imm)                          `Arithmetic instructions`_
 0x55    any   if dst != imm goto +offset                           `Jump instructions`_
 0x56    any   if (uint32_t)dst != imm goto +offset                 `Jump instructions`_
 0x57    any   dst &= imm                                           `Arithmetic instructions`_
-0x58    any   dst = ntohll(\*(uint64_t \*)(R6->data + src + imm))  `Load and store instructions`_
+0x58    any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
 0x5c    0x00  dst = (uint32_t)(dst & src)                          `Arithmetic instructions`_
 0x5d    0x00  if dst != src goto +offset                           `Jump instructions`_
 0x5e    0x00  if (uint32_t)dst != (uint32_t)src goto +offset       `Jump instructions`_
@@ -613,11 +583,11 @@ opcode  imm   description                                          reference
 0x84    0x00  dst = (uint32_t)-dst                                 `Arithmetic instructions`_
 0x85    any   call imm                                             `Jump instructions`_
 0x87    0x00  dst = -dst                                           `Arithmetic instructions`_
-0x94    any   dst = (uint32_t)(dst % imm)                          `Arithmetic instructions`_
+0x94    any   dst = (uint32_t)((imm != 0) ? (dst % imm) : imm)     `Arithmetic instructions`_
 0x95    0x00  return                                               `Jump instructions`_
-0x97    any   dst %= imm                                           `Arithmetic instructions`_
-0x9c    0x00  dst = (uint32_t)(dst % src)                          `Arithmetic instructions`_
-0x9f    0x00  dst %= src                                           `Arithmetic instructions`_
+0x97    any   dst = (imm != 0) ? (dst % imm) : imm                 `Arithmetic instructions`_
+0x9c    0x00  dst = (uint32_t)((src != 0) ? (dst % src) : src)     `Arithmetic instructions`_
+0x9f    0x00  dst = (src != 0) ? (dst % src) : src                 `Arithmetic instructions`_
 0xa4    any   dst = (uint32_t)(dst ^ imm)                          `Arithmetic instructions`_
 0xa5    any   if dst < imm goto +offset                            `Jump instructions`_
 0xa6    any   if (uint32_t)dst < imm goto +offset                  `Jump instructions`_
