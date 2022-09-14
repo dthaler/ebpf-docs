@@ -67,7 +67,8 @@ eBPF has two instruction encodings:
 * the wide instruction encoding, which appends a second 64-bit immediate (i.e.,
   constant) value after the basic instruction for a total of 128 bits.
 
-The basic instruction encoding is as follows:
+The basic instruction encoding is as follows, where MSB and LSB mean the most significant
+bits and least significant bits, respectively:
 
 =============  =======  ===============  ====================  ============
 32 bits (MSB)  16 bits  4 bits           4 bits                8 bits (LSB)
@@ -82,7 +83,8 @@ offset
   signed integer offset used with pointer arithmetic
 
 src
-  source register number (0-10)
+  the source register number (0-10), except where otherwise specified
+  (`64-bit immediate instructions`_ reuse this field for other purposes)
 
 dst
   destination register number (0-10)
@@ -93,17 +95,24 @@ opcode
 Note that most instructions do not use all of the fields.
 Unused fields must be set to zero.
 
-As discussed below in `64-bit immediate instructions`_, some basic
-instructions denote that a 64-bit immediate value follows.  Thus
-the wide instruction encoding is as follows:
+As discussed below in `64-bit immediate instructions`_, some
+instructions use a 64-bit immediate value that is constructed as follows.
+The 64 bits following the basic instruction contain a pseudo instruction
+using the same format but with opcode, dst, src, and offset all set to zero,
+and imm containing the high 32 bits of the immediate value.
 
-=================  =============
+=================  ==================
 64 bits (MSB)      64 bits (LSB)
-=================  =============
-basic instruction  imm64
-=================  =============
+=================  ==================
+basic instruction  pseudo instruction
+=================  ==================
 
-where MSB and LSB mean the most significant bits and least significant bits, respectively.
+Thus the 64-bit immediate value is constructed as follows:
+
+  imm64 = imm + (imm_high << 32);
+
+where 'imm_high' refers to the imm value of the pseudo instruction
+following the basic instruction.
 
 In the remainder of this document 'src' and 'dst' refer to the values of the source
 and destination registers, respectively, rather than the register number.
@@ -478,7 +487,7 @@ and loaded back to ``R0``.
 -----------------------------
 
 Instructions with the ``BPF_IMM`` 'mode' modifier use the wide instruction
-encoding for an extra imm64 value.
+encoding defined in `Instruction encoding`_.
 
 There is currently only one such instruction.
 
@@ -506,6 +515,7 @@ For reference, the following table lists opcodes in order by value.
 ======  ====  ====  ===================================================  ========================================
 opcode  imm   src   description                                          reference 
 ======  ====  ====  ===================================================  ========================================
+0x00    any   0x00  (additional immediate value)                         `64-bit immediate instructions`_
 0x04    any   0x00  dst = (uint32_t)(dst + imm)                          `Arithmetic instructions`_
 0x05    0x00  0x00  goto +offset                                         `Jump instructions`_
 0x07    any   0x00  dst += imm                                           `Arithmetic instructions`_
@@ -515,7 +525,7 @@ opcode  imm   src   description                                          referen
 0x15    any   0x00  if dst == imm goto +offset                           `Jump instructions`_
 0x16    any   0x00  if (uint32_t)dst == imm goto +offset                 `Jump instructions`_
 0x17    any   0x00  dst -= imm                                           `Arithmetic instructions`_
-0x18    0x00  0x00  dst = imm64                                          `Load and store instructions`_
+0x18    0x00  0x00  dst = imm64                                          `64-bit immediate instructions`_
 0x1c    0x00  any   dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
 0x1d    0x00  any   if dst == src goto +offset                           `Jump instructions`_
 0x1e    0x00  any   if (uint32_t)dst == (uint32_t)src goto +offset       `Jump instructions`_
