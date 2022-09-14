@@ -76,7 +76,7 @@ imm            offset   src              dst                   opcode
 =============  =======  ===============  ====================  ============
 
 imm         
-  integer immediate value
+  signed integer immediate value
 
 offset
   signed integer offset used with pointer arithmetic
@@ -648,7 +648,7 @@ opcode  imm   description                                          reference
 0xd4    0x40  dst = htole64(dst)                                   `Byte swap instructions`_
 0xd5    any   if dst s<= imm goto +offset                          `Jump instructions`_
 0xd6    any   if (int32_t)dst s<= (int32_t)imm goto +offset        `Jump instructions`_
-0xc3    0x00  lock \*(uint64_t \*)(dst + offset) += src            `Atomic operations`_
+0xdb    0x00  lock \*(uint64_t \*)(dst + offset) += src            `Atomic operations`_
 0xdb    0x01  lock::                                               `Atomic operations`_
 
                   *(uint64_t *)(dst + offset) += src
