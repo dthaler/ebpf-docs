@@ -109,9 +109,9 @@ basic instruction  pseudo instruction
 
 Thus the 64-bit immediate value is constructed as follows:
 
-  imm64 = imm + (imm_high << 32);
+  imm64 = imm + (next_imm << 32)
 
-where 'imm_high' refers to the imm value of the pseudo instruction
+where 'next_imm' refers to the imm value of the pseudo instruction
 following the basic instruction.
 
 In the remainder of this document 'src' and 'dst' refer to the values of the source
@@ -217,7 +217,7 @@ Examples:
 
 ``BPF_ADD | BPF_X | BPF_ALU`` (0x0c) means::
 
-  dst = (uint32_t) (dst + src);
+  dst = (uint32_t) (dst + src)
 
 where '(uint32_t)' indicates truncation to 32 bits.
 
@@ -487,14 +487,62 @@ and loaded back to ``R0``.
 -----------------------------
 
 Instructions with the ``BPF_IMM`` 'mode' modifier use the wide instruction
-encoding defined in `Instruction encoding`_.
+encoding defined in `Instruction encoding`_, and use the 'src' field of the
+basic instruction to hold an opcode subtype.
 
-There is currently only one such instruction.
+The following instructions are defined, and use additional concepts defined below:
 
-``BPF_IMM | BPF_DW | BPF_LD`` (0x18) means::
+=========================  ======  ====  =====================================  ===========  ==============
+opcode construction        opcode  src   pseudocode                             imm type     dst type
+=========================  ======  ====  =====================================  ===========  ==============
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x00  dst = imm64                            integer      integer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x01  dst = map_by_fd(imm)                   map fd       map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x02  dst = mva(map_by_fd(imm)) + next_imm   map fd       data pointer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x03  dst = variable_addr(imm)               variable id  data pointer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x04  dst = code_addr(imm)                   integer      code pointer  
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x05  dst = mva(map_by_idx(imm))             map index    map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x06  dst = mva(map_by_idx(imm)) + next_imm  map index    data pointer
+=========================  ======  ====  =====================================  ===========  ==============
 
-  dst = imm64
+where
 
+* map_by_fd(fd) means to convert a 32-bit POSIX file descriptor into an address of a map object
+* map_by_index(index) means to convert a 32-bit index into an address of a map object
+* mva(map) gets the address of the memory region expressed by a given map object
+* variable_addr(id) gets the address of a variable with a given id
+* code_addr(offset) gets the address of the instruction at a specified relative offset in units of 64-bit blocks
+* the 'imm type' can be used by disassemblers for display
+* the 'dst type' can be used for verification and JIT compilation purposes
+
+Map objects
+~~~~~~~~~~~
+
+Maps are shared memory regions accessible by eBPF programs, where we use the term "map object"
+to refer to an object containing the data and metadata (e.g., size) about the memory region.
+A map can have various semantics as defined in a separate document, and may or may not have a single
+contiguous memory region, but the 'mva(map)' is currently only defined for maps that do have a single
+contiguous memory region.
+
+   **Note**
+
+   *Linux implementation*: Linux only supports the 'mva(map)' operation on array maps with a single element.
+
+Each map object can have a POSIX file descriptor (fd) if supported by the platform,
+where 'map_by_fd(fd)' means to get the map with the specified file descriptor.
+Each eBPF program can also be defined to use a set of maps associated with the program
+at load time, and 'map_by_index(index)' means to get the map with the given index in the set
+associated with the eBPF program containing the instruction.
+
+Variables
+~~~~~~~~~
+
+Variables are memory regions, identified by integer ids, accessible by eBPF programs on
+some platforms.  The 'variable_addr(id)' operation means to get the address of the memory region
+identified by the given id.
+
+   **Note**
+
+   *Linux implementation*: Linux uses BTF ids to identify variables.
 
 Legacy BPF Packet access instructions
 -------------------------------------
@@ -526,6 +574,12 @@ opcode  imm   src   description                                          referen
 0x16    any   0x00  if (uint32_t)dst == imm goto +offset                 `Jump instructions`_
 0x17    any   0x00  dst -= imm                                           `Arithmetic instructions`_
 0x18    0x00  0x00  dst = imm64                                          `64-bit immediate instructions`_
+0x18    0x00  0x01  dst = map_by_fd(imm)                                 `64-bit immediate instructions`_
+0x18    0x00  0x02  dst = mva(map_by_fd(imm)) + next_imm                 `64-bit immediate instructions`_
+0x18    0x00  0x03  dst = variable_addr(imm)                             `64-bit immediate instructions`_
+0x18    0x00  0x04  dst = code_addr(imm)                                 `64-bit immediate instructions`_
+0x18    0x00  0x05  dst = mva(map_by_idx(imm))                           `64-bit immediate instructions`_
+0x18    0x00  0x06  dst = mva(map_by_idx(imm)) + next_imm                `64-bit immediate instructions`_
 0x1c    0x00  any   dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
 0x1d    0x00  any   if dst == src goto +offset                           `Jump instructions`_
 0x1e    0x00  any   if (uint32_t)dst == (uint32_t)src goto +offset       `Jump instructions`_
