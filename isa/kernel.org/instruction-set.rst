@@ -240,6 +240,14 @@ where '(uint32_t)' indicates truncation to 32 bits.
   src = src ^ imm
 
 
+Also note that the modulo operation often varies by language
+when the dividend or divisor are negative, where Python, Ruby, etc.
+differ from C, Go, Java, etc. This specification requires that
+modulo use the widely accepted mathematical definition given by Donald
+Knuth and implemented in C, Go, etc.:
+
+   a % n = a - n * floor(a / n)
+
 Byte swap instructions
 ~~~~~~~~~~~~~~~~~~~~~~
 
