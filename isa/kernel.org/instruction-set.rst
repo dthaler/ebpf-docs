@@ -54,7 +54,7 @@ and/or metadata.
 
    *Linux implementation*: In the Linux kernel, all program types only use
    R1 which contains the "context", which is typically a structure containing all
-   the inputs needed.  
+   the inputs needed.
 
 Instruction encoding
 ====================
@@ -76,7 +76,7 @@ bits and least significant bits, respectively:
 imm            offset   src              dst                   opcode
 =============  =======  ===============  ====================  ============
 
-imm         
+imm
   signed integer immediate value
 
 offset
@@ -393,7 +393,7 @@ instructions that transfer data between a register and memory.
 =============================  =========  ==================================
 opcode construction            opcode     pseudocode
 =============================  =========  ==================================
-BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)  
+BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)
 BPF_MEM | BPF_H | BPF_LDX      0x69       dst = *(uint16_t *) (src + offset)
 BPF_MEM | BPF_W | BPF_LDX      0x61       dst = *(uint32_t *) (src + offset)
 BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = *(uint64_t *) (src + offset)
@@ -492,17 +492,17 @@ basic instruction to hold an opcode subtype.
 
 The following instructions are defined, and use additional concepts defined below:
 
-=========================  ======  ====  =====================================  ===========  ==============
-opcode construction        opcode  src   pseudocode                             imm type     dst type
-=========================  ======  ====  =====================================  ===========  ==============
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x00  dst = imm64                            integer      integer
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x01  dst = map_by_fd(imm)                   map fd       map
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x02  dst = mva(map_by_fd(imm)) + next_imm   map fd       data pointer
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x03  dst = variable_addr(imm)               variable id  data pointer
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x04  dst = code_addr(imm)                   integer      code pointer  
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x05  dst = mva(map_by_idx(imm))             map index    map
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x06  dst = mva(map_by_idx(imm)) + next_imm  map index    data pointer
-=========================  ======  ====  =====================================  ===========  ==============
+=========================  ======  ===  =====================================  ===========  ==============
+opcode construction        opcode  src  pseudocode                             imm type     dst type
+=========================  ======  ===  =====================================  ===========  ==============
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x0  dst = imm64                            integer      integer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x1  dst = map_by_fd(imm)                   map fd       map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x2  dst = mva(map_by_fd(imm)) + next_imm   map fd       data pointer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x3  dst = variable_addr(imm)               variable id  data pointer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x4  dst = code_addr(imm)                   integer      code pointer
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x5  dst = mva(map_by_idx(imm))             map index    map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x6  dst = mva(map_by_idx(imm)) + next_imm  map index    data pointer
+=========================  ======  ===  =====================================  ===========  ==============
 
 where
 
@@ -560,200 +560,200 @@ Appendix
 
 For reference, the following table lists opcodes in order by value.
 
-======  ====  ====  ===================================================  ========================================
-opcode  imm   src   description                                          reference 
-======  ====  ====  ===================================================  ========================================
-0x00    any   0x00  (additional immediate value)                         `64-bit immediate instructions`_
-0x04    any   0x00  dst = (uint32_t)(dst + imm)                          `Arithmetic instructions`_
-0x05    0x00  0x00  goto +offset                                         `Jump instructions`_
-0x07    any   0x00  dst += imm                                           `Arithmetic instructions`_
-0x0c    0x00  any   dst = (uint32_t)(dst + src)                          `Arithmetic instructions`_
-0x0f    0x00  any   dst += src                                           `Arithmetic instructions`_
-0x14    any   0x00  dst = (uint32_t)(dst - imm)                          `Arithmetic instructions`_
-0x15    any   0x00  if dst == imm goto +offset                           `Jump instructions`_
-0x16    any   0x00  if (uint32_t)dst == imm goto +offset                 `Jump instructions`_
-0x17    any   0x00  dst -= imm                                           `Arithmetic instructions`_
-0x18    0x00  0x00  dst = imm64                                          `64-bit immediate instructions`_
-0x18    0x00  0x01  dst = map_by_fd(imm)                                 `64-bit immediate instructions`_
-0x18    0x00  0x02  dst = mva(map_by_fd(imm)) + next_imm                 `64-bit immediate instructions`_
-0x18    0x00  0x03  dst = variable_addr(imm)                             `64-bit immediate instructions`_
-0x18    0x00  0x04  dst = code_addr(imm)                                 `64-bit immediate instructions`_
-0x18    0x00  0x05  dst = mva(map_by_idx(imm))                           `64-bit immediate instructions`_
-0x18    0x00  0x06  dst = mva(map_by_idx(imm)) + next_imm                `64-bit immediate instructions`_
-0x1c    0x00  any   dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
-0x1d    0x00  any   if dst == src goto +offset                           `Jump instructions`_
-0x1e    0x00  any   if (uint32_t)dst == (uint32_t)src goto +offset       `Jump instructions`_
-0x1f    0x00  any   dst -= src                                           `Arithmetic instructions`_
-0x20    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x24    any   0x00  dst = (uint32_t)(dst \* imm)                         `Arithmetic instructions`_
-0x25    any   0x00  if dst > imm goto +offset                            `Jump instructions`_
-0x26    any   0x00  if (uint32_t)dst > imm goto +offset                  `Jump instructions`_
-0x27    any   0x00  dst \*= imm                                          `Arithmetic instructions`_
-0x28    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x2c    0x00  any   dst = (uint32_t)(dst \* src)                         `Arithmetic instructions`_
-0x2d    0x00  any   if dst > src goto +offset                            `Jump instructions`_
-0x2e    0x00  any   if (uint32_t)dst > (uint32_t)src goto +offset        `Jump instructions`_
-0x2f    0x00  any   dst \*= src                                          `Arithmetic instructions`_
-0x30    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x34    any   0x00  dst = (uint32_t)((imm != 0) ? (dst / imm) : 0)       `Arithmetic instructions`_
-0x35    any   0x00  if dst >= imm goto +offset                           `Jump instructions`_
-0x36    any   0x00  if (uint32_t)dst >= imm goto +offset                 `Jump instructions`_
-0x37    any   0x00  dst = (imm != 0) ? (dst / imm) : 0                   `Arithmetic instructions`_
-0x38    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x3c    0x00  any   dst = (uint32_t)((imm != 0) ? (dst / src) : 0)       `Arithmetic instructions`_
-0x3d    0x00  any   if dst >= src goto +offset                           `Jump instructions`_
-0x3e    0x00  any   if (uint32_t)dst >= (uint32_t)src goto +offset       `Jump instructions`_
-0x3f    0x00  any   dst = (src !+ 0) ? (dst / src) : 0                   `Arithmetic instructions`_
-0x40    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x44    any   0x00  dst = (uint32_t)(dst \| imm)                         `Arithmetic instructions`_
-0x45    any   0x00  if dst & imm goto +offset                            `Jump instructions`_
-0x46    any   0x00  if (uint32_t)dst & imm goto +offset                  `Jump instructions`_
-0x47    any   0x00  dst \|= imm                                          `Arithmetic instructions`_
-0x48    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x4c    0x00  any   dst = (uint32_t)(dst \| src)                         `Arithmetic instructions`_
-0x4d    0x00  any   if dst & src goto +offset                            `Jump instructions`_
-0x4e    0x00  any   if (uint32_t)dst & (uint32_t)src goto +offset        `Jump instructions`_
-0x4f    0x00  any   dst \|= src                                          `Arithmetic instructions`_
-0x50    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x54    any   0x00  dst = (uint32_t)(dst & imm)                          `Arithmetic instructions`_
-0x55    any   0x00  if dst != imm goto +offset                           `Jump instructions`_
-0x56    any   0x00  if (uint32_t)dst != imm goto +offset                 `Jump instructions`_
-0x57    any   0x00  dst &= imm                                           `Arithmetic instructions`_
-0x58    any   any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
-0x5c    0x00  any   dst = (uint32_t)(dst & src)                          `Arithmetic instructions`_
-0x5d    0x00  any   if dst != src goto +offset                           `Jump instructions`_
-0x5e    0x00  any   if (uint32_t)dst != (uint32_t)src goto +offset       `Jump instructions`_
-0x5f    0x00  any   dst &= src                                           `Arithmetic instructions`_
-0x61    0x00  any   dst = \*(uint32_t \*)(src + offset)                  `Load and store instructions`_
-0x62    any   0x00  \*(uint32_t \*)(dst + offset) = imm                  `Load and store instructions`_
-0x63    0x00  any   \*(uint32_t \*)(dst + offset) = src                  `Load and store instructions`_
-0x64    any   0x00  dst = (uint32_t)(dst << imm)                         `Arithmetic instructions`_
-0x65    any   0x00  if dst s> imm goto +offset                           `Jump instructions`_
-0x66    any   0x00  if (int32_t)dst s> (int32_t)imm goto +offset         `Jump instructions`_
-0x67    any   0x00  dst <<= imm                                          `Arithmetic instructions`_
-0x69    0x00  any   dst = \*(uint16_t \*)(src + offset)                  `Load and store instructions`_
-0x6a    any   0x00  \*(uint16_t \*)(dst + offset) = imm                  `Load and store instructions`_
-0x6b    0x00  any   \*(uint16_t \*)(dst + offset) = src                  `Load and store instructions`_
-0x6c    0x00  any   dst = (uint32_t)(dst << src)                         `Arithmetic instructions`_
-0x6d    0x00  any   if dst s> src goto +offset                           `Jump instructions`_
-0x6e    0x00  any   if (int32_t)dst s> (int32_t)src goto +offset         `Jump instructions`_
-0x6f    0x00  any   dst <<= src                                          `Arithmetic instructions`_
-0x71    0x00  any   dst = \*(uint8_t \*)(src + offset)                   `Load and store instructions`_
-0x72    any   0x00  \*(uint8_t \*)(dst + offset) = imm                   `Load and store instructions`_
-0x73    0x00  any   \*(uint8_t \*)(dst + offset) = src                   `Load and store instructions`_
-0x74    any   0x00  dst = (uint32_t)(dst >> imm)                         `Arithmetic instructions`_
-0x75    any   0x00  if dst s>= imm goto +offset                          `Jump instructions`_
-0x76    any   0x00  if (int32_t)dst s>= (int32_t)imm goto +offset        `Jump instructions`_
-0x77    any   0x00  dst >>= imm                                          `Arithmetic instructions`_
-0x79    0x00  any   dst = \*(uint64_t \*)(src + offset)                  `Load and store instructions`_
-0x7a    any   0x00  \*(uint64_t \*)(dst + offset) = imm                  `Load and store instructions`_
-0x7b    0x00  any   \*(uint64_t \*)(dst + offset) = src                  `Load and store instructions`_
-0x7c    0x00  any   dst = (uint32_t)(dst >> src)                         `Arithmetic instructions`_
-0x7d    0x00  any   if dst s>= src goto +offset                          `Jump instructions`_
-0x7e    0x00  any   if (int32_t)dst s>= (int32_t)src goto +offset        `Jump instructions`_
-0x7f    0x00  any   dst >>= src                                          `Arithmetic instructions`_
-0x84    0x00  0x00  dst = (uint32_t)-dst                                 `Arithmetic instructions`_
-0x85    any   0x00  call imm                                             `Jump instructions`_
-0x87    0x00  0x00  dst = -dst                                           `Arithmetic instructions`_
-0x94    any   0x00  dst = (uint32_t)((imm != 0) ? (dst % imm) : imm)     `Arithmetic instructions`_
-0x95    0x00  0x00  return                                               `Jump instructions`_
-0x97    any   0x00  dst = (imm != 0) ? (dst % imm) : imm                 `Arithmetic instructions`_
-0x9c    0x00  any   dst = (uint32_t)((src != 0) ? (dst % src) : src)     `Arithmetic instructions`_
-0x9f    0x00  any   dst = (src != 0) ? (dst % src) : src                 `Arithmetic instructions`_
-0xa4    any   0x00  dst = (uint32_t)(dst ^ imm)                          `Arithmetic instructions`_
-0xa5    any   0x00  if dst < imm goto +offset                            `Jump instructions`_
-0xa6    any   0x00  if (uint32_t)dst < imm goto +offset                  `Jump instructions`_
-0xa7    any   0x00  dst ^= imm                                           `Arithmetic instructions`_
-0xac    0x00  any   dst = (uint32_t)(dst ^ src)                          `Arithmetic instructions`_
-0xad    0x00  any   if dst < src goto +offset                            `Jump instructions`_
-0xae    0x00  any   if (uint32_t)dst < (uint32_t)src goto +offset        `Jump instructions`_
-0xaf    0x00  any   dst ^= src                                           `Arithmetic instructions`_
-0xb4    any   0x00  dst = (uint32_t) imm                                 `Arithmetic instructions`_
-0xb5    any   0x00  if dst <= imm goto +offset                           `Jump instructions`_
-0xa6    any   0x00  if (uint32_t)dst <= imm goto +offset                 `Jump instructions`_
-0xb7    any   0x00  dst = imm                                            `Arithmetic instructions`_
-0xbc    0x00  any   dst = (uint32_t) src                                 `Arithmetic instructions`_
-0xbd    0x00  any   if dst <= src goto +offset                           `Jump instructions`_
-0xbe    0x00  any   if (uint32_t)dst <= (uint32_t)src goto +offset       `Jump instructions`_
-0xbf    0x00  any   dst = src                                            `Arithmetic instructions`_
-0xc3    0x00  any   lock \*(uint32_t \*)(dst + offset) += src            `Atomic operations`_
-0xc3    0x01  any   lock::                                               `Atomic operations`_
+======  ===  ====  ===================================================  ========================================
+opcode  src  imm   description                                          reference
+======  ===  ====  ===================================================  ========================================
+0x00    0x0  any   (additional immediate value)                         `64-bit immediate instructions`_
+0x04    0x0  any   dst = (uint32_t)(dst + imm)                          `Arithmetic instructions`_
+0x05    0x0  0x00  goto +offset                                         `Jump instructions`_
+0x07    0x0  any   dst += imm                                           `Arithmetic instructions`_
+0x0c    any  0x00  dst = (uint32_t)(dst + src)                          `Arithmetic instructions`_
+0x0f    any  0x00  dst += src                                           `Arithmetic instructions`_
+0x14    0x0  any   dst = (uint32_t)(dst - imm)                          `Arithmetic instructions`_
+0x15    0x0  any   if dst == imm goto +offset                           `Jump instructions`_
+0x16    0x0  any   if (uint32_t)dst == imm goto +offset                 `Jump instructions`_
+0x17    0x0  any   dst -= imm                                           `Arithmetic instructions`_
+0x18    0x0  0x00  dst = imm64                                          `64-bit immediate instructions`_
+0x18    0x1  0x00  dst = map_by_fd(imm)                                 `64-bit immediate instructions`_
+0x18    0x2  0x00  dst = mva(map_by_fd(imm)) + next_imm                 `64-bit immediate instructions`_
+0x18    0x3  0x00  dst = variable_addr(imm)                             `64-bit immediate instructions`_
+0x18    0x4  0x00  dst = code_addr(imm)                                 `64-bit immediate instructions`_
+0x18    0x5  0x00  dst = mva(map_by_idx(imm))                           `64-bit immediate instructions`_
+0x18    0x6  0x00  dst = mva(map_by_idx(imm)) + next_imm                `64-bit immediate instructions`_
+0x1c    any  0x00  dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
+0x1d    any  0x00  if dst == src goto +offset                           `Jump instructions`_
+0x1e    any  0x00  if (uint32_t)dst == (uint32_t)src goto +offset       `Jump instructions`_
+0x1f    any  0x00  dst -= src                                           `Arithmetic instructions`_
+0x20    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x24    0x0  any   dst = (uint32_t)(dst \* imm)                         `Arithmetic instructions`_
+0x25    0x0  any   if dst > imm goto +offset                            `Jump instructions`_
+0x26    0x0  any   if (uint32_t)dst > imm goto +offset                  `Jump instructions`_
+0x27    0x0  any   dst \*= imm                                          `Arithmetic instructions`_
+0x28    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x2c    any  0x00  dst = (uint32_t)(dst \* src)                         `Arithmetic instructions`_
+0x2d    any  0x00  if dst > src goto +offset                            `Jump instructions`_
+0x2e    any  0x00  if (uint32_t)dst > (uint32_t)src goto +offset        `Jump instructions`_
+0x2f    any  0x00  dst \*= src                                          `Arithmetic instructions`_
+0x30    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x34    0x0  any   dst = (uint32_t)((imm != 0) ? (dst / imm) : 0)       `Arithmetic instructions`_
+0x35    0x0  any   if dst >= imm goto +offset                           `Jump instructions`_
+0x36    0x0  any   if (uint32_t)dst >= imm goto +offset                 `Jump instructions`_
+0x37    0x0  any   dst = (imm != 0) ? (dst / imm) : 0                   `Arithmetic instructions`_
+0x38    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x3c    any  0x00  dst = (uint32_t)((imm != 0) ? (dst / src) : 0)       `Arithmetic instructions`_
+0x3d    any  0x00  if dst >= src goto +offset                           `Jump instructions`_
+0x3e    any  0x00  if (uint32_t)dst >= (uint32_t)src goto +offset       `Jump instructions`_
+0x3f    any  0x00  dst = (src !+ 0) ? (dst / src) : 0                   `Arithmetic instructions`_
+0x40    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x44    0x0  any   dst = (uint32_t)(dst \| imm)                         `Arithmetic instructions`_
+0x45    0x0  any   if dst & imm goto +offset                            `Jump instructions`_
+0x46    0x0  any   if (uint32_t)dst & imm goto +offset                  `Jump instructions`_
+0x47    0x0  any   dst \|= imm                                          `Arithmetic instructions`_
+0x48    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x4c    any  0x00  dst = (uint32_t)(dst \| src)                         `Arithmetic instructions`_
+0x4d    any  0x00  if dst & src goto +offset                            `Jump instructions`_
+0x4e    any  0x00  if (uint32_t)dst & (uint32_t)src goto +offset        `Jump instructions`_
+0x4f    any  0x00  dst \|= src                                          `Arithmetic instructions`_
+0x50    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x54    0x0  any   dst = (uint32_t)(dst & imm)                          `Arithmetic instructions`_
+0x55    0x0  any   if dst != imm goto +offset                           `Jump instructions`_
+0x56    0x0  any   if (uint32_t)dst != imm goto +offset                 `Jump instructions`_
+0x57    0x0  any   dst &= imm                                           `Arithmetic instructions`_
+0x58    any  any   (deprecated, implementation-specific)                `Legacy BPF Packet access instructions`_
+0x5c    any  0x00  dst = (uint32_t)(dst & src)                          `Arithmetic instructions`_
+0x5d    any  0x00  if dst != src goto +offset                           `Jump instructions`_
+0x5e    any  0x00  if (uint32_t)dst != (uint32_t)src goto +offset       `Jump instructions`_
+0x5f    any  0x00  dst &= src                                           `Arithmetic instructions`_
+0x61    any  0x00  dst = \*(uint32_t \*)(src + offset)                  `Load and store instructions`_
+0x62    0x0  any   \*(uint32_t \*)(dst + offset) = imm                  `Load and store instructions`_
+0x63    any  0x00  \*(uint32_t \*)(dst + offset) = src                  `Load and store instructions`_
+0x64    0x0  any   dst = (uint32_t)(dst << imm)                         `Arithmetic instructions`_
+0x65    0x0  any   if dst s> imm goto +offset                           `Jump instructions`_
+0x66    0x0  any   if (int32_t)dst s> (int32_t)imm goto +offset         `Jump instructions`_
+0x67    0x0  any   dst <<= imm                                          `Arithmetic instructions`_
+0x69    any  0x00  dst = \*(uint16_t \*)(src + offset)                  `Load and store instructions`_
+0x6a    0x0  any   \*(uint16_t \*)(dst + offset) = imm                  `Load and store instructions`_
+0x6b    any  0x00  \*(uint16_t \*)(dst + offset) = src                  `Load and store instructions`_
+0x6c    any  0x00  dst = (uint32_t)(dst << src)                         `Arithmetic instructions`_
+0x6d    any  0x00  if dst s> src goto +offset                           `Jump instructions`_
+0x6e    any  0x00  if (int32_t)dst s> (int32_t)src goto +offset         `Jump instructions`_
+0x6f    any  0x00  dst <<= src                                          `Arithmetic instructions`_
+0x71    any  0x00  dst = \*(uint8_t \*)(src + offset)                   `Load and store instructions`_
+0x72    0x0  any   \*(uint8_t \*)(dst + offset) = imm                   `Load and store instructions`_
+0x73    any  0x00  \*(uint8_t \*)(dst + offset) = src                   `Load and store instructions`_
+0x74    0x0  any   dst = (uint32_t)(dst >> imm)                         `Arithmetic instructions`_
+0x75    0x0  any   if dst s>= imm goto +offset                          `Jump instructions`_
+0x76    0x0  any   if (int32_t)dst s>= (int32_t)imm goto +offset        `Jump instructions`_
+0x77    0x0  any   dst >>= imm                                          `Arithmetic instructions`_
+0x79    any  0x00  dst = \*(uint64_t \*)(src + offset)                  `Load and store instructions`_
+0x7a    0x0  any   \*(uint64_t \*)(dst + offset) = imm                  `Load and store instructions`_
+0x7b    any  0x00  \*(uint64_t \*)(dst + offset) = src                  `Load and store instructions`_
+0x7c    any  0x00  dst = (uint32_t)(dst >> src)                         `Arithmetic instructions`_
+0x7d    any  0x00  if dst s>= src goto +offset                          `Jump instructions`_
+0x7e    any  0x00  if (int32_t)dst s>= (int32_t)src goto +offset        `Jump instructions`_
+0x7f    any  0x00  dst >>= src                                          `Arithmetic instructions`_
+0x84    0x0  0x00  dst = (uint32_t)-dst                                 `Arithmetic instructions`_
+0x85    0x0  any   call imm                                             `Jump instructions`_
+0x87    0x0  0x00  dst = -dst                                           `Arithmetic instructions`_
+0x94    0x0  any   dst = (uint32_t)((imm != 0) ? (dst % imm) : imm)     `Arithmetic instructions`_
+0x95    0x0  0x00  return                                               `Jump instructions`_
+0x97    0x0  any   dst = (imm != 0) ? (dst % imm) : imm                 `Arithmetic instructions`_
+0x9c    any  0x00  dst = (uint32_t)((src != 0) ? (dst % src) : src)     `Arithmetic instructions`_
+0x9f    any  0x00  dst = (src != 0) ? (dst % src) : src                 `Arithmetic instructions`_
+0xa4    0x0  any   dst = (uint32_t)(dst ^ imm)                          `Arithmetic instructions`_
+0xa5    0x0  any   if dst < imm goto +offset                            `Jump instructions`_
+0xa6    0x0  any   if (uint32_t)dst < imm goto +offset                  `Jump instructions`_
+0xa7    0x0  any   dst ^= imm                                           `Arithmetic instructions`_
+0xac    any  0x00  dst = (uint32_t)(dst ^ src)                          `Arithmetic instructions`_
+0xad    any  0x00  if dst < src goto +offset                            `Jump instructions`_
+0xae    any  0x00  if (uint32_t)dst < (uint32_t)src goto +offset        `Jump instructions`_
+0xaf    any  0x00  dst ^= src                                           `Arithmetic instructions`_
+0xb4    0x0  any   dst = (uint32_t) imm                                 `Arithmetic instructions`_
+0xb5    0x0  any   if dst <= imm goto +offset                           `Jump instructions`_
+0xa6    0x0  any   if (uint32_t)dst <= imm goto +offset                 `Jump instructions`_
+0xb7    0x0  any   dst = imm                                            `Arithmetic instructions`_
+0xbc    any  0x00  dst = (uint32_t) src                                 `Arithmetic instructions`_
+0xbd    any  0x00  if dst <= src goto +offset                           `Jump instructions`_
+0xbe    any  0x00  if (uint32_t)dst <= (uint32_t)src goto +offset       `Jump instructions`_
+0xbf    any  0x00  dst = src                                            `Arithmetic instructions`_
+0xc3    any  0x00  lock \*(uint32_t \*)(dst + offset) += src            `Atomic operations`_
+0xc3    any  0x01  lock::                                               `Atomic operations`_
 
-                        *(uint32_t *)(dst + offset) += src
-                        src = *(uint32_t *)(dst + offset)
-0xc3    0x40  any   \*(uint32_t \*)(dst + offset) \|= src                `Atomic operations`_
-0xc3    0x41  any   lock::                                               `Atomic operations`_
+                       *(uint32_t *)(dst + offset) += src
+                       src = *(uint32_t *)(dst + offset)
+0xc3    any  0x40  \*(uint32_t \*)(dst + offset) \|= src                `Atomic operations`_
+0xc3    any  0x41  lock::                                               `Atomic operations`_
 
-                        *(uint32_t *)(dst + offset) |= src
-                        src = *(uint32_t *)(dst + offset)
-0xc3    0x50  any   \*(uint32_t \*)(dst + offset) &= src                 `Atomic operations`_
-0xc3    0x51  any   lock::                                               `Atomic operations`_
+                       *(uint32_t *)(dst + offset) |= src
+                       src = *(uint32_t *)(dst + offset)
+0xc3    any  0x50  \*(uint32_t \*)(dst + offset) &= src                 `Atomic operations`_
+0xc3    any  0x51  lock::                                               `Atomic operations`_
 
-                        *(uint32_t *)(dst + offset) &= src
-                        src = *(uint32_t *)(dst + offset)
-0xc3    0xa0  any   \*(uint32_t \*)(dst + offset) ^= src                 `Atomic operations`_
-0xc3    0xa1  any   lock::                                               `Atomic operations`_
+                       *(uint32_t *)(dst + offset) &= src
+                       src = *(uint32_t *)(dst + offset)
+0xc3    any  0xa0  \*(uint32_t \*)(dst + offset) ^= src                 `Atomic operations`_
+0xc3    any  0xa1  lock::                                               `Atomic operations`_
 
-                        *(uint32_t *)(dst + offset) ^= src
-                        src = *(uint32_t *)(dst + offset)
-0xc3    0xe1  any   lock::                                               `Atomic operations`_
+                       *(uint32_t *)(dst + offset) ^= src
+                       src = *(uint32_t *)(dst + offset)
+0xc3    any  0xe1  lock::                                               `Atomic operations`_
 
-                        temp = *(uint32_t *)(dst + offset)
-                        *(uint32_t *)(dst + offset) = src
-                        src = temp
-0xc3    0xf1  any   lock::                                               `Atomic operations`_
+                       temp = *(uint32_t *)(dst + offset)
+                       *(uint32_t *)(dst + offset) = src
+                       src = temp
+0xc3    any  0xf1  lock::                                               `Atomic operations`_
 
-                        temp = *(uint32_t *)(dst + offset)
-                        if *(uint32_t)(dst + offset) == R0
-                           *(uint32_t)(dst + offset) = src
-                        R0 = temp
-0xc4    any   0x00  dst = (uint32_t)(dst s>> imm)                        `Arithmetic instructions`_
-0xc5    any   0x00  if dst s< imm goto +offset                           `Jump instructions`_
-0xc6    any   0x00  if (int32_t)dst s< (int32_t)imm goto +offset         `Jump instructions`_
-0xc7    any   0x00  dst s>>= imm                                         `Arithmetic instructions`_
-0xcc    0x00  any   dst = (uint32_t)(dst s>> src)                        `Arithmetic instructions`_
-0xcd    0x00  any   if dst s< src goto +offset                           `Jump instructions`_
-0xce    0x00  any   if (int32_t)dst s< (int32_t)src goto +offset         `Jump instructions`_
-0xcf    0x00  any   dst s>>= src                                         `Arithmetic instructions`_
-0xd4    0x10  0x00  dst = htole16(dst)                                   `Byte swap instructions`_
-0xd4    0x20  0x00  dst = htole32(dst)                                   `Byte swap instructions`_
-0xd4    0x40  0x00  dst = htole64(dst)                                   `Byte swap instructions`_
-0xd5    any   0x00  if dst s<= imm goto +offset                          `Jump instructions`_
-0xd6    any   0x00  if (int32_t)dst s<= (int32_t)imm goto +offset        `Jump instructions`_
-0xdb    0x00  any   lock \*(uint64_t \*)(dst + offset) += src            `Atomic operations`_
-0xdb    0x01  any   lock::                                               `Atomic operations`_
+                       temp = *(uint32_t *)(dst + offset)
+                       if *(uint32_t)(dst + offset) == R0
+                          *(uint32_t)(dst + offset) = src
+                       R0 = temp
+0xc4    0x0  any   dst = (uint32_t)(dst s>> imm)                        `Arithmetic instructions`_
+0xc5    0x0  any   if dst s< imm goto +offset                           `Jump instructions`_
+0xc6    0x0  any   if (int32_t)dst s< (int32_t)imm goto +offset         `Jump instructions`_
+0xc7    0x0  any   dst s>>= imm                                         `Arithmetic instructions`_
+0xcc    any  0x00  dst = (uint32_t)(dst s>> src)                        `Arithmetic instructions`_
+0xcd    any  0x00  if dst s< src goto +offset                           `Jump instructions`_
+0xce    any  0x00  if (int32_t)dst s< (int32_t)src goto +offset         `Jump instructions`_
+0xcf    any  0x00  dst s>>= src                                         `Arithmetic instructions`_
+0xd4    0x0  0x10  dst = htole16(dst)                                   `Byte swap instructions`_
+0xd4    0x0  0x20  dst = htole32(dst)                                   `Byte swap instructions`_
+0xd4    0x0  0x40  dst = htole64(dst)                                   `Byte swap instructions`_
+0xd5    0x0  any   if dst s<= imm goto +offset                          `Jump instructions`_
+0xd6    0x0  any   if (int32_t)dst s<= (int32_t)imm goto +offset        `Jump instructions`_
+0xdb    any  0x00  lock \*(uint64_t \*)(dst + offset) += src            `Atomic operations`_
+0xdb    any  0x01  lock::                                               `Atomic operations`_
 
-                        *(uint64_t *)(dst + offset) += src
-                        src = *(uint64_t *)(dst + offset)
-0xdb    0x40  any   \*(uint64_t \*)(dst + offset) \|= src                `Atomic operations`_
-0xdb    0x41  any   lock::                                               `Atomic operations`_
+                       *(uint64_t *)(dst + offset) += src
+                       src = *(uint64_t *)(dst + offset)
+0xdb    any  0x40  \*(uint64_t \*)(dst + offset) \|= src                `Atomic operations`_
+0xdb    any  0x41  lock::                                               `Atomic operations`_
 
-                        *(uint64_t *)(dst + offset) |= src
-                        lock src = *(uint64_t *)(dst + offset)
-0xdb    0x50  any   \*(uint64_t \*)(dst + offset) &= src                 `Atomic operations`_
-0xdb    0x51  any   lock::                                               `Atomic operations`_
+                       *(uint64_t *)(dst + offset) |= src
+                       lock src = *(uint64_t *)(dst + offset)
+0xdb    any  0x50  \*(uint64_t \*)(dst + offset) &= src                 `Atomic operations`_
+0xdb    any  0x51  lock::                                               `Atomic operations`_
 
-                        *(uint64_t *)(dst + offset) &= src
-                        src = *(uint64_t *)(dst + offset)
-0xdb    0xa0  any   \*(uint64_t \*)(dst + offset) ^= src                 `Atomic operations`_
-0xdb    0xa1  any   lock::                                               `Atomic operations`_
+                       *(uint64_t *)(dst + offset) &= src
+                       src = *(uint64_t *)(dst + offset)
+0xdb    any  0xa0  \*(uint64_t \*)(dst + offset) ^= src                 `Atomic operations`_
+0xdb    any  0xa1  lock::                                               `Atomic operations`_
 
-                        *(uint64_t *)(dst + offset) ^= src
-                        src = *(uint64_t *)(dst + offset)
-0xdb    0xe1  any   lock::                                               `Atomic operations`_
+                       *(uint64_t *)(dst + offset) ^= src
+                       src = *(uint64_t *)(dst + offset)
+0xdb    any  0xe1  lock::                                               `Atomic operations`_
 
-                        temp = *(uint64_t *)(dst + offset)
-                        *(uint64_t *)(dst + offset) = src
-                        src = temp
-0xdb    0xf1  any   lock::                                               `Atomic operations`_
+                       temp = *(uint64_t *)(dst + offset)
+                       *(uint64_t *)(dst + offset) = src
+                       src = temp
+0xdb    any  0xf1  lock::                                               `Atomic operations`_
 
-                        temp = *(uint64_t *)(dst + offset)
-                        if *(uint64_t)(dst + offset) == R0
-                           *(uint64_t)(dst + offset) = src
-                        R0 = temp
-0xdc    0x10  0x00  dst = htobe16(dst)                                   `Byte swap instructions`_
-0xdc    0x20  0x00  dst = htobe32(dst)                                   `Byte swap instructions`_
-0xdc    0x40  0x00  dst = htobe64(dst)                                   `Byte swap instructions`_
-0xdd    0x00  any   if dst s<= src goto +offset                          `Jump instructions`_
-0xde    0x00  any   if (int32_t)dst s<= (int32_t)src goto +offset        `Jump instructions`_
-======  ====  ====  ===================================================  ========================================
+                       temp = *(uint64_t *)(dst + offset)
+                       if *(uint64_t)(dst + offset) == R0
+                          *(uint64_t)(dst + offset) = src
+                       R0 = temp
+0xdc    0x0  0x10  dst = htobe16(dst)                                   `Byte swap instructions`_
+0xdc    0x0  0x20  dst = htobe32(dst)                                   `Byte swap instructions`_
+0xdc    0x0  0x40  dst = htobe64(dst)                                   `Byte swap instructions`_
+0xdd    any  0x00  if dst s<= src goto +offset                          `Jump instructions`_
+0xde    any  0x00  if (int32_t)dst s<= (int32_t)src goto +offset        `Jump instructions`_
+======  ===  ====  ===================================================  ========================================
