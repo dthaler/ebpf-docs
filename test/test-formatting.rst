@@ -347,3 +347,19 @@ Here's a grid table that tries to render multiple lines in the same cell:
 +------------+--------------------+---------------------------+
 | 3          | Value 3            | Note 3                    |
 +------------+--------------------+---------------------------+
+
+==============
+Lists
+==============
+
+Here is a list with no spaces before the bullets:
+
+* First bullet
+* Second bullet
+* Third bullet
+
+Here is a list with spaces before the bullets:
+
+ * First bullet
+ * Second bullet
+ * Third bullet
