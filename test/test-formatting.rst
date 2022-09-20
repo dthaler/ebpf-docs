@@ -20,7 +20,7 @@ Test Heading 3
 Paragraph.
 
 Test Heading 4
---------------
+~~~~~~~~~~~~~~
 
 Paragraph.
 
