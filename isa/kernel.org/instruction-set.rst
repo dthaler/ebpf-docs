@@ -306,30 +306,32 @@ versions.
 
 The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
-========  =====  ============================  =======  ============
-code      value  description                   version  notes
-========  =====  ============================  =======  ============
-BPF_JA    0x00   PC += offset                  1        BPF_JMP only
-BPF_JEQ   0x10   PC += offset if dst == src    1
-BPF_JGT   0x20   PC += offset if dst > src     1        unsigned
-BPF_JGE   0x30   PC += offset if dst >= src    1        unsigned
-BPF_JSET  0x40   PC += offset if dst & src     1
-BPF_JNE   0x50   PC += offset if dst != src    1
-BPF_JSGT  0x60   PC += offset if dst > src     1        signed
-BPF_JSGE  0x70   PC += offset if dst >= src    1        signed
-BPF_CALL  0x80   call function imm             1        see `Helper functions`_
-BPF_EXIT  0x90   function / program return     1        BPF_JMP only
-BPF_JLT   0xa0   PC += offset if dst < src     2        unsigned
-BPF_JLE   0xb0   PC += offset if dst <= src    2        unsigned
-BPF_JSLT  0xc0   PC += offset if dst < src     2        signed
-BPF_JSLE  0xd0   PC += offset if dst <= src    2        signed
+========  =====  ===  ============================  =======  ============
+code      value  src  description                   version  notes
+========  =====  ===  ============================  =======  ============
+BPF_JA    0x00   0x0  PC += offset                  1        BPF_JMP only
+BPF_JEQ   0x10   any  PC += offset if dst == src    1
+BPF_JGT   0x20   any  PC += offset if dst > src     1        unsigned
+BPF_JGE   0x30   any  PC += offset if dst >= src    1        unsigned
+BPF_JSET  0x40   any  PC += offset if dst & src     1
+BPF_JNE   0x50   any  PC += offset if dst != src    1
+BPF_JSGT  0x60   any  PC += offset if dst > src     1        signed
+BPF_JSGE  0x70   any  PC += offset if dst >= src    1        signed
+BPF_CALL  0x80   0x0  call helper function imm      1        see `Helper functions`_
+BPF_CALL  0x80   0x1  call PC += offset             1        see `eBPF functions`_
+BPF_CALL  0x80   0x2  call runtime function imm     1        see `Runtime functions`_
+BPF_EXIT  0x95   0x0  return                        1        BPF_JMP only
+BPF_JLT   0xa0   any  PC += offset if dst < src     2        unsigned
+BPF_JLE   0xb0   any  PC += offset if dst <= src    2        unsigned
+BPF_JSLT  0xc0   any  PC += offset if dst < src     2        signed
+BPF_JSLE  0xd0   any  PC += offset if dst <= src    2        signed
 ========  =====  ============================  =======  ============
 
 where 'version' indicates the first ISA version in which the value was supported.
 
 Helper functions
 ~~~~~~~~~~~~~~~~
-Helper functions are a concept whereby BPF programs can call into
+Helper functions are a concept whereby BPF programs can call into a
 set of function calls exposed by the eBPF runtime.  Each helper
 function is identified by an integer used in a ``BPF_CALL`` instruction.
 The available helper functions may differ for each eBPF program type.
@@ -351,6 +353,18 @@ would be read from a specified register, is not currently permitted.
 
    *Clang implementation*:
    Clang will generate this invalid instruction if ``-O0`` is used.
+
+Runtime functions
+~~~~~~~~~~~~~~~~~
+Runtime functions are like helper functions except that they are not specific
+to eBPF programs.  They use a different numbering space from helper functions,
+but otherwise the same considerations apply.
+
+eBPF functions
+~~~~~~~~~~~~~~
+eBPF functions are functions exposed by the same eBPF program as the caller,
+and are referenced by offset from the call instruction, similar to 'BPF_JA'.
+A 'BPF_EXIT' within the eBPF function will return to the caller.
 
 Load and store instructions
 ===========================
@@ -661,7 +675,9 @@ opcode  src  imm   description                                          referenc
 0x7e    any  0x00  if (int32_t)dst s>= (int32_t)src goto +offset        `Jump instructions`_
 0x7f    any  0x00  dst >>= src                                          `Arithmetic instructions`_
 0x84    0x0  0x00  dst = (uint32_t)-dst                                 `Arithmetic instructions`_
-0x85    0x0  any   call imm                                             `Jump instructions`_
+0x85    0x0  any   call helper function imm                             `Helper functions`_
+0x85    0x1  any   call PC += offset                                    `eBPF functions`_
+0x85    0x2  any   call runtime function imm                            `Runtime functions`_
 0x87    0x0  0x00  dst = -dst                                           `Arithmetic instructions`_
 0x94    0x0  any   dst = (uint32_t)((imm != 0) ? (dst % imm) : imm)     `Arithmetic instructions`_
 0x95    0x0  0x00  return                                               `Jump instructions`_
