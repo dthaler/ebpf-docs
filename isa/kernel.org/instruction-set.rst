@@ -508,7 +508,7 @@ BPF_IMM | BPF_DW | BPF_LD  0x18    0x1  dst = map_by_fd(imm)                   m
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x2  dst = mva(map_by_fd(imm)) + next_imm   map fd       data pointer
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x3  dst = variable_addr(imm)               variable id  data pointer
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x4  dst = code_addr(imm)                   integer      code pointer
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x5  dst = mva(map_by_idx(imm))             map index    map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x5  dst = map_by_idx(imm)                  map index    map
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x6  dst = mva(map_by_idx(imm)) + next_imm  map index    data pointer
 =========================  ======  ===  =====================================  ===========  ==============
 
@@ -516,7 +516,7 @@ where
 
 * map_by_fd(fd) means to convert a 32-bit POSIX file descriptor into an address of a map object (see `Map objects`_)
 * map_by_index(index) means to convert a 32-bit index into an address of a map object
-* mva(map) gets the address of the memory region expressed by a given map object
+* mva(map) gets the address of the first value in a given map object
 * variable_addr(id) gets the address of a variable (see `Variables`_) with a given id
 * code_addr(offset) gets the address of the instruction at a specified relative offset in units of 64-bit blocks
 * the 'imm type' can be used by disassemblers for display
@@ -586,7 +586,7 @@ opcode  src  imm   description                                          referenc
 0x18    0x2  0x00  dst = mva(map_by_fd(imm)) + next_imm                 `64-bit immediate instructions`_
 0x18    0x3  0x00  dst = variable_addr(imm)                             `64-bit immediate instructions`_
 0x18    0x4  0x00  dst = code_addr(imm)                                 `64-bit immediate instructions`_
-0x18    0x5  0x00  dst = mva(map_by_idx(imm))                           `64-bit immediate instructions`_
+0x18    0x5  0x00  dst = map_by_idx(imm)                                `64-bit immediate instructions`_
 0x18    0x6  0x00  dst = mva(map_by_idx(imm)) + next_imm                `64-bit immediate instructions`_
 0x1c    any  0x00  dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
 0x1d    any  0x00  if dst == src goto +offset                           `Jump instructions`_
