@@ -1,18 +1,14 @@
 .. contents::
 .. sectnum::
 
-====================
-eBPF Instruction Set
-====================
+========================================
+eBPF Instruction Set Specification, v1.0
+========================================
+
+This document specifies version 1.0 of the eBPF instruction set.
 
 The eBPF instruction set consists of eleven 64 bit registers, a program counter,
 and 512 bytes of stack space.
-
-Versions
-========
-
-The current Instruction Set Architecture (ISA) version, sometimes referred to in other documents
-as a "CPU" version, is 3.  This document also covers older versions of the ISA.
 
 Registers and calling convention
 ================================
@@ -108,20 +104,18 @@ The encoding of the 'opcode' field varies and can be determined from
 the three least significant bits (LSB) of the 'opcode' field which holds
 the "instruction class", as follows:
 
-=========  =====  ===============================  =======  =================
-class      value  description                      version  reference
-=========  =====  ===============================  =======  =================
-BPF_LD     0x00   non-standard load operations     1        `Load and store instructions`_
-BPF_LDX    0x01   load into register operations    1        `Load and store instructions`_
-BPF_ST     0x02   store from immediate operations  1        `Load and store instructions`_
-BPF_STX    0x03   store from register operations   1        `Load and store instructions`_
-BPF_ALU    0x04   32-bit arithmetic operations     3        `Arithmetic and jump instructions`_
-BPF_JMP    0x05   64-bit jump operations           1        `Arithmetic and jump instructions`_
-BPF_JMP32  0x06   32-bit jump operations           3        `Arithmetic and jump instructions`_
-BPF_ALU64  0x07   64-bit arithmetic operations     1        `Arithmetic and jump instructions`_
-=========  =====  ===============================  =======  =================
-
-where 'version' indicates the first ISA version in which support for the value was mandatory.
+=========  =====  ===============================  =================
+class      value  description                      reference
+=========  =====  ===============================  =================
+BPF_LD     0x00   non-standard load operations     `Load and store instructions`_
+BPF_LDX    0x01   load into register operations    `Load and store instructions`_
+BPF_ST     0x02   store from immediate operations  `Load and store instructions`_
+BPF_STX    0x03   store from register operations   `Load and store instructions`_
+BPF_ALU    0x04   32-bit arithmetic operations     `Arithmetic and jump instructions`_
+BPF_JMP    0x05   64-bit jump operations           `Arithmetic and jump instructions`_
+BPF_JMP32  0x06   32-bit jump operations           `Arithmetic and jump instructions`_
+BPF_ALU64  0x07   64-bit arithmetic operations     `Arithmetic and jump instructions`_
+=========  =====  ===============================  =================
 
 Arithmetic and jump instructions
 ================================
@@ -157,9 +151,6 @@ Arithmetic instructions
 Instruction class ``BPF_ALU`` uses 32-bit wide operands (zeroing the upper 32 bits
 of the destination register) while ``BPF_ALU64`` uses 64-bit wide operands for
 otherwise identical operations.
-
-Support for ``BPF_ALU`` is required in ISA version 3, and optional in earlier
-versions.
 
 The 4-bit 'code' field encodes the operation as follows:
 
@@ -267,33 +258,28 @@ Jump instructions
 Instruction class ``BPF_JMP32`` uses 32-bit wide operands while ``BPF_JMP`` uses 64-bit wide operands for
 otherwise identical operations.
 
-Support for ``BPF_JMP32`` is required in ISA version 3, and optional in earlier
-versions.
-
 The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
-========  =====  ===  ============================  =======  ============
-code      value  src  description                   version  notes
-========  =====  ===  ============================  =======  ============
-BPF_JA    0x00   0x0  PC += offset                  1        BPF_JMP only
-BPF_JEQ   0x10   any  PC += offset if dst == src    1
-BPF_JGT   0x20   any  PC += offset if dst > src     1        unsigned
-BPF_JGE   0x30   any  PC += offset if dst >= src    1        unsigned
-BPF_JSET  0x40   any  PC += offset if dst & src     1
-BPF_JNE   0x50   any  PC += offset if dst != src    1
-BPF_JSGT  0x60   any  PC += offset if dst > src     1        signed
-BPF_JSGE  0x70   any  PC += offset if dst >= src    1        signed
-BPF_CALL  0x80   0x0  call helper function imm      1        see `Helper functions`_
-BPF_CALL  0x80   0x1  call PC += offset             1        see `eBPF functions`_
-BPF_CALL  0x80   0x2  call runtime function imm     1        see `Runtime functions`_
-BPF_EXIT  0x95   0x0  return                        1        BPF_JMP only
-BPF_JLT   0xa0   any  PC += offset if dst < src     2        unsigned
-BPF_JLE   0xb0   any  PC += offset if dst <= src    2        unsigned
-BPF_JSLT  0xc0   any  PC += offset if dst < src     2        signed
-BPF_JSLE  0xd0   any  PC += offset if dst <= src    2        signed
-========  =====  ============================  =======  ============
-
-where 'version' indicates the first ISA version in which the value was supported.
+========  =====  ===  ==========================  ============
+code      value  src  description                 notes
+========  =====  ===  ==========================  ============
+BPF_JA    0x00   0x0  PC += offset                BPF_JMP only
+BPF_JEQ   0x10   any  PC += offset if dst == src
+BPF_JGT   0x20   any  PC += offset if dst > src   unsigned
+BPF_JGE   0x30   any  PC += offset if dst >= src  unsigned
+BPF_JSET  0x40   any  PC += offset if dst & src
+BPF_JNE   0x50   any  PC += offset if dst != src
+BPF_JSGT  0x60   any  PC += offset if dst > src   signed
+BPF_JSGE  0x70   any  PC += offset if dst >= src  signed
+BPF_CALL  0x80   0x0  call helper function imm    see `Helper functions`_
+BPF_CALL  0x80   0x1  call PC += offset           see `eBPF functions`_
+BPF_CALL  0x80   0x2  call runtime function imm   see `Runtime functions`_
+BPF_EXIT  0x95   0x0  return                      BPF_JMP only
+BPF_JLT   0xa0   any  PC += offset if dst < src   unsigned
+BPF_JLE   0xb0   any  PC += offset if dst <= src  unsigned
+BPF_JSLT  0xc0   any  PC += offset if dst < src   signed
+BPF_JSLE  0xd0   any  PC += offset if dst <= src  signed
+========  =====  === ===========================  ============
 
 Helper functions
 ~~~~~~~~~~~~~~~~
@@ -410,16 +396,14 @@ The 'imm' field is used to encode the actual atomic operation.
 Simple atomic operation use a subset of the values defined to encode
 arithmetic operations in the 'imm' field to encode the atomic operation:
 
-========  =====  ===========  =======
-imm       value  description  version
-========  =====  ===========  =======
-BPF_ADD   0x00   atomic add   1
-BPF_OR    0x40   atomic or    3
-BPF_AND   0x50   atomic and   3
-BPF_XOR   0xa0   atomic xor   3
-========  =====  ===========  =======
-
-where 'version' indicates the first ISA version in which the value was supported.
+========  =====  =========== 
+imm       value  description
+========  =====  ===========
+BPF_ADD   0x00   atomic add
+BPF_OR    0x40   atomic or
+BPF_AND   0x50   atomic and
+BPF_XOR   0xa0   atomic xor
+========  =====  ===========
 
 ``BPF_ATOMIC | BPF_W  | BPF_STX`` (0xc3) with 'imm' = BPF_ADD means::
 
@@ -429,19 +413,16 @@ where 'version' indicates the first ISA version in which the value was supported
 
   *(uint64_t *)(dst + offset) += src
 
-``BPF_XADD`` appeared in version 1, but is now considered to be a deprecated alias
-for ``BPF_ATOMIC | BPF_ADD``.
-
 In addition to the simple atomic operations above, there also is a modifier and
 two complex atomic operations:
 
-===========  ================  ===========================  =======
-imm          value             description                  version
-===========  ================  ===========================  =======
-BPF_FETCH    0x01              modifier: return old value   3
-BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange              3
-BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange  3
-===========  ================  ===========================  =======
+===========  ================  ===========================
+imm          value             description
+===========  ================  ===========================
+BPF_FETCH    0x01              modifier: return old value
+BPF_XCHG     0xe0 | BPF_FETCH  atomic exchange
+BPF_CMPXCHG  0xf0 | BPF_FETCH  atomic compare and exchange
+===========  ================  ===========================
 
 The ``BPF_FETCH`` modifier is optional for simple atomic operations, and
 always set for the complex atomic operations.  If the ``BPF_FETCH`` flag
