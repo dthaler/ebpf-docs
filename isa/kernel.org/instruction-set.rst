@@ -508,7 +508,7 @@ where
 
 * map_by_fd(fd) means to convert a 32-bit POSIX file descriptor into an address of a map object (see `Map objects`_)
 * map_by_index(index) means to convert a 32-bit index into an address of a map object
-* mva(map) gets the address of the memory region expressed by a given map object
+* mva(map) gets the address of the first map value
 * variable_addr(id) gets the address of a variable (see `Variables`_) with a given id
 * code_addr(offset) gets the address of the instruction at a specified relative offset in units of 64-bit blocks
 * the 'imm type' can be used by disassemblers for display
