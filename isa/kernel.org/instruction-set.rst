@@ -10,6 +10,11 @@ This document specifies version 1.0 of the eBPF instruction set.
 The eBPF instruction set consists of eleven 64 bit registers, a program counter,
 and 512 bytes of stack space.
 
+Documentation conventions
+=========================
+
+This specification uses the standard C types (uint32_t, etc.) in documentation.
+
 Registers and calling convention
 ================================
 
