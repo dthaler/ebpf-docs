@@ -39,22 +39,11 @@ that the value in the register is moved to the BPF stack. The reverse operation
 of moving the variable from the BPF stack to the register is called filling.
 The reason for spilling/filling is due to the limited number of registers.
 
-   **Note**
-
-   *Linux implementation*: In the Linux kernel, the exit value for eBPF
-   programs is passed as a 32 bit value.
-
 Upon entering execution of an eBPF program, registers R1 - R5 initially can contain
 the input arguments for the program (similar to the argc/argv pair for a typical C program).
 The actual number of registers used, and their meaning, is defined by the program type;
 for example, a networking program might have an argument that includes network packet data
 and/or metadata.
-
-   **Note**
-
-   *Linux implementation*: In the Linux kernel, all program types only use
-   R1 which contains the "context", which is typically a structure containing all
-   the inputs needed.
 
 Instruction encoding
 ====================
@@ -221,12 +210,6 @@ Examples:
 
 where '(uint32_t)' indicates truncation to 32 bits.
 
-   **Note**
-
-   *Linux implementation*: In the Linux kernel, uint32_t is expressed as u32,
-   uint64_t is expressed as u64, etc.  This document uses the standard C terminology
-   as the cross-platform specification.
-
 ``BPF_ADD | BPF_X | BPF_ALU64`` (0x0f) means::
 
   dst = dst + src
@@ -267,12 +250,6 @@ source     value  description
 BPF_TO_LE  0x00   convert between host byte order and little endian
 BPF_TO_BE  0x08   convert between host byte order and big endian
 =========  =====  =================================================
-
-   **Note**
-
-   *Linux implementation*:
-   ``BPF_FROM_LE`` and ``BPF_FROM_BE`` exist as aliases for ``BPF_TO_LE`` and
-   ``BPF_TO_BE`` respectively.
 
 The 'imm' field encodes the width of the swap operations.  The following widths
 are supported: 16, 32 and 64. The following table summarizes the resulting
@@ -545,10 +522,6 @@ A map can have various semantics as defined in a separate document, and may or m
 contiguous memory region, but the 'mva(map)' is currently only defined for maps that do have a single
 contiguous memory region.  Support for maps is optional.
 
-   **Note**
-
-   *Linux implementation*: Linux only supports the 'mva(map)' operation on array maps with a single element.
-
 Each map object can have a POSIX file descriptor (fd) if supported by the platform,
 where 'map_by_fd(fd)' means to get the map with the specified file descriptor.
 Each eBPF program can also be defined to use a set of maps associated with the program
@@ -562,20 +535,12 @@ Variables are memory regions, identified by integer ids, accessible by eBPF prog
 some platforms.  The 'variable_addr(id)' operation means to get the address of the memory region
 identified by the given id.  Support for such variables is optional.
 
-   **Note**
-
-   *Linux implementation*: Linux uses BTF ids to identify variables.
-
 Legacy BPF Packet access instructions
 -------------------------------------
 
-Linux introduced special instructions for access to packet data that were
+eBPF previously introduced special instructions for access to packet data that were
 carried over from classic BPF. However, these instructions are
-deprecated and should no longer be used in any version of the ISA.
-
-   **Note**
-
-   *Linux implementation*: Details can be found in the `Linux historical notes <https://github.com/dthaler/ebpf-docs/blob/update/isa/kernel.org/linux-historical-notes.rst#legacy-bpf-packet-access-instructions>`_.
+deprecated and should no longer be used.
 
 Appendix
 ========

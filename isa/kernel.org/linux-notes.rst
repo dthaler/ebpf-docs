@@ -1,9 +1,38 @@
 .. contents::
 .. sectnum::
 
-=====================
-Linux historial notes
-=====================
+==========================
+Linux implementation notes
+==========================
+
+This document provides more details specific to the Linux kernel implementation of the eBPF instruction set.
+
+Registers and calling convention
+================================
+
+All program types only use R1 which contains the "context", which is typically a structure containing all
+the inputs needed, and the exit value for eBPF programs is passed as a 32 bit value.
+
+Arithmetic instructions
+=======================
+
+While the eBPF instruction set document uses the standard C terminology as the cross-platform specification,
+in the Linux kernel, uint32_t is expressed as u32, uint64_t is expressed as u64, etc.
+
+Byte swap instructions
+======================
+
+``BPF_FROM_LE`` and ``BPF_FROM_BE`` exist as aliases for ``BPF_TO_LE`` and ``BPF_TO_BE`` respectively.
+
+Map objects
+===========
+
+Linux only supports the 'mva(map)' operation on array maps with a single element.
+
+Variables
+=========
+
+Linux uses BTF ids to identify variables.
 
 Legacy BPF Packet access instructions
 =====================================
