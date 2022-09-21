@@ -500,7 +500,7 @@ BPF_IMM | BPF_DW | BPF_LD  0x18    0x01  dst = map_by_fd(imm)                   
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x02  dst = mva(map_by_fd(imm)) + next_imm   map fd       data pointer
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x03  dst = variable_addr(imm)               variable id  data pointer
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x04  dst = code_addr(imm)                   integer      code pointer  
-BPF_IMM | BPF_DW | BPF_LD  0x18    0x05  dst = mva(map_by_idx(imm))             map index    map
+BPF_IMM | BPF_DW | BPF_LD  0x18    0x05  dst = map_by_idx(imm)                  map index    map
 BPF_IMM | BPF_DW | BPF_LD  0x18    0x06  dst = mva(map_by_idx(imm)) + next_imm  map index    data pointer
 =========================  ======  ====  =====================================  ===========  ==============
 
@@ -578,7 +578,7 @@ opcode  imm   src   description                                          referen
 0x18    0x00  0x02  dst = mva(map_by_fd(imm)) + next_imm                 `64-bit immediate instructions`_
 0x18    0x00  0x03  dst = variable_addr(imm)                             `64-bit immediate instructions`_
 0x18    0x00  0x04  dst = code_addr(imm)                                 `64-bit immediate instructions`_
-0x18    0x00  0x05  dst = mva(map_by_idx(imm))                           `64-bit immediate instructions`_
+0x18    0x00  0x05  dst = map_by_idx(imm)                                `64-bit immediate instructions`_
 0x18    0x00  0x06  dst = mva(map_by_idx(imm)) + next_imm                `64-bit immediate instructions`_
 0x1c    0x00  any   dst = (uint32_t)(dst - src)                          `Arithmetic instructions`_
 0x1d    0x00  any   if dst == src goto +offset                           `Jump instructions`_
