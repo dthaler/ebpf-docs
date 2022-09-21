@@ -14,11 +14,6 @@ Versions
 The current Instruction Set Architecture (ISA) version, sometimes referred to in other documents
 as a "CPU" version, is 3.  This document also covers older versions of the ISA.
 
-   **Note**
-
-   *Clang implementation*: Clang can select the eBPF ISA version using
-   ``-mcpu=v2`` for example to select version 2.
-
 Registers and calling convention
 ================================
 
@@ -165,12 +160,6 @@ otherwise identical operations.
 
 Support for ``BPF_ALU`` is required in ISA version 3, and optional in earlier
 versions.
-
-   **Note**
-
-   *Clang implementation*:
-   For ISA versions prior to 3, Clang v7.0 and later can enable ``BPF_ALU`` support with
-   ``-Xclang -target-feature -Xclang +alu32``.
 
 The 4-bit 'code' field encodes the operation as follows:
 
@@ -326,11 +315,6 @@ the number of arguments, and the type of each argument.
 Note that ``BPF_CALL | BPF_X | BPF_JMP`` (0x8d), where the helper function integer
 would be read from a specified register, is not currently permitted.
 
-   **Note**
-
-   *Clang implementation*:
-   Clang will generate this invalid instruction if ``-O0`` is used.
-
 Runtime functions
 ~~~~~~~~~~~~~~~~~
 Runtime functions are like helper functions except that they are not specific
@@ -472,15 +456,6 @@ The ``BPF_CMPXCHG`` operation atomically compares the value addressed by
 ``dst + offset`` is replaced with ``src``. In either case, the
 value that was at ``dst + offset`` before the operation is zero-extended
 and loaded back to ``R0``.
-
-   **Note**
-
-   *Clang implementation*:
-   Clang can generate atomic instructions by default when ``-mcpu=v3`` is
-   enabled. If a lower version for ``-mcpu`` is set, the only atomic instruction
-   Clang can generate is ``BPF_ADD`` *without* ``BPF_FETCH``. If you need to enable
-   the atomics features, while keeping a lower ``-mcpu`` version, you can use
-   ``-Xclang -target-feature -Xclang +alu32``.
 
 64-bit immediate instructions
 -----------------------------
