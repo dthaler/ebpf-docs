@@ -364,22 +364,22 @@ Regular load and store operations
 The ``BPF_MEM`` mode modifier is used to encode regular load and store
 instructions that transfer data between a register and memory.
 
-=============================  =========  ==================================
+=============================  =========  ====================================
 opcode construction            opcode     pseudocode
-=============================  =========  ==================================
-BPF_MEM | BPF_B | BPF_LDX      0x71       dst = *(uint8_t *) (src + offset)
-BPF_MEM | BPF_H | BPF_LDX      0x69       dst = *(uint16_t *) (src + offset)
-BPF_MEM | BPF_W | BPF_LDX      0x61       dst = *(uint32_t *) (src + offset)
-BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = *(uint64_t *) (src + offset)
-BPF_MEM | BPF_B | BPF_ST       0x72       *(uint8_t *) (dst + offset) = imm
-BPF_MEM | BPF_H | BPF_ST       0x6a       *(uint16_t *) (dst + offset) = imm
-BPF_MEM | BPF_W | BPF_ST       0x62       *(uint32_t *) (dst + offset) = imm
-BPF_MEM | BPF_DW | BPF_ST      0x7a       *(uint64_t *) (dst + offset) = imm
-BPF_MEM | BPF_B | BPF_STX      0x73       *(uint8_t *) (dst + offset) = src
-BPF_MEM | BPF_H | BPF_STX      0x6b       *(uint16_t *) (dst + offset) = src
-BPF_MEM | BPF_W | BPF_STX      0x63       *(uint32_t *) (dst + offset) = src
-BPF_MEM | BPF_DW | BPF_STX     0x7b       *(uint64_t *) (dst + offset) = src
-=============================  =========  ==================================
+=============================  =========  ====================================
+BPF_MEM | BPF_B | BPF_LDX      0x71       dst = \*(uint8_t \*) (src + offset)
+BPF_MEM | BPF_H | BPF_LDX      0x69       dst = \*(uint16_t \*) (src + offset)
+BPF_MEM | BPF_W | BPF_LDX      0x61       dst = \*(uint32_t \*) (src + offset)
+BPF_MEM | BPF_DW | BPF_LDX     0x79       dst = \*(uint64_t \*) (src + offset)
+BPF_MEM | BPF_B | BPF_ST       0x72       \*(uint8_t \*) (dst + offset) = imm
+BPF_MEM | BPF_H | BPF_ST       0x6a       \*(uint16_t \*) (dst + offset) = imm
+BPF_MEM | BPF_W | BPF_ST       0x62       \*(uint32_t \*) (dst + offset) = imm
+BPF_MEM | BPF_DW | BPF_ST      0x7a       \*(uint64_t \*) (dst + offset) = imm
+BPF_MEM | BPF_B | BPF_STX      0x73       \*(uint8_t \*) (dst + offset) = src
+BPF_MEM | BPF_H | BPF_STX      0x6b       \*(uint16_t \*) (dst + offset) = src
+BPF_MEM | BPF_W | BPF_STX      0x63       \*(uint32_t \*) (dst + offset) = src
+BPF_MEM | BPF_DW | BPF_STX     0x7b       \*(uint64_t \*) (dst + offset) = src
+=============================  =========  ====================================
 
 Atomic operations
 -----------------
