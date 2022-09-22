@@ -171,7 +171,7 @@ BPF_AND   0x50   dst &= src
 BPF_LSH   0x60   dst <<= src
 BPF_RSH   0x70   dst >>= src
 BPF_NEG   0x80   dst = ~src
-BPF_MOD   0x90   dst = (src != 0) ? (dst % src) : src
+BPF_MOD   0x90   dst = (src != 0) ? (dst % src) : dst
 BPF_XOR   0xa0   dst ^= src
 BPF_MOV   0xb0   dst = src
 BPF_ARSH  0xc0   sign extending shift right
@@ -185,7 +185,7 @@ meaning the 64-bit or 32-bit value will wrap.  If
 eBPF program execution would result in division by zero,
 the destination register is instead set to zero.
 If execution would result in modulo by zero,
-the destination register is instead set to the source value.
+the destination register is instead left unchanged.
 
 Examples:
 
@@ -605,11 +605,11 @@ opcode  src  imm   description                                          referenc
 0x85    0x1  any   call PC += offset                                    `eBPF functions`_
 0x85    0x2  any   call runtime function imm                            `Runtime functions`_
 0x87    0x0  0x00  dst = -dst                                           `Arithmetic instructions`_
-0x94    0x0  any   dst = (uint32_t)((imm != 0) ? (dst % imm) : imm)     `Arithmetic instructions`_
+0x94    0x0  any   dst = (uint32_t)((imm != 0) ? (dst % imm) : dst)     `Arithmetic instructions`_
 0x95    0x0  0x00  return                                               `Jump instructions`_
-0x97    0x0  any   dst = (imm != 0) ? (dst % imm) : imm                 `Arithmetic instructions`_
-0x9c    any  0x00  dst = (uint32_t)((src != 0) ? (dst % src) : src)     `Arithmetic instructions`_
-0x9f    any  0x00  dst = (src != 0) ? (dst % src) : src                 `Arithmetic instructions`_
+0x97    0x0  any   dst = (imm != 0) ? (dst % imm) : dst                 `Arithmetic instructions`_
+0x9c    any  0x00  dst = (uint32_t)((src != 0) ? (dst % src) : dst)     `Arithmetic instructions`_
+0x9f    any  0x00  dst = (src != 0) ? (dst % src) : dst                 `Arithmetic instructions`_
 0xa4    0x0  any   dst = (uint32_t)(dst ^ imm)                          `Arithmetic instructions`_
 0xa5    0x0  any   if dst < imm goto +offset                            `Jump instructions`_
 0xa6    0x0  any   if (uint32_t)dst < imm goto +offset                  `Jump instructions`_
