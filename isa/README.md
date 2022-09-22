@@ -15,3 +15,5 @@ Some implementation links include:
 * https://github.com/generic-ebpf/generic-ebpf/blob/dev/sys/sys/ebpf_vm_isa.h
 * https://github.com/vbpf/ebpf-verifier/blob/main/src/ebpf_vm_isa.hpp
 * https://elixir.bootlin.com/linux/latest/source/include/uapi/linux/bpf.h
+* https://lore.kernel.org/bpf/8DA9E260-AE56-4B21-90BF-CF0049CFD04D@intel.com/
+* https://github.com/iovisor/bpf-docs/pull/26/files
