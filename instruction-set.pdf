@@ -1,0 +1,3779 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+1 0 obj
+<<
+/F1 2 0 R /F2 3 0 R /F3 4 0 R /F4 5 0 R /F5 10 0 R
+>>
+endobj
+2 0 obj
+<<
+/BaseFont /Helvetica /Encoding /WinAnsiEncoding /Name /F1 /Subtype /Type1 /Type /Font
+>>
+endobj
+3 0 obj
+<<
+/BaseFont /Times-Roman /Encoding /WinAnsiEncoding /Name /F2 /Subtype /Type1 /Type /Font
+>>
+endobj
+4 0 obj
+<<
+/BaseFont /Courier /Encoding /WinAnsiEncoding /Name /F3 /Subtype /Type1 /Type /Font
+>>
+endobj
+5 0 obj
+<<
+/BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding /Name /F4 /Subtype /Type1 /Type /Font
+>>
+endobj
+6 0 obj
+<<
+/Contents 29 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+7 0 obj
+<<
+/Contents 30 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+8 0 obj
+<<
+/Contents 31 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+9 0 obj
+<<
+/Contents 32 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding /Name /F5 /Subtype /Type1 /Type /Font
+>>
+endobj
+11 0 obj
+<<
+/Contents 33 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+12 0 obj
+<<
+/Contents 34 0 R /MediaBox [ 0 0 595.2756 841.8898 ] /Parent 28 0 R /Resources <<
+/Font 1 0 R /ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>> /Rotate 0 /Trans <<
+
+>> 
+  /Type /Page
+>>
+endobj
+13 0 obj
+<<
+/Outlines 15 0 R /PageLabels 35 0 R /PageMode /UseNone /Pages 28 0 R /Type /Catalog
+>>
+endobj
+14 0 obj
+<<
+/Author () /CreationDate (D:20220922193437+00'00') /Creator (\(unspecified\)) /Keywords () /ModDate (D:20220922193437+00'00') /Producer (ReportLab PDF Library - www.reportlab.com) 
+  /Subject (\(unspecified\)) /Title (eBPF Instruction Set) /Trapped /False
+>>
+endobj
+15 0 obj
+<<
+/Count 15 /First 16 0 R /Last 23 0 R /Type /Outlines
+>>
+endobj
+16 0 obj
+<<
+/Dest [ 6 0 R /XYZ 57.02362 705.0236 0 ] /Next 17 0 R /Parent 15 0 R /Title (Registers and calling convention)
+>>
+endobj
+17 0 obj
+<<
+/Count 1 /Dest [ 6 0 R /XYZ 57.02362 540.0236 0 ] /First 18 0 R /Last 18 0 R /Next 19 0 R /Parent 15 0 R 
+  /Prev 16 0 R /Title (Instruction encoding)
+>>
+endobj
+18 0 obj
+<<
+/Dest [ 6 0 R /XYZ 57.02362 351.0236 0 ] /Parent 17 0 R /Title (Instruction classes)
+>>
+endobj
+19 0 obj
+<<
+/Count 3 /Dest [ 6 0 R /XYZ 57.02362 129.0236 0 ] /First 20 0 R /Last 22 0 R /Next 23 0 R /Parent 15 0 R 
+  /Prev 17 0 R /Title (Arithmetic and jump instructions)
+>>
+endobj
+20 0 obj
+<<
+/Dest [ 7 0 R /XYZ 57.02362 611.6929 0 ] /Next 21 0 R /Parent 19 0 R /Title (Arithmetic instructions)
+>>
+endobj
+21 0 obj
+<<
+/Dest [ 8 0 R /XYZ 57.02362 707.8236 0 ] /Next 22 0 R /Parent 19 0 R /Prev 20 0 R /Title (Byte swap instructions)
+>>
+endobj
+22 0 obj
+<<
+/Dest [ 8 0 R /XYZ 57.02362 337.4236 0 ] /Parent 19 0 R /Prev 21 0 R /Title (Jump instructions)
+>>
+endobj
+23 0 obj
+<<
+/Count 4 /Dest [ 9 0 R /XYZ 57.02362 663.0236 0 ] /First 24 0 R /Last 27 0 R /Parent 15 0 R /Prev 19 0 R 
+  /Title (Load and store instructions)
+>>
+endobj
+24 0 obj
+<<
+/Dest [ 9 0 R /XYZ 57.02362 294.0236 0 ] /Next 25 0 R /Parent 23 0 R /Title (Regular load and store operations)
+>>
+endobj
+25 0 obj
+<<
+/Dest [ 11 0 R /XYZ 57.02362 765.0236 0 ] /Next 26 0 R /Parent 23 0 R /Prev 24 0 R /Title (Atomic operations)
+>>
+endobj
+26 0 obj
+<<
+/Dest [ 11 0 R /XYZ 57.02362 100.6236 0 ] /Next 27 0 R /Parent 23 0 R /Prev 25 0 R /Title (64-bit immediate instructions)
+>>
+endobj
+27 0 obj
+<<
+/Dest [ 12 0 R /XYZ 57.02362 689.8236 0 ] /Parent 23 0 R /Prev 26 0 R /Title (Legacy BPF Packet access instructions)
+>>
+endobj
+28 0 obj
+<<
+/Count 6 /Kids [ 6 0 R 7 0 R 8 0 R 9 0 R 11 0 R 12 0 R ] /Type /Pages
+>>
+endobj
+29 0 obj
+<<
+/Length 10079
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 741.0236 cm
+q
+.133333 .133333 .133333 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 157.2742 0 Td (eBPF Instruction Set) Tj T* -157.2742 0 Td ET
+Q
+Q
+q
+1 0 0 1 57.02362 684.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf .133333 .133333 .133333 rg (Registers and calling convention) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 666.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (eBPF has 10 general purpose registers and a read-only frame pointer register, all of which are 64-bits wide.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 648.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The eBPF calling convention is defined as:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 642.0236 cm
+Q
+q
+1 0 0 1 57.02362 570.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 66 cm
+Q
+q
+1 0 0 1 20 66 cm
+Q
+q
+1 0 0 1 20 54 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (R0: return value from function calls, and exit value for eBPF programs) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 36 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (R1 - R5: arguments for function calls) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 18 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (R6 - R9: callee saved registers that function calls will preserve) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 12 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (R10: read-only frame pointer to access stack) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 570.0236 cm
+Q
+q
+1 0 0 1 57.02362 552.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (R0 - R5 are scratch registers and eBPF programs needs to spill/fill them if necessary across calls.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 519.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf .133333 .133333 .133333 rg (Instruction encoding) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 501.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (eBPF has two instruction encodings:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 495.0236 cm
+Q
+q
+1 0 0 1 57.02362 447.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 42 cm
+Q
+q
+1 0 0 1 20 42 cm
+Q
+q
+1 0 0 1 20 30 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (the basic instruction encoding, which uses 64 bits to encode an instruction) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 24 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .875257 Tw (the wide instruction encoding, which appends a second 64-bit immediate value \(imm64\) after the) Tj T* 0 Tw (basic instruction for a total of 128 bits.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 447.0236 cm
+Q
+q
+1 0 0 1 57.02362 429.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The basic instruction encoding looks as follows:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 423.0236 cm
+Q
+q
+1 0 0 1 -25.8772 381.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 36 627.03 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 627.03 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 23.16127 0 Td (32 bits \(MSB\)) Tj T* -23.16127 0 Td ET
+Q
+Q
+q
+1 0 0 1 127.6625 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 10.9153 0 Td (16 bits) Tj T* -10.9153 0 Td ET
+Q
+Q
+q
+1 0 0 1 193.1731 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 51.12993 0 Td (4 bits) Tj T* -51.12993 0 Td ET
+Q
+Q
+q
+1 0 0 1 333.553 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 74.52657 0 Td (4 bits) Tj T* -74.52657 0 Td ET
+Q
+Q
+q
+1 0 0 1 520.7261 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 22.37194 0 Td (8 bits \(LSB\)) Tj T* -22.37194 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (immediate) Tj T* ET
+Q
+Q
+q
+1 0 0 1 127.6625 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (offset) Tj T* ET
+Q
+Q
+q
+1 0 0 1 193.1731 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (source register) Tj T* ET
+Q
+Q
+q
+1 0 0 1 333.553 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (destination register) Tj T* ET
+Q
+Q
+q
+1 0 0 1 520.7261 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (opcode) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 18 m 627.03 18 l S
+n 121.6625 0 m 121.6625 36 l S
+n 187.1731 0 m 187.1731 36 l S
+n 327.553 0 m 327.553 36 l S
+n 514.7261 0 m 514.7261 36 l S
+n 0 36 m 627.03 36 l S
+n 0 0 m 627.03 0 l S
+n 0 0 m 0 36 l S
+n 627.03 0 m 627.03 36 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 381.0236 cm
+Q
+q
+1 0 0 1 57.02362 363.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Note that most instructions do not use all of the fields. Unused fields shall be cleared to zero.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 333.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Instruction classes) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 315.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The three LSB bits of the 'opcode' field store the instruction class:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 309.0236 cm
+Q
+q
+1 0 0 1 57.02362 141.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 162 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 162 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 144 461.2283 -18 re f*
+1 1 1 rg
+n 0 126 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 108 461.2283 -18 re f*
+1 1 1 rg
+n 0 90 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 72 461.2283 -18 re f*
+1 1 1 rg
+n 0 54 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 36 461.2283 -18 re f*
+1 1 1 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 27.61283 0 Td (class) Tj T* -27.61283 0 Td ET
+Q
+Q
+q
+1 0 0 1 98.24567 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 6.838797 0 Td (value) Tj T* -6.838797 0 Td ET
+Q
+Q
+q
+1 0 0 1 149.4933 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 125.9175 0 Td (description) Tj T* -125.9175 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_LD) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (non-standard load operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_LDX) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x01) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (load into register operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ST) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x02) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (store from immediate operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_STX) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x03) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (store from register operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ALU) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x04) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (32-bit arithmetic operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JMP) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x05) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (64-bit jump operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JMP32) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x06) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (32-bit jump operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ALU64) Tj T* ET
+Q
+Q
+q
+1 0 0 1 98.24567 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x07) Tj T* ET
+Q
+Q
+q
+1 0 0 1 149.4933 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (64-bit arithmetic operations) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 144 m 461.2283 144 l S
+n 0 126 m 461.2283 126 l S
+n 0 108 m 461.2283 108 l S
+n 0 90 m 461.2283 90 l S
+n 0 72 m 461.2283 72 l S
+n 0 54 m 461.2283 54 l S
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 92.24567 0 m 92.24567 162 l S
+n 143.4933 0 m 143.4933 162 l S
+n 0 162 m 461.2283 162 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 162 l S
+n 461.2283 0 m 461.2283 162 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 141.0236 cm
+Q
+q
+1 0 0 1 57.02362 108.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf .133333 .133333 .133333 rg (Arithmetic and jump instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 78.02362 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 3.37985 Tw (For arithmetic and jump instructions \(BPF_ALU, BPF_ALU64, BPF_JMP and BPF_JMP32\), the 8-bit) Tj T* 0 Tw ('opcode' field is divided into three parts:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 72.02362 cm
+Q
+ 
+endstream
+endobj
+30 0 obj
+<<
+/Length 10528
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 725.6929 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 36 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 52.36942 0 Td (4 bits \(MSB\)) Tj T* -52.36942 0 Td ET
+Q
+Q
+q
+1 0 0 1 180.5188 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 21.11689 0 Td (1 bit) Tj T* -21.11689 0 Td ET
+Q
+Q
+q
+1 0 0 1 255.3126 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 72.17786 0 Td (3 bits \(LSB\)) Tj T* -72.17786 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (operation code) Tj T* ET
+Q
+Q
+q
+1 0 0 1 180.5188 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (source) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.3126 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (instruction class) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 18 m 461.2283 18 l S
+n 174.5188 0 m 174.5188 36 l S
+n 249.3126 0 m 249.3126 36 l S
+n 0 36 m 461.2283 36 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 36 l S
+n 461.2283 0 m 461.2283 36 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 725.6929 cm
+Q
+q
+1 0 0 1 57.02362 707.6929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The 4th bit encodes the source operand:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 701.6929 cm
+Q
+q
+1 0 0 1 57.02362 641.6929 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 54 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 54 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 36 461.2283 -18 re f*
+1 1 1 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 4.736079 0 Td (source) Tj T* -4.736079 0 Td ET
+Q
+Q
+q
+1 0 0 1 60.26216 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 3.824233 0 Td (value) Tj T* -3.824233 0 Td ET
+Q
+Q
+q
+1 0 0 1 105.4806 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 147.9239 0 Td (description) Tj T* -147.9239 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_K) Tj T* ET
+Q
+Q
+q
+1 0 0 1 60.26216 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.4806 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (use 32-bit immediate as source operand) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_X) Tj T* ET
+Q
+Q
+q
+1 0 0 1 60.26216 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x08) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.4806 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (use 'src_reg' register as source operand) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 54.26216 0 m 54.26216 54 l S
+n 99.48062 0 m 99.48062 54 l S
+n 0 54 m 461.2283 54 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 54 l S
+n 461.2283 0 m 461.2283 54 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 641.6929 cm
+Q
+q
+1 0 0 1 57.02362 623.6929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The four MSB bits store the operation code.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 593.6929 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Arithmetic instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 563.6929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.105257 Tw (BPF_ALU uses 32-bit wide operands while BPF_ALU64 uses 64-bit wide operands for otherwise identical) Tj T* 0 Tw (operations. The code field encodes the operation as below:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 557.6929 cm
+Q
+q
+1 0 0 1 57.02362 233.6929 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 318 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 318 461.2283 -30 re f*
+.878431 .878431 .878431 rg
+n 0 288 461.2283 -18 re f*
+1 1 1 rg
+n 0 270 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 252 461.2283 -18 re f*
+1 1 1 rg
+n 0 234 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 216 461.2283 -18 re f*
+1 1 1 rg
+n 0 198 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 180 461.2283 -18 re f*
+1 1 1 rg
+n 0 162 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 144 461.2283 -18 re f*
+1 1 1 rg
+n 0 126 461.2283 -30 re f*
+.878431 .878431 .878431 rg
+n 0 96 461.2283 -18 re f*
+1 1 1 rg
+n 0 78 461.2283 -30 re f*
+.878431 .878431 .878431 rg
+n 0 48 461.2283 -30 re f*
+1 1 1 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 291 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 12.08667 0 Td (code) Tj T* -12.08667 0 Td ET
+Q
+Q
+q
+1 0 0 1 65.51334 291 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F4 10 Tf 12 TL 2.592917 0 Td (valu) Tj T* 7.225 0 Td (e) Tj T* -9.817917 0 Td ET
+Q
+Q
+q
+1 0 0 1 102.7092 291 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 149.3096 0 Td (description) Tj T* -149.3096 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 273 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ADD) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 273 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 273 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst += src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 255 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_SUB) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 255 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x10) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 255 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst -= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 237 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_MUL) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 237 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x20) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 237 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst *= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 219 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_DIV) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 219 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x30) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 219 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst /= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 201 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_OR) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 201 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x40) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 201 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst |= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_AND) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x50) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 183 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (dst &) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_LSH) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x60) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 165 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (dst <) Tj (<) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_RSH) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x70) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 147 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (dst >) Tj (>) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_NEG) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x80) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst = ~src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 99 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL (BPF_MO) Tj T* (D) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x90) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst %= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 81 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_XOR) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 81 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xa0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 81 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst ^= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 51 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL (BPF_MO) Tj T* (V) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xb0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (dst = src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL (BPF_ARS) Tj T* (H) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xc0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (sign extending shift right) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_END) Tj T* ET
+Q
+Q
+q
+1 0 0 1 65.51334 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xd0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 102.7092 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (byte swap operations \(see separate section below\)) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 288 m 461.2283 288 l S
+n 0 270 m 461.2283 270 l S
+n 0 252 m 461.2283 252 l S
+n 0 234 m 461.2283 234 l S
+n 0 216 m 461.2283 216 l S
+n 0 198 m 461.2283 198 l S
+n 0 180 m 461.2283 180 l S
+n 0 162 m 461.2283 162 l S
+n 0 144 m 461.2283 144 l S
+n 0 126 m 461.2283 126 l S
+n 0 96 m 461.2283 96 l S
+n 0 78 m 461.2283 78 l S
+n 0 48 m 461.2283 48 l S
+n 0 18 m 461.2283 18 l S
+n 59.51334 0 m 59.51334 318 l S
+n 96.70917 0 m 96.70917 318 l S
+n 0 318 m 461.2283 318 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 318 l S
+n 461.2283 0 m 461.2283 318 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 233.6929 cm
+Q
+q
+1 0 0 1 57.02362 215.6929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ADD | BPF_X | BPF_ALU means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 182.4929 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = \(u32\) dst_reg + \(u32\) src_reg;) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 162.4929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ADD | BPF_X | BPF_ALU64 means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 129.2929 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = dst_reg + src_reg) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 109.2929 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_XOR | BPF_K | BPF_ALU means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 76.09291 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (src_reg = \(u32\) src_reg ^ \(u32\) imm32) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+ 
+endstream
+endobj
+31 0 obj
+<<
+/Length 9954
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 753.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_XOR | BPF_K | BPF_ALU64 means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 719.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (src_reg = src_reg ^ imm32) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 689.8236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Byte swap instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 671.8236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (The byte swap instructions use an instruction class of ) Tj /F3 10 Tf (BPF_ALU) Tj /F1 10 Tf ( and a 4-bit code field of ) Tj /F3 10 Tf (BPF_END) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 641.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL -0.040097 Tw (The byte swap instructions operate on the destination register only and do not use a separate source register) Tj T* 0 Tw (or immediate value.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 611.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .461492 Tw (The 1-bit source operand field in the opcode is used to to select what byte order the operation convert from) Tj T* 0 Tw (or to:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 605.8236 cm
+Q
+q
+1 0 0 1 57.02362 509.8236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 90 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 90 461.2283 -30 re f*
+.878431 .878431 .878431 rg
+n 0 60 461.2283 -30 re f*
+1 1 1 rg
+n 0 30 461.2283 -30 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 10.54988 0 Td (source) Tj T* -10.54988 0 Td ET
+Q
+Q
+q
+1 0 0 1 71.88976 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F4 10 Tf 12 TL 2.297712 0 Td (valu) Tj T* 7.225 0 Td (e) Tj T* -9.522712 0 Td ET
+Q
+Q
+q
+1 0 0 1 108.4952 63 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 146.4166 0 Td (description) Tj T* -146.4166 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 33 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL (BPF_TO_L) Tj T* (E) Tj T* ET
+Q
+Q
+q
+1 0 0 1 71.88976 45 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 108.4952 45 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (convert between host byte order and little endian) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL (BPF_TO_B) Tj T* (E) Tj T* ET
+Q
+Q
+q
+1 0 0 1 71.88976 15 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x08) Tj T* ET
+Q
+Q
+q
+1 0 0 1 108.4952 15 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (convert between host byte order and big endian) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 60 m 461.2283 60 l S
+n 0 30 m 461.2283 30 l S
+n 65.88976 0 m 65.88976 90 l S
+n 102.4952 0 m 102.4952 90 l S
+n 0 90 m 461.2283 90 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 90 l S
+n 461.2283 0 m 461.2283 90 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 509.8236 cm
+Q
+q
+1 0 0 1 57.02362 491.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The imm field encodes the width of the swap operations. The following widths are supported: 16, 32 and 64.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 473.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Examples:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 455.8236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ALU) Tj ( ) Tj (|) Tj ( ) Tj (BPF_TO_LE) Tj ( ) Tj (|) Tj ( ) Tj (BPF_END) Tj /F1 10 Tf ( with imm = 16 means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 422.6236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = htole16\(dst_reg\)) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 402.6236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ALU) Tj ( ) Tj (|) Tj ( ) Tj (BPF_TO_BE) Tj ( ) Tj (|) Tj ( ) Tj (BPF_END) Tj /F1 10 Tf ( with imm = 64 means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 369.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = htobe64\(dst_reg\)) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 349.4236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_FROM_LE) Tj /F1 10 Tf ( and ) Tj /F3 10 Tf (BPF_FROM_BE) Tj /F1 10 Tf ( exist as aliases for ) Tj /F3 10 Tf (BPF_TO_LE) Tj /F1 10 Tf ( and ) Tj /F3 10 Tf (BPF_TO_BE) Tj /F1 10 Tf ( respectively.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 319.4236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Jump instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 289.4236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.020642 Tw (BPF_JMP32 uses 32-bit wide operands while BPF_JMP uses 64-bit wide operands for otherwise identical) Tj T* 0 Tw (operations. The code field encodes the operation as below:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 283.4236 cm
+Q
+q
+1 0 0 1 57.02362 62.69291 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 198 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 198 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 180 455.2283 -18 re f*
+1 1 1 rg
+n 0 162 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 144 455.2283 -18 re f*
+1 1 1 rg
+n 0 126 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 108 455.2283 -18 re f*
+1 1 1 rg
+n 0 90 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 72 455.2283 -18 re f*
+1 1 1 rg
+n 0 54 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 36 455.2283 -18 re f*
+1 1 1 rg
+n 0 18 455.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 18.74827 0 Td (code) Tj T* -18.74827 0 Td ET
+Q
+Q
+q
+1 0 0 1 78.83654 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 3.976417 0 Td (value) Tj T* -3.976417 0 Td ET
+Q
+Q
+q
+1 0 0 1 124.3594 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 80.85709 0 Td (description) Tj T* -80.85709 0 Td ET
+Q
+Q
+q
+1 0 0 1 351.9735 183 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 35.2924 0 Td (notes) Tj T* -35.2924 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JA) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (PC += off) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 165 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JMP only) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JEQ) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x10) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 147 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (PC += off if dst == src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JGT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x20) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 129 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst > src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (unsigned) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JGE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x30) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 111 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst >) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (unsigned) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JSET) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x40) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 93 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst & src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JNE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x50) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (PC += off if dst != src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JSGT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x60) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 57 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst > src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (signed) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JSGE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x70) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 39 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst >) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (signed) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_CALL) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x80) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (function call) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_EXIT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x90) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (function / program return) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JMP only) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 0 m 455.2283 0 l S
+n 0 180 m 455.2283 180 l S
+n 0 162 m 455.2283 162 l S
+n 0 144 m 455.2283 144 l S
+n 0 126 m 455.2283 126 l S
+n 0 108 m 455.2283 108 l S
+n 0 90 m 455.2283 90 l S
+n 0 72 m 455.2283 72 l S
+n 0 54 m 455.2283 54 l S
+n 0 36 m 455.2283 36 l S
+n 0 18 m 455.2283 18 l S
+n 72.83654 0 m 72.83654 198 l S
+n 118.3594 0 m 118.3594 198 l S
+n 345.9735 0 m 345.9735 198 l S
+n 0 198 m 455.2283 198 l S
+n 0 0 m 0 198 l S
+n 455.2283 0 m 455.2283 198 l S
+Q
+Q
+Q
+q
+Q
+Q
+Q
+ 
+endstream
+endobj
+32 0 obj
+<<
+/Length 11291
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 693.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 72 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 54 455.2283 -18 re f*
+1 1 1 rg
+n 0 36 455.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 455.2283 -18 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JLT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xa0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 57 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst < src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (unsigned) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JLE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xb0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 39 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst <) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (unsigned) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JSLT) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xc0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 21 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst < src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (signed) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_JSLE) Tj T* ET
+Q
+Q
+q
+1 0 0 1 78.83654 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xd0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 124.3594 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (PC += off if dst <) Tj (= src) Tj T* ET
+Q
+Q
+q
+1 0 0 1 351.9735 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (signed) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 72 m 455.2283 72 l S
+n 0 54 m 455.2283 54 l S
+n 0 36 m 455.2283 36 l S
+n 0 18 m 455.2283 18 l S
+n 72.83654 0 m 72.83654 72 l S
+n 118.3594 0 m 118.3594 72 l S
+n 345.9735 0 m 345.9735 72 l S
+n 0 0 m 0 72 l S
+n 455.2283 0 m 455.2283 72 l S
+n 0 0 m 455.2283 0 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 693.0236 cm
+Q
+q
+1 0 0 1 57.02362 675.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The eBPF program needs to store the return value into register R0 before doing a BPF_EXIT.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 642.0236 cm
+q
+BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf .133333 .133333 .133333 rg (Load and store instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 612.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.944168 Tw (For load and store instructions \(BPF_LD, BPF_LDX, BPF_ST and BPF_STX\), the 8-bit 'opcode' field is) Tj T* 0 Tw (divided as:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 606.0236 cm
+Q
+q
+1 0 0 1 57.02362 564.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 36 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 36 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 44.17772 0 Td (3 bits \(MSB\)) Tj T* -44.17772 0 Td ET
+Q
+Q
+q
+1 0 0 1 164.1354 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 20.47386 0 Td (2 bits) Tj T* -20.47386 0 Td ET
+Q
+Q
+q
+1 0 0 1 243.2031 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 78.2326 0 Td (3 bits \(LSB\)) Tj T* -78.2326 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (mode) Tj T* ET
+Q
+Q
+q
+1 0 0 1 164.1354 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (size) Tj T* ET
+Q
+Q
+q
+1 0 0 1 243.2031 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (instruction class) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 18 m 461.2283 18 l S
+n 158.1354 0 m 158.1354 36 l S
+n 237.2031 0 m 237.2031 36 l S
+n 0 36 m 461.2283 36 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 36 l S
+n 461.2283 0 m 461.2283 36 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 564.0236 cm
+Q
+q
+1 0 0 1 57.02362 546.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The size modifier is one of:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 540.0236 cm
+Q
+q
+1 0 0 1 57.02362 444.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 90 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 90 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 72 461.2283 -18 re f*
+1 1 1 rg
+n 0 54 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 36 461.2283 -18 re f*
+1 1 1 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 40.30639 0 Td (size modifier) Tj T* -40.30639 0 Td ET
+Q
+Q
+q
+1 0 0 1 159.7428 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 10.78092 0 Td (value) Tj T* -10.78092 0 Td ET
+Q
+Q
+q
+1 0 0 1 218.8746 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 91.22686 0 Td (description) Tj T* -91.22686 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_W) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.8746 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (word \(4 bytes\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_H) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x08) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.8746 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (half word \(2 bytes\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_B) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x10) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.8746 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (byte) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_DW) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x18) Tj T* ET
+Q
+Q
+q
+1 0 0 1 218.8746 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (double word \(8 bytes\)) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 72 m 461.2283 72 l S
+n 0 54 m 461.2283 54 l S
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 153.7428 0 m 153.7428 90 l S
+n 212.8746 0 m 212.8746 90 l S
+n 0 90 m 461.2283 90 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 90 l S
+n 461.2283 0 m 461.2283 90 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 444.0236 cm
+Q
+q
+1 0 0 1 57.02362 426.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The mode modifier is one of:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 420.0236 cm
+Q
+q
+1 0 0 1 57.02362 306.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 108 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 108 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 90 461.2283 -18 re f*
+1 1 1 rg
+n 0 72 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 54 461.2283 -18 re f*
+1 1 1 rg
+n 0 36 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 15.06823 0 Td (mode modifier) Tj T* -15.06823 0 Td ET
+Q
+Q
+q
+1 0 0 1 117.0365 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 2.568164 0 Td (value) Tj T* -2.568164 0 Td ET
+Q
+Q
+q
+1 0 0 1 159.7428 93 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 120.7928 0 Td (description) Tj T* -120.7928 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_IMM) Tj T* ET
+Q
+Q
+q
+1 0 0 1 117.0365 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (64-bit immediate instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ABS) Tj T* ET
+Q
+Q
+q
+1 0 0 1 117.0365 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x20) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (legacy BPF packet access \(absolute\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_IND) Tj T* ET
+Q
+Q
+q
+1 0 0 1 117.0365 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x40) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (legacy BPF packet access \(indirect\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_MEM) Tj T* ET
+Q
+Q
+q
+1 0 0 1 117.0365 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x60) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (regular load and store operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ATOMIC) Tj T* ET
+Q
+Q
+q
+1 0 0 1 117.0365 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xc0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic operations) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 90 m 461.2283 90 l S
+n 0 72 m 461.2283 72 l S
+n 0 54 m 461.2283 54 l S
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 111.0365 0 m 111.0365 108 l S
+n 153.7428 0 m 153.7428 108 l S
+n 0 108 m 461.2283 108 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 108 l S
+n 461.2283 0 m 461.2283 108 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 306.0236 cm
+Q
+q
+1 0 0 1 57.02362 276.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Regular load and store operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 246.0236 cm
+q
+BT 1 0 0 1 0 14 Tm -0.026978 Tw 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf (BPF_MEM) Tj /F1 10 Tf ( mode modifier is used to encode regular load and store instructions that transfer data between) Tj T* 0 Tw (a register and memory.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 228.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_MEM) Tj ( ) Tj (|) Tj ( ) Tj (<) Tj (size) Tj (>) Tj ( ) Tj (|) Tj ( ) Tj (BPF_STX) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 194.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (*\(size *\) \(dst_reg + off\) = src_reg) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 174.8236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_MEM) Tj ( ) Tj (|) Tj ( ) Tj (<) Tj (size) Tj (>) Tj ( ) Tj (|) Tj ( ) Tj (BPF_ST) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 141.6236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (*\(size *\) \(dst_reg + off\) = imm32) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 121.6236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_MEM) Tj ( ) Tj (|) Tj ( ) Tj (<) Tj (size) Tj (>) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LDX) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 88.42362 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = *\(size *\) \(src_reg + off\)) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 68.42362 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Where size is one of: ) Tj /F3 10 Tf (BPF_B) Tj /F1 10 Tf (, ) Tj /F3 10 Tf (BPF_H) Tj /F1 10 Tf (, ) Tj /F3 10 Tf (BPF_W) Tj /F1 10 Tf (, or ) Tj /F3 10 Tf (BPF_DW) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+ 
+endstream
+endobj
+33 0 obj
+<<
+/Length 10507
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 747.0236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Atomic operations) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 717.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .652397 Tw (Atomic operations are operations that operate on memory and can not be interrupted or corrupted by other) Tj T* 0 Tw (access to the same memory region by other eBPF programs or means outside of this specification.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 687.0236 cm
+q
+BT 1 0 0 1 0 14 Tm .549223 Tw 12 TL /F1 10 Tf 0 0 0 rg (All atomic operations supported by eBPF are encoded as store operations that use the ) Tj /F3 10 Tf (BPF_ATOMIC) Tj /F1 10 Tf ( mode) Tj T* 0 Tw (modifier as follows:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 681.0236 cm
+Q
+q
+1 0 0 1 57.02362 627.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 48 cm
+Q
+q
+1 0 0 1 20 36 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ATOMIC) Tj ( ) Tj (|) Tj ( ) Tj (BPF_W) Tj ( ) Tj (|) Tj ( ) Tj (BPF_STX) Tj /F1 10 Tf ( for 32-bit operations) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 30 cm
+Q
+q
+1 0 0 1 20 18 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ATOMIC) Tj ( ) Tj (|) Tj ( ) Tj (BPF_DW) Tj ( ) Tj (|) Tj ( ) Tj (BPF_STX) Tj /F1 10 Tf ( for 64-bit operations) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 12 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (8-bit and 16-bit wide atomic operations are not supported.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 627.0236 cm
+Q
+q
+1 0 0 1 57.02362 597.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL .951019 Tw (The imm field is used to encode the actual atomic operation. Simple atomic operation use a subset of the) Tj T* 0 Tw (values defined to encode arithmetic operations in the imm field to encode the atomic operation:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 591.0236 cm
+Q
+q
+1 0 0 1 57.02362 495.0236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 90 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 90 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 72 461.2283 -18 re f*
+1 1 1 rg
+n 0 54 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 36 461.2283 -18 re f*
+1 1 1 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 60.59139 0 Td (imm) Tj T* -60.59139 0 Td ET
+Q
+Q
+q
+1 0 0 1 159.7428 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 29.25962 0 Td (value) Tj T* -29.25962 0 Td ET
+Q
+Q
+q
+1 0 0 1 255.832 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 72.74816 0 Td (description) Tj T* -72.74816 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_ADD) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x00) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.832 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic add) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_OR) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x40) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.832 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic or) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_AND) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x50) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.832 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic and) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_XOR) Tj T* ET
+Q
+Q
+q
+1 0 0 1 159.7428 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xa0) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.832 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic xor) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 72 m 461.2283 72 l S
+n 0 54 m 461.2283 54 l S
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 153.7428 0 m 153.7428 90 l S
+n 249.832 0 m 249.832 90 l S
+n 0 90 m 461.2283 90 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 90 l S
+n 461.2283 0 m 461.2283 90 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 495.0236 cm
+Q
+q
+1 0 0 1 57.02362 477.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ATOMIC) Tj ( ) Tj (|) Tj ( ) Tj (BPF_W) Tj ( ) Tj ( ) Tj (|) Tj ( ) Tj (BPF_STX) Tj /F1 10 Tf ( with imm = BPF_ADD means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 443.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (*\(u32 *\)\(dst_reg + off16\) += src_reg) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 423.8236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ATOMIC) Tj ( ) Tj (|) Tj ( ) Tj (BPF_DW) Tj ( ) Tj (|) Tj ( ) Tj (BPF_STX) Tj /F1 10 Tf ( with imm = BPF ADD means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 390.6236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (*\(u64 *\)\(dst_reg + off16\) += src_reg) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 370.6236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_XADD) Tj /F1 10 Tf ( is a deprecated name for ) Tj /F3 10 Tf (BPF_ATOMIC) Tj ( ) Tj (|) Tj ( ) Tj (BPF_ADD) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 352.6236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (In addition to the simple atomic operations, there also is a modifier and two complex atomic operations:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 346.6236 cm
+Q
+q
+1 0 0 1 57.02362 268.6236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 72 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+1 1 1 rg
+n 0 72 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 54 461.2283 -18 re f*
+1 1 1 rg
+n 0 36 461.2283 -18 re f*
+.878431 .878431 .878431 rg
+n 0 18 461.2283 -18 re f*
+0 0 0 rg
+BT /F4 10 Tf 12 TL ET
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 30.69696 0 Td (imm) Tj T* -30.69696 0 Td ET
+Q
+Q
+q
+1 0 0 1 99.95392 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 49.54513 0 Td (value) Tj T* -49.54513 0 Td ET
+Q
+Q
+q
+1 0 0 1 236.6142 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F4 10 Tf 12 TL 82.35709 0 Td (description) Tj T* -82.35709 0 Td ET
+Q
+Q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_FETCH) Tj T* ET
+Q
+Q
+q
+1 0 0 1 99.95392 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0x01) Tj T* ET
+Q
+Q
+q
+1 0 0 1 236.6142 39 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (modifier: return old value) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_XCHG) Tj T* ET
+Q
+Q
+q
+1 0 0 1 99.95392 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xe0 | BPF_FETCH) Tj T* ET
+Q
+Q
+q
+1 0 0 1 236.6142 21 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic exchange) Tj T* ET
+Q
+Q
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (BPF_CMPXCHG) Tj T* ET
+Q
+Q
+q
+1 0 0 1 99.95392 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (0xf0 | BPF_FETCH) Tj T* ET
+Q
+Q
+q
+1 0 0 1 236.6142 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (atomic compare and exchange) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.25 w
+n 0 54 m 461.2283 54 l S
+n 0 36 m 461.2283 36 l S
+n 0 18 m 461.2283 18 l S
+n 93.95392 0 m 93.95392 72 l S
+n 230.6142 0 m 230.6142 72 l S
+n 0 72 m 461.2283 72 l S
+n 0 0 m 461.2283 0 l S
+n 0 0 m 0 72 l S
+n 461.2283 0 m 461.2283 72 l S
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 268.6236 cm
+Q
+q
+1 0 0 1 57.02362 226.6236 cm
+q
+BT 1 0 0 1 0 26 Tm 1.212556 Tw 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf (BPF_FETCH) Tj /F1 10 Tf ( modifier is optional for simple atomic operations, and always set for the complex atomic) Tj T* 0 Tw .034609 Tw (operations. If the ) Tj /F3 10 Tf (BPF_FETCH) Tj /F1 10 Tf ( flag is set, then the operation also overwrites ) Tj /F3 10 Tf (src_reg) Tj /F1 10 Tf ( with the value that was) Tj T* 0 Tw (in memory before it was modified.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 208.6236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf (BPF_XCHG) Tj /F1 10 Tf ( operation atomically exchanges ) Tj /F3 10 Tf (src_reg) Tj /F1 10 Tf ( with the value addressed by ) Tj /F3 10 Tf (dst_reg) Tj ( ) Tj (+) Tj ( ) Tj (off) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 166.6236 cm
+q
+BT 1 0 0 1 0 26 Tm .116556 Tw 12 TL /F1 10 Tf 0 0 0 rg (The ) Tj /F3 10 Tf (BPF_CMPXCHG) Tj /F1 10 Tf ( operation atomically compares the value addressed by ) Tj /F3 10 Tf (dst_reg) Tj ( ) Tj (+) Tj ( ) Tj (off) Tj /F1 10 Tf ( with ) Tj /F3 10 Tf (R0) Tj /F1 10 Tf (. If they) Tj T* 0 Tw .976962 Tw (match, the value addressed by ) Tj /F3 10 Tf (dst_reg) Tj ( ) Tj (+) Tj ( ) Tj (off) Tj /F1 10 Tf ( is replaced with ) Tj /F3 10 Tf (src_reg) Tj /F1 10 Tf (. In either case, the value that) Tj T* 0 Tw (was at ) Tj /F3 10 Tf (dst_reg) Tj ( ) Tj (+) Tj ( ) Tj (off) Tj /F1 10 Tf ( before the operation is zero-extended and loaded back to ) Tj /F3 10 Tf (R0) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 112.6236 cm
+q
+BT 1 0 0 1 0 38 Tm -0.114803 Tw 12 TL /F1 10 Tf 0 0 0 rg (Clang can generate atomic instructions by default when ) Tj /F3 10 Tf (-mcpu=v3) Tj /F1 10 Tf ( is enabled. If a lower version for ) Tj /F3 10 Tf (-mcpu) Tj /F1 10 Tf ( is) Tj T* 0 Tw .731147 Tw (set, the only atomic instruction Clang can generate is ) Tj /F3 10 Tf (BPF_ADD) Tj /F1 10 Tf ( ) Tj /F5 10 Tf (without) Tj /F1 10 Tf ( ) Tj /F3 10 Tf (BPF_FETCH) Tj /F1 10 Tf (. If you need to enable) Tj T* 0 Tw 14.79712 Tw (the atomics features, while keeping a lower ) Tj /F3 10 Tf (-mcpu) Tj /F1 10 Tf ( version, you can use) Tj T* 0 Tw /F3 10 Tf (-Xclang) Tj ( ) Tj (-target-feature) Tj ( ) Tj (-Xclang) Tj ( ) Tj (+alu32) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 82.62362 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (64-bit immediate instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 64.62362 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (Instructions with the ) Tj /F3 10 Tf (BPF_IMM) Tj /F1 10 Tf ( mode modifier use the wide instruction encoding for an extra imm64 value.) Tj T* ET
+Q
+Q
+ 
+endstream
+endobj
+34 0 obj
+<<
+/Length 4829
+>>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 57.02362 753.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (There is currently only one such instruction.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 735.0236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_LD) Tj ( ) Tj (|) Tj ( ) Tj (BPF_DW) Tj ( ) Tj (|) Tj ( ) Tj (BPF_IMM) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 701.8236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL (dst_reg = imm64) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 671.8236 cm
+q
+BT 1 0 0 1 0 3 Tm 18 TL /F2 15 Tf .133333 .133333 .133333 rg (Legacy BPF Packet access instructions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 641.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL 1.335197 Tw (eBPF has special instructions for access to packet data that have been carried over from classic BPF to) Tj T* 0 Tw (retain the performance of legacy socket filters running in the eBPF interpreter.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 611.8236 cm
+q
+BT 1 0 0 1 0 14 Tm 13.79258 Tw 12 TL /F1 10 Tf 0 0 0 rg (The instructions come in two forms: ) Tj /F3 10 Tf (BPF_ABS) Tj ( ) Tj (|) Tj ( ) Tj (<) Tj (size) Tj (>) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf ( and) Tj T* 0 Tw /F3 10 Tf (BPF_IND) Tj ( ) Tj (|) Tj ( ) Tj (<) Tj (size) Tj (>) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 557.8236 cm
+q
+BT 1 0 0 1 0 38 Tm 1.351575 Tw 12 TL /F1 10 Tf 0 0 0 rg (These instructions are used to access packet data and can only be used when the program context is a) Tj T* 0 Tw 3.183453 Tw (pointer to networking packet. ) Tj /F3 10 Tf (BPF_ABS) Tj /F1 10 Tf ( accesses packet data at an absolute offset specified by the) Tj T* 0 Tw .098241 Tw (immediate data and ) Tj /F3 10 Tf (BPF_IND) Tj /F1 10 Tf ( access packet data at an offset that includes the value of a register in addition) Tj T* 0 Tw (to the immediate data.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 539.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (These instructions have seven implicit operands:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 533.8236 cm
+Q
+q
+1 0 0 1 57.02362 467.8236 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+BT 1 0 0 1 0 2 Tm  T* ET
+q
+1 0 0 1 20 60 cm
+Q
+q
+1 0 0 1 20 60 cm
+Q
+q
+1 0 0 1 20 48 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Register R6 is an implicit input that must contain pointer to a struct sk_buff.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 42 cm
+Q
+q
+1 0 0 1 20 30 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Register R0 is an implicit output which contains the data fetched from the packet.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 24 cm
+Q
+q
+1 0 0 1 20 0 cm
+q
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 9 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F3 10 Tf 12 TL 8 0 Td (\177) Tj T* -8 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+BT 1 0 0 1 0 14 Tm 1.140556 Tw 12 TL /F1 10 Tf 0 0 0 rg (Registers R1-R5 are scratch registers that are clobbered after a call to ) Tj /F3 10 Tf (BPF_ABS) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf ( or) Tj T* 0 Tw /F3 10 Tf (BPF_IND) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf ( instructions.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 20 0 cm
+Q
+q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 467.8236 cm
+Q
+q
+1 0 0 1 57.02362 437.8236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 14 Tm /F1 10 Tf 12 TL -0.101274 Tw (These instructions have an implicit program exit condition as well. When an eBPF program is trying to access) Tj T* 0 Tw (the data beyond the packet boundary, the program execution will be aborted.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 419.8236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_ABS) Tj ( ) Tj (|) Tj ( ) Tj (BPF_W) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 386.6236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (R0 = ntohl\(*\(u32 *\) \(\(\(struct sk_buff *\) R6\)-) Tj (>) Tj (data + imm32\)\)) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+q
+1 0 0 1 57.02362 366.6236 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (BPF_IND) Tj ( ) Tj (|) Tj ( ) Tj (BPF_W) Tj ( ) Tj (|) Tj ( ) Tj (BPF_LD) Tj /F1 10 Tf ( means:) Tj T* ET
+Q
+Q
+q
+1 0 0 1 57.02362 333.4236 cm
+q
+q
+1 0 0 1 0 0 cm
+q
+1 0 0 1 6.6 6.6 cm
+q
+.662745 .662745 .662745 RG
+.5 w
+.941176 .972549 1 rg
+n -6 -6 480.0283 24 re B*
+Q
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F3 10 Tf 0 0 0 rg (R0 = ntohl\(*\(u32 *\) \(\(\(struct sk_buff *\) R6\)-) Tj (>) Tj (data + src_reg + imm32\)\)) Tj T* ET
+Q
+Q
+Q
+Q
+Q
+ 
+endstream
+endobj
+35 0 obj
+<<
+/Nums [ 0 36 0 R 1 37 0 R 2 38 0 R 3 39 0 R 4 40 0 R 
+  5 41 0 R ]
+>>
+endobj
+36 0 obj
+<<
+/S /D /St 1
+>>
+endobj
+37 0 obj
+<<
+/S /D /St 2
+>>
+endobj
+38 0 obj
+<<
+/S /D /St 3
+>>
+endobj
+39 0 obj
+<<
+/S /D /St 4
+>>
+endobj
+40 0 obj
+<<
+/S /D /St 5
+>>
+endobj
+41 0 obj
+<<
+/S /D /St 6
+>>
+endobj
+xref
+0 42
+0000000000 65535 f 
+0000000073 00000 n 
+0000000145 00000 n 
+0000000252 00000 n 
+0000000361 00000 n 
+0000000466 00000 n 
+0000000578 00000 n 
+0000000783 00000 n 
+0000000988 00000 n 
+0000001193 00000 n 
+0000001398 00000 n 
+0000001514 00000 n 
+0000001720 00000 n 
+0000001926 00000 n 
+0000002032 00000 n 
+0000002310 00000 n 
+0000002385 00000 n 
+0000002518 00000 n 
+0000002691 00000 n 
+0000002798 00000 n 
+0000002983 00000 n 
+0000003107 00000 n 
+0000003243 00000 n 
+0000003361 00000 n 
+0000003528 00000 n 
+0000003662 00000 n 
+0000003794 00000 n 
+0000003938 00000 n 
+0000004077 00000 n 
+0000004169 00000 n 
+0000014301 00000 n 
+0000024882 00000 n 
+0000034888 00000 n 
+0000046232 00000 n 
+0000056792 00000 n 
+0000061673 00000 n 
+0000061762 00000 n 
+0000061796 00000 n 
+0000061830 00000 n 
+0000061864 00000 n 
+0000061898 00000 n 
+0000061932 00000 n 
+trailer
+<<
+/ID 
+[<d2e3eea960a9af916c5d31d2a70a95c3><d2e3eea960a9af916c5d31d2a70a95c3>]
+% ReportLab generated PDF document -- digest (http://www.reportlab.com)
+
+/Info 14 0 R
+/Root 13 0 R
+/Size 42
+>>
+startxref
+61966
+%%EOF
