@@ -265,9 +265,9 @@ otherwise identical operations.
 
 The 4-bit 'code' field encodes the operation as below, where PC is the program counter:
 
-========  =====  ===  ==========================  ============
+========  =====  ===  ==========================  ========================
 code      value  src  description                 notes
-========  =====  ===  ==========================  ============
+========  =====  ===  ==========================  ========================
 BPF_JA    0x00   0x0  PC += offset                BPF_JMP only
 BPF_JEQ   0x10   any  PC += offset if dst == src
 BPF_JGT   0x20   any  PC += offset if dst > src   unsigned
@@ -284,7 +284,7 @@ BPF_JLT   0xa0   any  PC += offset if dst < src   unsigned
 BPF_JLE   0xb0   any  PC += offset if dst <= src  unsigned
 BPF_JSLT  0xc0   any  PC += offset if dst < src   signed
 BPF_JSLE  0xd0   any  PC += offset if dst <= src  signed
-========  =====  === ===========================  ============
+========  =====  ===  ==========================  ========================
 
 Helper functions
 ~~~~~~~~~~~~~~~~
