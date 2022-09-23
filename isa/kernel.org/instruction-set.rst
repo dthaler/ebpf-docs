@@ -109,9 +109,9 @@ The encoding of the 'opcode' field varies and can be determined from
 the three least significant bits (LSB) of the 'opcode' field which holds
 the "instruction class", as follows:
 
-=========  =====  ===============================  =================
+=========  =====  ===============================  ===================================
 class      value  description                      reference
-=========  =====  ===============================  =================
+=========  =====  ===============================  ===================================
 BPF_LD     0x00   non-standard load operations     `Load and store instructions`_
 BPF_LDX    0x01   load into register operations    `Load and store instructions`_
 BPF_ST     0x02   store from immediate operations  `Load and store instructions`_
@@ -120,7 +120,7 @@ BPF_ALU    0x04   32-bit arithmetic operations     `Arithmetic and jump instruct
 BPF_JMP    0x05   64-bit jump operations           `Arithmetic and jump instructions`_
 BPF_JMP32  0x06   32-bit jump operations           `Arithmetic and jump instructions`_
 BPF_ALU64  0x07   64-bit arithmetic operations     `Arithmetic and jump instructions`_
-=========  =====  ===============================  =================
+=========  =====  ===============================  ===================================
 
 Arithmetic and jump instructions
 ================================
@@ -140,12 +140,12 @@ code
 source
   the source operand location, which unless otherwise specified is one of:
 
-  ======  =====  ========================================
+  ======  =====  ==========================================
   source  value  description
-  ======  =====  ========================================
+  ======  =====  ==========================================
   BPF_K   0x00   use 32-bit 'imm' value as source operand
   BPF_X   0x08   use 'src' register value as source operand
-  ======  =====  ========================================
+  ======  =====  ==========================================
 
 instruction class
   the instruction class (see `Instruction classes`_)
@@ -159,9 +159,9 @@ otherwise identical operations.
 
 The 4-bit 'code' field encodes the operation as follows:
 
-========  =====  =================================================
+========  =====  ==========================================================
 code      value  description
-========  =====  =================================================
+========  =====  ==========================================================
 BPF_ADD   0x00   dst += src
 BPF_SUB   0x10   dst -= src
 BPF_MUL   0x20   dst \*= src
@@ -176,7 +176,7 @@ BPF_XOR   0xa0   dst ^= src
 BPF_MOV   0xb0   dst = src
 BPF_ARSH  0xc0   sign extending shift right
 BPF_END   0xd0   byte swap operations (see `Byte swap instructions`_ below)
-========  =====  =================================================
+========  =====  ==========================================================
 
 where 'src' is the source operand value.
 
@@ -268,22 +268,22 @@ The 4-bit 'code' field encodes the operation as below, where PC is the program c
 ========  =====  ===  ==========================  ========================
 code      value  src  description                 notes
 ========  =====  ===  ==========================  ========================
-BPF_JA    0x00   0x0  PC += offset                BPF_JMP only
-BPF_JEQ   0x10   any  PC += offset if dst == src
-BPF_JGT   0x20   any  PC += offset if dst > src   unsigned
-BPF_JGE   0x30   any  PC += offset if dst >= src  unsigned
-BPF_JSET  0x40   any  PC += offset if dst & src
-BPF_JNE   0x50   any  PC += offset if dst != src
-BPF_JSGT  0x60   any  PC += offset if dst > src   signed
-BPF_JSGE  0x70   any  PC += offset if dst >= src  signed
-BPF_CALL  0x80   0x0  call helper function imm    see `Helper functions`_
-BPF_CALL  0x80   0x1  call PC += offset           see `eBPF functions`_
-BPF_CALL  0x80   0x2  call runtime function imm   see `Runtime functions`_
-BPF_EXIT  0x95   0x0  return                      BPF_JMP only
-BPF_JLT   0xa0   any  PC += offset if dst < src   unsigned
-BPF_JLE   0xb0   any  PC += offset if dst <= src  unsigned
-BPF_JSLT  0xc0   any  PC += offset if dst < src   signed
-BPF_JSLE  0xd0   any  PC += offset if dst <= src  signed
+BPF_JA    0x0    0x0  PC += offset                BPF_JMP only
+BPF_JEQ   0x1    any  PC += offset if dst == src
+BPF_JGT   0x2    any  PC += offset if dst > src   unsigned
+BPF_JGE   0x3    any  PC += offset if dst >= src  unsigned
+BPF_JSET  0x4    any  PC += offset if dst & src
+BPF_JNE   0x5    any  PC += offset if dst != src
+BPF_JSGT  0x6    any  PC += offset if dst > src   signed
+BPF_JSGE  0x7    any  PC += offset if dst >= src  signed
+BPF_CALL  0x8    0x0  call helper function imm    see `Helper functions`_
+BPF_CALL  0x8    0x1  call PC += offset           see `eBPF functions`_
+BPF_CALL  0x8    0x2  call runtime function imm   see `Runtime functions`_
+BPF_EXIT  0x9    0x0  return                      BPF_JMP only
+BPF_JLT   0xa    any  PC += offset if dst < src   unsigned
+BPF_JLE   0xb    any  PC += offset if dst <= src  unsigned
+BPF_JSLT  0xc    any  PC += offset if dst < src   signed
+BPF_JSLE  0xd    any  PC += offset if dst <= src  signed
 ========  =====  ===  ==========================  ========================
 
 Helper functions
@@ -401,7 +401,7 @@ The 'imm' field is used to encode the actual atomic operation.
 Simple atomic operation use a subset of the values defined to encode
 arithmetic operations in the 'imm' field to encode the atomic operation:
 
-========  =====  =========== 
+========  =====  ===========
 imm       value  description
 ========  =====  ===========
 BPF_ADD   0x00   atomic add
