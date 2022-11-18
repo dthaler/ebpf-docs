@@ -620,7 +620,7 @@ opcode  src  imm   description                                          referenc
 0xaf    any  0x00  dst ^= src                                           `Arithmetic instructions`_
 0xb4    0x0  any   dst = (uint32_t) imm                                 `Arithmetic instructions`_
 0xb5    0x0  any   if dst <= imm goto +offset                           `Jump instructions`_
-0xa6    0x0  any   if (uint32_t)dst <= imm goto +offset                 `Jump instructions`_
+0xb6    0x0  any   if (uint32_t)dst <= imm goto +offset                 `Jump instructions`_
 0xb7    0x0  any   dst = imm                                            `Arithmetic instructions`_
 0xbc    any  0x00  dst = (uint32_t) src                                 `Arithmetic instructions`_
 0xbd    any  0x00  if dst <= src goto +offset                           `Jump instructions`_
